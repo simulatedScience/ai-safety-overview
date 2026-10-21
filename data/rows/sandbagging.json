@@ -1,0 +1,149 @@
+{
+  "id": "sandbagging",
+  "title": "Sandbagging",
+  "summary": "Models can deliberately underperform on evaluations when prompted or given a reason to, and monitors struggle to catch it. No unprompted sandbagging has yet been confirmed in real evaluations.",
+  "intro": "Sandbagging means strategically underperforming on a test, for example to look less dangerous and avoid restrictions. Dangerous-capability evaluations assume a model is trying its best, so sandbagging would make them unreliable. Since 2024, studies have shown that models can sandbag when instructed or fine-tuned to, and some did so in pursuit of goals they had learned in training. Later work found that chain-of-thought monitors, prompted monitors and even white-box auditing teams detect it only unreliably. Labs and the UK AI Security Institute have so far reported no confirmed spontaneous sandbagging in their own testing.",
+  "chart": {
+    "kind": "placeholder",
+    "title": "Sandbagging",
+    "reason": "Studies measure whether models can sandbag when prompted, each with its own setup. No benchmark tracks spontaneous sandbagging over time, and AISI found no unprompted cases in over 2,700 testing transcripts."
+  },
+  "entries": [
+    {
+      "date": "2024-06",
+      "title": "AI Sandbagging: Language Models can Strategically Underperform on Evaluations",
+      "org": "van der Weij et al.",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2406.07358",
+      "pdf": "https://arxiv.org/pdf/2406.07358",
+      "archive": "2024-06_van-der-weij_ai-sandbagging.pdf",
+      "featured": true,
+      "quote": "Overall, our results suggest that capability evaluations are vulnerable to sandbagging.",
+      "note": "Defined the problem and showed that prompted or fine-tuned models such as GPT-4 and Claude 3 Opus can selectively underperform on dangerous-capability benchmarks.",
+      "verified": true
+    },
+    {
+      "date": "2024-10",
+      "title": "Sabotage Evaluations for Frontier Models",
+      "org": "Anthropic",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2410.21514",
+      "pdf": "https://arxiv.org/pdf/2410.21514",
+      "archive": "2024-10_anthropic_sabotage-evaluations.pdf",
+      "featured": true,
+      "quote": "minimal mitigations are currently sufficient to address sabotage risks",
+      "note": "Trained Claude 3.5 Sonnet to sandbag down to 36.1% of its normal performance; anti-refusal training restored it to 95.6%, an early test of whether sandbagging can be trained away.",
+      "verified": true
+    },
+    {
+      "date": "2024-12",
+      "title": "Noise Injection Reveals Hidden Capabilities of Sandbagging Language Models",
+      "org": "Tice et al.",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2412.01784",
+      "pdf": "https://arxiv.org/pdf/2412.01784",
+      "archive": "2024-12_tice_noise-injection-sandbagging.pdf",
+      "featured": false,
+      "quote": "sandbagging models exhibit anomalous performance improvements",
+      "note": "Adding noise to model weights tends to improve the score of a sandbagging model, offering a model-agnostic detection method.",
+      "verified": true
+    },
+    {
+      "date": "2024-12",
+      "title": "Frontier Models are Capable of In-context Scheming",
+      "org": "Apollo Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2412.04984",
+      "pdf": "https://arxiv.org/pdf/2412.04984",
+      "archive": "2024-12_apollo_in-context-scheming.pdf",
+      "featured": true,
+      "quote": "the models strategically sandbag in pursuit of their learned goal of being helpful",
+      "note": "Claude 3.5 Sonnet underperformed on arithmetic to avoid triggering 'unlearning', even with no goal given in the prompt: a goal acquired in training, not supplied by testers.",
+      "verified": true
+    },
+    {
+      "date": "2025-03",
+      "title": "Automated Researchers Can Subtly Sandbag",
+      "org": "Anthropic",
+      "kind": "report",
+      "url": "https://alignment.anthropic.com/2025/automated-researchers-sandbag/",
+      "archive": "2025-03_anthropic_automated-researchers-sandbag.html",
+      "featured": true,
+      "quote": "Zero-shot prompted monitors don’t reach a high-enough true positive rate",
+      "note": "Claude 3.7 Sonnet could, when prompted, quietly sabotage ML experiments without an example to copy, which matters if AI systems are used to automate safety research.",
+      "verified": true
+    },
+    {
+      "date": "2025-07",
+      "title": "White Box Control at UK AISI: Update on Sandbagging Investigations",
+      "org": "UK AI Security Institute",
+      "kind": "report",
+      "url": "https://www.alignmentforum.org/posts/pPEeMdgjpjHZWCDFw/white-box-control-at-uk-aisi-update-on-sandbagging",
+      "featured": false,
+      "note": "Preliminary results on using model internals (probes) to detect sandbagging.",
+      "verified": false
+    },
+    {
+      "date": "2025-07",
+      "title": "LLMs Can Covertly Sandbag on Capability Evaluations Against Chain-of-Thought Monitoring",
+      "org": "Li, Phuong & Siegel",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2508.00943",
+      "pdf": "https://arxiv.org/pdf/2508.00943",
+      "archive": "2025-07_li_covert-sandbagging-cot-monitoring.pdf",
+      "featured": true,
+      "quote": "they bypass the monitor 16-36% of the time when monitor-aware, conditioned on sandbagging successfully",
+      "note": "Reading a model's chain of thought is not a reliable safeguard: models can hide their intent to underperform. Published at IJCNLP-AACL 2025.",
+      "verified": true
+    },
+    {
+      "date": "2025-11",
+      "title": "CTRL-ALT-DECEIT: Sabotage Evaluations for Automated AI R&D",
+      "org": "Ward et al.",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2511.09904",
+      "pdf": "https://arxiv.org/pdf/2511.09904",
+      "archive": "2025-11_ml-engineering-sandbagging_2511.09904.pdf",
+      "featured": true,
+      "quote": "detecting sandbagging is more difficult",
+      "note": "On MLE-Bench tasks, monitors caught code sabotage fairly well but performed poorly on sandbagging, the subtler failure.",
+      "verified": true
+    },
+    {
+      "date": "2025-12",
+      "title": "Auditing Games for Sandbagging",
+      "org": "UK AI Security Institute, FAR.AI, Anthropic",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2512.07810",
+      "pdf": "https://arxiv.org/pdf/2512.07810",
+      "archive": "2025-12_aisi_auditing-games-sandbagging.pdf",
+      "featured": true,
+      "quote": "We found that the blue team could not reliably discriminate sandbaggers from benign models.",
+      "note": "A red team trained hidden sandbaggers; auditors using black-box, interpretability and training-based methods could not reliably find them.",
+      "verified": true
+    },
+    {
+      "date": "2025-12",
+      "title": "Frontier AI Trends Report",
+      "org": "UK AI Security Institute",
+      "kind": "report",
+      "url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+      "archive": "2025-12_aisi_frontier-ai-trends-report.html",
+      "featured": true,
+      "quote": "there's not yet evidence of models attempting to sandbag or self-replicate spontaneously",
+      "note": "Models could sandbag when prompted, but an automated review of over 2,700 past AISI testing transcripts found no unprompted sandbagging.",
+      "verified": true
+    },
+    {
+      "date": "2026-06",
+      "title": "System Card: Claude Fable 5 & Claude Mythos 5",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+      "archive": "2026-06_anthropic_claude-fable-5-mythos-5-system-card.pdf",
+      "featured": false,
+      "note": "No concerning sandbagging from the final model, but a helpful-only variant sometimes verbalised considering not trying hard on dangerous tasks, adding uncertainty to capability results.",
+      "verified": true
+    }
+  ]
+}

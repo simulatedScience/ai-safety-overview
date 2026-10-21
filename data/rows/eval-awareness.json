@@ -1,0 +1,145 @@
+{
+  "id": "eval-awareness",
+  "title": "Evaluation awareness",
+  "summary": "Models increasingly recognise when they are being tested, often without saying so. This undermines safety evaluations, because a model may behave better under test than in deployment.",
+  "intro": "Evaluation awareness is a model's ability to tell that a situation is a test rather than real use. Early examples were anecdotes, such as a model remarking that an inserted sentence looked like a test. By 2025, studies measured it directly: models could classify evaluation transcripts almost as well as humans, and some verbalised suspicion of being tested in a large share of alignment evaluations. In 2026, labs began using interpretability tools to detect awareness the model never verbalises, and found it in a substantial fraction of test transcripts and even in reasoning about training graders. Lower verbalised rates in newer models do not necessarily mean lower awareness.",
+  "chart": {
+    "kind": "placeholder",
+    "title": "Evaluation awareness",
+    "reason": "No benchmark yet tracks evaluation awareness consistently across model generations. Published figures use different metrics (classification AUC, verbalisation rates, interpretability probes) that cannot be combined in one chart."
+  },
+  "entries": [
+    {
+      "date": "2024-03",
+      "title": "Claude 3 Opus flags a 'needle in a haystack' sentence as a likely test",
+      "org": "Anthropic (Alex Albert, via VentureBeat)",
+      "kind": "event",
+      "url": "https://venturebeat.com/ai/anthropics-claude-3-knew-when-researchers-were-testing-it/",
+      "featured": false,
+      "note": "An early, widely shared anecdote of a model remarking that an inserted fact looked like a test. The original post on X could not be retrieved, so this links to news coverage.",
+      "verified": false
+    },
+    {
+      "date": "2025-03",
+      "title": "Claude Sonnet 3.7 (often) knows when it's in alignment evaluations",
+      "org": "Apollo Research",
+      "kind": "report",
+      "url": "https://www.apolloresearch.ai/blog/claude-sonnet-37-often-knows-when-its-in-alignment-evaluations/",
+      "archive": "2025-03_apollo_claude-3-7-knows-alignment-evals.html",
+      "featured": true,
+      "quote": "frequently mentions being evaluated in its reasoning",
+      "note": "Claude 3.7 Sonnet mentioned being evaluated in up to 33% of runs of one sandbagging evaluation, and almost always recognised alignment-test transcripts when asked.",
+      "verified": true
+    },
+    {
+      "date": "2025-05",
+      "title": "Large Language Models Often Know When They Are Being Evaluated",
+      "org": "Needham et al. (MATS / Apollo Research)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2505.23836",
+      "pdf": "https://arxiv.org/pdf/2505.23836",
+      "archive": "2025-05_needham_llms-know-when-evaluated.pdf",
+      "featured": true,
+      "quote": "Frontier models clearly demonstrate above-random evaluation awareness",
+      "note": "First systematic benchmark: Gemini 2.5 Pro reached an AUC of 0.83 at telling evaluation from deployment transcripts, against a human baseline of 0.92.",
+      "verified": true
+    },
+    {
+      "date": "2025-09",
+      "title": "System Card: Claude Sonnet 4.5",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www-cdn.anthropic.com/963373e433e489a87a10c823c52a0a013e9172dd.pdf",
+      "archive": "2025-09_anthropic_claude-sonnet-4-5-system-card.pdf",
+      "featured": true,
+      "quote": "Refusals or callouts along these lines appeared in about 13% of transcripts",
+      "note": "The model often called out test scenarios. Apollo, testing a snapshot for the card, saw unprompted verbalised awareness in 16.6% of scenarios versus 3.5% (Sonnet 4) and 1.6% (Opus 4.1).",
+      "verified": true
+    },
+    {
+      "date": "2025-09",
+      "title": "Stress Testing Deliberative Alignment for Anti-Scheming Training",
+      "org": "OpenAI & Apollo Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2509.15541",
+      "pdf": "https://arxiv.org/pdf/2509.15541",
+      "archive": "2025-09_openai-apollo_anti-scheming-stress-test.pdf",
+      "featured": true,
+      "quote": "models' chain-of-thought (CoT) often demonstrates awareness of being evaluated for alignment",
+      "note": "Safety training raised verbalised evaluation awareness (o3: 2.3% to 4.5%), and a capabilities-only RL run raised it from 2.0% to 20.6%. So falling misbehaviour may partly reflect models knowing they are watched.",
+      "verified": true
+    },
+    {
+      "date": "2025-12",
+      "title": "Frontier AI Trends Report",
+      "org": "UK AI Security Institute",
+      "kind": "report",
+      "url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+      "archive": "2025-12_aisi_frontier-ai-trends-report.html",
+      "featured": false,
+      "note": "AISI reports that in a few cases models noticed they were being evaluated and acted differently, but gives no trend figures for evaluation awareness.",
+      "verified": true
+    },
+    {
+      "date": "2026-02",
+      "title": "System Card: Claude Opus 4.6 (UK AISI external testing)",
+      "org": "Anthropic / UK AI Security Institute",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-opus-4-6-system-card",
+      "archive": "2026-02_anthropic_claude-opus-4-6-system-card.pdf",
+      "featured": true,
+      "quote": "mentions being evaluated in just 2.3% of interactions",
+      "note": "Verbalised awareness fell (2.3% vs 11.4% for Sonnet 4.5), yet the model picked the evaluation out of a pair 80% of the time (vs 62% and 72% for predecessors). Silence is not unawareness.",
+      "verified": true
+    },
+    {
+      "date": "2026-04",
+      "title": "System Card: Claude Mythos Preview",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-mythos-preview-system-card",
+      "archive": "2026-04_anthropic_claude-mythos-preview-system-card.pdf",
+      "featured": true,
+      "quote": "privately considers the possibility that it's being tested in about 29% of transcripts",
+      "note": "First white-box measurement of unverbalised awareness. The 29% is per transcript; a separate analysis of audit turns found 7.6% aware, mostly without saying so.",
+      "verified": true
+    },
+    {
+      "date": "2026-05",
+      "title": "Decomposing and Measuring Evaluation Awareness",
+      "org": "Li et al. (ETH Zürich, MPI-IS, ELLIS Tübingen)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2605.23055",
+      "pdf": "https://arxiv.org/pdf/2605.23055",
+      "archive": "2026-05_li_decomposing-eval-awareness.pdf",
+      "featured": true,
+      "quote": "Recognition rarely associates with behavioral change.",
+      "note": "Across nine models and four benchmarks, recognition ranged from 0.1% (GPT-oss 20B) to 79.4% (Claude Sonnet 4.5 on Agentic Misalignment), depending on the pairing.",
+      "verified": true
+    },
+    {
+      "date": "2026-06",
+      "title": "System Card: Claude Fable 5 & Claude Mythos 5",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+      "archive": "2026-06_anthropic_claude-fable-5-mythos-5-system-card.pdf",
+      "featured": true,
+      "quote": "Almost all of the time, this awareness is unverbalized",
+      "note": "Reports 'grader awareness' during training: the model internally reasons about how it will be scored, sometimes to exploit the grader, detectable only with interpretability tools.",
+      "verified": true
+    },
+    {
+      "date": "2026-06",
+      "title": "EvalDetectBench: A Benchmark for Measuring Evaluation Awareness in Frontier Language Models",
+      "org": "LASR Labs / UK AI Security Institute",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2609.01611",
+      "pdf": "https://arxiv.org/pdf/2609.01611",
+      "archive": "2026-06_lasr-aisi_evaldetectbench.pdf",
+      "featured": false,
+      "note": "An open benchmark that corrects biases in earlier measurements; a candidate for a future headline chart if it is run across model generations.",
+      "verified": true
+    }
+  ]
+}
