@@ -24,6 +24,9 @@ renders both its line on the overview table (`index.html`) and its subpage
 One benchmark (or one aggregate benchmark) per chart. Never mix incompatible metrics
 (e.g. METR Time Horizon 1.0 and 1.1) in one chart.
 
+Direction: higher always means more of the behaviour or capability (the overview states this
+once), so y labels carry no "lower is better" hints. Tiered charts put the riskiest tier on top.
+
 ```jsonc
 {
   "kind": "line",                      // "line" (x = release date; set connect:false for one-off studies), "bar" or "placeholder"
@@ -40,6 +43,8 @@ One benchmark (or one aggregate benchmark) per chart. Never mix incompatible met
   "connect": true,                     // line only: draw lines between points (default true)
   "stepped": true,                     // line only: draw steps instead of slopes (cumulative counts)
   "trend": false,                      // line only: hide the trend-line selector (shown by default)
+  "yCategories": ["Lowest tier", ["Two-line", "tier"], "Top tier"],  // optional: tiered y axis; point y = tier index (0 = bottom)
+  "extendTo": "2026-10",               // optional: carry each series' last value on to this date (no marker)
   "horizontal": false,                 // bar only
   "series": [
     {
@@ -64,6 +69,8 @@ Company colours: when any point's label names a known model family, every point 
 its company (site-wide colours in `css/style.css`, matching rules in `js/companies.js`). Set
 `"org"` on a point to override the match, e.g. `"other"` for joint results from several companies.
 Anonymised charts keep per-series colours. With company colours, series differ by marker shape.
+A series may set `"org"` (e.g. one series per lab): its line and points then use that company's colour,
+and the company chip in the legend hides the whole series.
 
 ## Entries
 

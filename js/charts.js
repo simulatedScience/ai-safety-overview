@@ -13,7 +13,7 @@ const SHAPE_GLYPHS = { circle: "●", rect: "■", rectRot: "◆" };
 
 // Per-chart view state (labels, trend, hidden companies) lives on the canvas so plugins can read it.
 const stateOf = chart => chart.canvas._state;
-const isHidden = (chart, p) => !!p.company && stateOf(chart).hiddenOrgs.has(p.company);
+const isHidden = (chart, p) => !!p.ghost || (!!p.company && stateOf(chart).hiddenOrgs.has(p.company));
 
 // Model names next to points. Each label tries above, below, right and left of its point
 // and is skipped (tooltip only) if all four would overlap another label or point.
@@ -262,7 +262,7 @@ function placeholder(container, spec) {
 
 function tooltip(spec, byCompany) {
   return {
-    filter: item => !(item.raw.company && item.chart.canvas._state.hiddenOrgs.has(item.raw.company)),
+    filter: item => !item.raw.ghost && !(item.raw.company && item.chart.canvas._state.hiddenOrgs.has(item.raw.company)),
     callbacks: {
       title: items => {
         const r = items[0].raw;
@@ -270,7 +270,9 @@ function tooltip(spec, byCompany) {
       },
       label: item => {
         const r = item.raw;
-        let s = `${formatMonth(r.date)}: ${formatValue(r.y, spec.yFormat)}`;
+        const v = r.value ?? r.y;
+        const shown = spec.yCategories ? [spec.yCategories[v]].flat().join(" ") : formatValue(v, spec.yFormat);
+        let s = `${formatMonth(r.date)}: ${shown}`;
         if (r.lo != null && r.hi != null) s += ` (95% CI ${formatValue(r.lo, spec.yFormat)}–${formatValue(r.hi, spec.yFormat)})`;
         if (r.lowerBound) s += " (lower bound)";
         if (r.verified === false) s += " (unverified)";
@@ -295,7 +297,7 @@ function logTicks(spec) {
 
 // Charts whose points name real models are coloured by company; anonymised ones by series.
 function usesCompanies(spec) {
-  return spec.kind === "line" && spec.series.some(s => s.points.some(p => companyOf(p)));
+  return spec.kind === "line" && spec.series.some(s => s.org || s.points.some(p => companyOf(p)));
 }
 
 // Splits a long axis title into two balanced lines when it would not fit along the axis.
@@ -318,15 +320,28 @@ function lineConfig(spec, colours, large, state, halo, height, width) {
   const isSketch = spec.style === "sketch";
   const byCompany = usesCompanies(spec);
   const radius = large ? 5 : 4;
+  // Tiered charts nudge each series slightly up or down so lines on the same tier stay visible.
+  const nudge = i => (spec.yCategories && spec.series.length > 1 ? (i - (spec.series.length - 1) / 2) * 0.07 : 0);
   const datasets = spec.series.map((s, i) => {
     const colour = colours[i % colours.length];
     const markColour = p => (byCompany ? companyColour(p.company) : colour);
-    const lineColour = byCompany ? token("--muted") : colour;
-    const shape = byCompany ? SERIES_SHAPES[i % SERIES_SHAPES.length] : "circle";
-    const hidden = ctx => ctx.raw && ctx.raw.company && state.hiddenOrgs.has(ctx.raw.company);
+    // A series that belongs to one company (s.org) is drawn entirely in that company's colour.
+    const lineColour = s.org ? companyColour(s.org) : byCompany ? token("--muted") : colour;
+    const shape = byCompany && !s.org ? SERIES_SHAPES[i % SERIES_SHAPES.length] : "circle";
+    const hidden = ctx => ctx.raw && (ctx.raw.ghost || (ctx.raw.company && state.hiddenOrgs.has(ctx.raw.company)));
+    const data = s.points.map(p => {
+      const org = p.org || s.org;
+      return { ...p, org, value: p.y, y: p.y + nudge(i), date: p.x, x: monthToYear(p.x), company: byCompany ? companyOf({ ...p, org }) || "other" : null };
+    });
+    // spec.extendTo carries each series' last state on to that date (an unmarked "ghost" point).
+    const last = data[data.length - 1];
+    if (spec.extendTo && last && monthToYear(spec.extendTo) > last.x) {
+      data.push({ ...last, label: undefined, note: undefined, ghost: true, date: spec.extendTo, x: monthToYear(spec.extendTo) });
+    }
     return {
       label: s.label,
-      data: s.points.map(p => ({ ...p, date: p.x, x: monthToYear(p.x), company: byCompany ? companyOf(p) || "other" : null })),
+      org: s.org,
+      data,
       hidden: state.hiddenSeries.has(i),
       markColour,
       lineColour,
@@ -350,6 +365,7 @@ function lineConfig(spec, colours, large, state, halo, height, width) {
   const xs = datasets.flatMap(d => d.data.map(p => p.x));
   const ys = datasets.flatMap(d => d.data.flatMap(p => [p.y, p.lo, p.hi].filter(v => v != null)));
   let { yMin, yMax } = spec;
+  if (spec.yCategories) [yMin, yMax] = [-0.5, spec.yCategories.length - 0.5];
   if (spec.yScale === "log") {
     // Snap the range to the surrounding ticks so edge points are not clipped.
     const candidates = spec.yFormat === "duration" ? DURATION_TICKS : DECADE_TICKS;
@@ -392,7 +408,7 @@ function lineConfig(spec, colours, large, state, halo, height, width) {
             grid: { display: !isSketch },
             ticks: short
               ? { stepSize: monthStep, autoSkip: false, maxRotation: 0, font: tickFont, color: muted, callback: monthTick }
-              : { stepSize: 1, font: tickFont, color: muted, callback: v => (Number.isInteger(v) ? v : "") },
+              : { stepSize: 1, maxRotation: 0, font: tickFont, color: muted, callback: v => (Number.isInteger(v) ? v : "") },
           },
           y: {
             type: spec.yScale === "log" ? "logarithmic" : "linear",
@@ -400,8 +416,12 @@ function lineConfig(spec, colours, large, state, halo, height, width) {
             max: yMax,
             title: { display: !!spec.yLabel, text: wrapTitle(spec.yLabel, height - 60, titleFont.size), font: titleFont, color: text },
             grid: { display: !isSketch },
-            afterBuildTicks: spec.yScale === "log" ? logTicks(spec) : undefined,
-            ticks: { font: tickFont, color: muted, precision: spec.yFormat === "integer" ? 0 : undefined, callback: v => formatValue(v, spec.yFormat) },
+            afterBuildTicks: spec.yScale === "log"
+              ? logTicks(spec)
+              : spec.yCategories ? axis => { axis.ticks = spec.yCategories.map((c, value) => ({ value })); } : undefined,
+            ticks: spec.yCategories
+              ? { stepSize: 1, font: tickFont, color: text, callback: v => (Number.isInteger(v) ? spec.yCategories[v] : "") }
+              : { font: tickFont, color: muted, precision: spec.yFormat === "integer" ? 0 : undefined, callback: v => formatValue(v, spec.yFormat) },
           },
         },
         plugins: {
@@ -472,10 +492,14 @@ function controls(entry, chart, byCompany, colours) {
       COMPANIES.filter(c => present.has(c.id)).map(c =>
         chip(el("span", { class: "swatch", style: `background:${companyColour(c.id)}` }), c.name, !state.hiddenOrgs.has(c.id), () => {
           state.hiddenOrgs.has(c.id) ? state.hiddenOrgs.delete(c.id) : state.hiddenOrgs.add(c.id);
-          return !state.hiddenOrgs.has(c.id);
+          const show = !state.hiddenOrgs.has(c.id);
+          // Series that belong to this company (lines included) hide with it.
+          chart.data.datasets.forEach((ds, i) => { if (ds.org === c.id) chart.setDatasetVisibility(i, show); });
+          return show;
         }))));
   }
-  if (spec.series.length > 1) {
+  // When every series is one company, the company chips already act as the series legend.
+  if (spec.series.length > 1 && !spec.series.every(s => s.org)) {
     parts.push(el("div", { class: "chips", role: "group", "aria-label": "Series" },
       chart.data.datasets.map((ds, i) => {
         const swatch = byCompany
@@ -492,7 +516,7 @@ function controls(entry, chart, byCompany, colours) {
   if (spec.pointLabels !== false && spec.series.some(s => s.points.some(p => p.label))) {
     const box = el("input", { type: "checkbox", checked: state.labels });
     box.addEventListener("change", () => { state.labels = box.checked; update(); });
-    parts.push(el("label", {}, box, "Model names"));
+    parts.push(el("label", {}, box, "Labels"));
   }
   if (spec.kind === "line" && spec.trend !== false) {
     const options = [
@@ -555,7 +579,8 @@ function draw(entry) {
 
 export function renderChart(container, spec, opts = {}) {
   const state = {
-    labels: !!spec && spec.pointLabels !== false,
+    // Small tiered charts have no room for event labels; the tooltip still shows them.
+    labels: !!spec && spec.pointLabels !== false && !(spec.yCategories && !opts.large),
     trend: "off",
     hiddenOrgs: new Set(),
     hiddenSeries: new Set(),

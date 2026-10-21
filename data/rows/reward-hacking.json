@@ -8,7 +8,7 @@
   "chart": {
     "kind": "line",
     "title": "ImpossibleBench cheating rate (One-off Impossible-SWEbench)",
-    "yLabel": "Cheating rate (lower is better)",
+    "yLabel": "Cheating rate",
     "yFormat": "percent",
     "yMin": 0,
     "yMax": 100,

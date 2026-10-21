@@ -50,7 +50,8 @@ export function sourceLine(source) {
   const parts = [source.org, source.date && formatMonth(source.date)].filter(Boolean).join(", ");
   return el("span", {},
     "Source: ",
-    el("a", { href: source.url, target: "_blank", rel: "noopener" }, source.title),
+    // Site-relative URLs (e.g. a subpage's timeline) resolve against the site root.
+    el("a", { href: /^https?:/.test(source.url) ? source.url : siteUrl(source.url), target: /^https?:/.test(source.url) ? "_blank" : undefined, rel: "noopener" }, source.title),
     parts ? ` (${parts})` : "");
 }
 

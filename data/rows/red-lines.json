@@ -1,15 +1,171 @@
 {
   "id": "red-lines",
   "title": "Shifting red lines",
-  "summary": "Between 2024 and 2026 most frontier labs dropped blanket bans on military use and loosened or restructured their safety frameworks, often without announcing it. Some tightened in other areas, and Anthropic was blacklisted by the Pentagon for keeping two limits.",
+  "summary": "Between 2024 and 2026 OpenAI and Google dropped their bans on military use and weapons, Meta opened Llama to US and allied defence work, and several labs loosened or restructured their safety frameworks, often without announcing it. Anthropic was blacklisted by the Pentagon for keeping two limits.",
   "definition": "Changes to the public limits AI labs set on themselves: usage-policy bans (weapons, military use, surveillance), international commitments, and safety frameworks that say when a lab will stop or add safeguards.",
-  "development": "In 2024 most frontier labs still banned military use and had just promised, at the Seoul summit, to halt if risks passed set thresholds. Between 2024 and 2026 OpenAI, Meta, Google and Anthropic opened their models to defense and intelligence work, and several frameworks swapped binding if-then commitments for goals or competitor-contingent clauses. Changes also ran the other way, with new manipulation and loss-of-control categories, and Anthropic was blacklisted by the Pentagon in 2026 for keeping limits on autonomous weapons and domestic surveillance.",
+  "development": "In early 2024 OpenAI and Meta banned military use outright, Google had pledged not to build AI for weapons, and labs had just promised, at the Seoul summit, to halt if risks passed set thresholds. By 2026 OpenAI and Google had dropped those bans and pledges, Meta and Anthropic had opened their models to defence and intelligence work, and several frameworks swapped binding if-then commitments for goals or competitor-contingent clauses. Changes also ran the other way, with new manipulation and loss-of-control categories, and Anthropic was blacklisted by the Pentagon in 2026 for keeping limits on autonomous weapons and domestic surveillance.",
   "methods": "Tracked by diffing archived policy pages (Midas Watchtower, Wayback Machine) and by expert scorecards (FLI, SaferAI). Diffs catch wording changes but not how policies are applied in practice, and scorecards rest on panel judgement.",
   "chart": {
-    "kind": "placeholder",
-    "reason": "Policy changes are events, not measurements, so they are listed in the timeline below rather than charted."
+    "kind": "line",
+    "style": "sketch",
+    "stepped": true,
+    "trend": false,
+    "extendTo": "2026-10",
+    "title": "Military-use restrictions in labs' public usage policies",
+    "xLabel": "Policy date",
+    "yLabel": "Restrictions on military use",
+    "yCategories": [
+      "No military use",
+      [
+        "Whitelist:",
+        "few uses allowed"
+      ],
+      [
+        "Blacklist:",
+        "few uses banned"
+      ],
+      "No restrictions"
+    ],
+    "series": [
+      {
+        "label": "Google DeepMind",
+        "org": "google",
+        "points": [
+          {
+            "x": "2018-06",
+            "y": 2,
+            "label": "AI Principles",
+            "note": "Pledges not to build AI for weapons or norm-violating surveillance; other military work continues",
+            "verified": true
+          },
+          {
+            "x": "2025-02",
+            "y": 3,
+            "label": "Pledge removed",
+            "note": "The 'applications we will not pursue' list, including weapons, is removed",
+            "verified": true
+          }
+        ]
+      },
+      {
+        "label": "OpenAI",
+        "org": "openai",
+        "points": [
+          {
+            "x": "2023-02",
+            "y": 0,
+            "label": "Military ban",
+            "note": "Usage policy bans 'military and warfare' (earliest wording that could be recovered)",
+            "verified": true
+          },
+          {
+            "x": "2024-01",
+            "y": 2,
+            "label": "Ban dropped",
+            "note": "'Military and warfare' removed; the ban on developing or using weapons stays",
+            "verified": true
+          }
+        ]
+      },
+      {
+        "label": "Anthropic",
+        "org": "anthropic",
+        "points": [
+          {
+            "x": "2023-07",
+            "y": 2,
+            "label": "Usage policy",
+            "note": "Bans weapons and, from Sep 2023, battlefield management; no general military ban",
+            "verified": true
+          }
+        ]
+      },
+      {
+        "label": "Meta",
+        "org": "meta",
+        "points": [
+          {
+            "x": "2023-02",
+            "y": 0,
+            "label": "Llama licence",
+            "note": "Licence bans military and warfare use for everyone",
+            "verified": true
+          },
+          {
+            "x": "2024-11",
+            "y": 1,
+            "label": "US exception",
+            "note": "US government agencies and contractors may use Llama, including for defence; allies added 2024–25. The ban stays for everyone else",
+            "verified": true
+          }
+        ]
+      },
+      {
+        "label": "xAI",
+        "org": "xai",
+        "points": [
+          {
+            "x": "2023-11",
+            "y": 3,
+            "label": "Grok terms",
+            "note": "Terms of use restrict only illegal use and export-control violations",
+            "verified": true
+          },
+          {
+            "x": "2024-09",
+            "y": 2,
+            "label": "First usage policy",
+            "note": "Bans weapons of mass destruction; conventional military use is not mentioned",
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "source": {
+      "title": "Archived usage policies, linked in the timeline below",
+      "org": "Wayback Machine and lab pages",
+      "date": "2026-10",
+      "url": "behaviours/red-lines.html#timeline"
+    },
+    "caveat": "Hand-classified from each lab's public usage policy; lines start at the earliest policy that could be recovered. Government contracts can set looser terms: OpenAI's (Feb 2026), Google's (Apr 2026, news reports only) and xAI's (Feb 2026, news reports only) reportedly allow 'all lawful purposes' with a few exceptions, and the Pentagon designated Anthropic a supply-chain risk in Mar 2026 for keeping two limits. Meta's exception is defined by who may use Llama rather than by use. New OpenAI and Anthropic policies published in Oct 2026 stay on the same tier."
   },
   "entries": [
+    {
+      "date": "2018-06",
+      "title": "AI at Google: our principles",
+      "org": "Google",
+      "kind": "policy",
+      "url": "https://web.archive.org/web/20180611130019/https://ai.google/principles/",
+      "archive": "2018-06_google_ai-principles.html",
+      "featured": false,
+      "quote": "Weapons or other technologies whose principal purpose or implementation is to cause or directly facilitate injury to people.",
+      "note": "Google listed weapons and norm-violating surveillance among 'applications we will not pursue', while continuing other military work. Removed in Feb 2025.",
+      "verified": true
+    },
+    {
+      "date": "2023-02",
+      "title": "OpenAI usage policies (Feb 2023): 'military and warfare' banned",
+      "org": "OpenAI",
+      "kind": "policy",
+      "url": "https://web.archive.org/web/20230317175936/https://openai.com/policies/usage-policies",
+      "archive": "2023-03_openai_usage-policies-feb-2023-archived.html",
+      "featured": false,
+      "quote": "Activity that has high risk of physical harm: Including but not limited to: Weapons development; Military and warfare",
+      "note": "The earliest recoverable OpenAI policy with an explicit military ban; earlier API guidelines cannot be read in the archives.",
+      "verified": true
+    },
+    {
+      "date": "2023-07",
+      "title": "Llama 2 Acceptable Use Policy",
+      "org": "Meta",
+      "kind": "policy",
+      "url": "https://web.archive.org/web/20230718181926/https://ai.meta.com/llama/use-policy/",
+      "archive": "2023-07_meta_llama-2-acceptable-use-policy.html",
+      "featured": false,
+      "quote": "Military, warfare, nuclear industries or applications, espionage",
+      "note": "Meta's open-weight licences banned military use for everyone; the clause carried over unchanged to Llama 3 and 4.",
+      "verified": true
+    },
     {
       "date": "2024-01",
       "title": "OpenAI removes \"military and warfare\" from its usage-policy ban list",
@@ -47,6 +203,18 @@
       "verified": true
     },
     {
+      "date": "2024-09",
+      "title": "xAI Acceptable Use Policy (first version)",
+      "org": "xAI",
+      "kind": "policy",
+      "url": "https://web.archive.org/web/20241105061711/https://x.ai/legal/acceptable-use-policy",
+      "archive": "2024-09_xai_acceptable-use-policy.html",
+      "featured": false,
+      "quote": "Develop bioweapons or weapons of mass destruction",
+      "note": "xAI's first usage policy, after a year of terms with no weapons clause. Conventional military use is not mentioned.",
+      "verified": true
+    },
+    {
       "date": "2024-10",
       "title": "Announcing our updated Responsible Scaling Policy (v2.0)",
       "org": "Anthropic",
@@ -76,8 +244,10 @@
       "kind": "event",
       "url": "https://www.businesswire.com/news/home/20241107699415/en/Anthropic-and-Palantir-Partner-to-Bring-Claude-AI-Models-to-AWS-for-U.S.-Government-Intelligence-and-Defense-Operations",
       "featured": false,
-      "note": "Claude 3 and 3.5 deployed in Palantir's IL6 (up to Secret) environment. Press release could not be loaded; date and details from search excerpts and coverage.",
-      "verified": false
+      "note": "Claude 3 and 3.5 deployed in Palantir's Impact Level 6 environment (classified up to Secret) for US intelligence and defence agencies. No change to Anthropic's usage policy.",
+      "verified": true,
+      "quote": "provide U.S. intelligence and defense agencies access to the Claude 3 and 3.5 family of models on AWS",
+      "archive": "2024-11_palantir_anthropic-aws-partnership-archived.html"
     },
     {
       "date": "2025-02",
@@ -135,6 +305,30 @@
       "featured": true,
       "quote": "misaligned AI models might interfere with operators’ ability to direct, modify or shut down their operations",
       "note": "A tightening: added a harmful-manipulation capability level and protocols for shutdown-resistance and other misalignment risks.",
+      "verified": true
+    },
+    {
+      "date": "2025-09",
+      "title": "Meta extends Llama access to key US allies",
+      "org": "Meta",
+      "kind": "policy",
+      "url": "https://about.fb.com/news/2025/09/strengthening-us-national-security-by-making-llama-available-to-key-allies/",
+      "archive": "2025-09_meta_llama-available-to-key-allies.html",
+      "featured": false,
+      "quote": "expanding this access to a number of key US democratic allies in Europe and Asia",
+      "note": "France, Germany, Italy, Japan, South Korea, NATO and EU institutions join the US and Five Eyes exception; the public ban stays.",
+      "verified": true
+    },
+    {
+      "date": "2025-10",
+      "title": "OpenAI usage policies: national-security use needs approval",
+      "org": "OpenAI",
+      "kind": "policy",
+      "url": "https://web.archive.org/web/20251102012204/https://openai.com/policies/usage-policies",
+      "archive": "2025-10_openai_usage-policies-oct-2025-archived.html",
+      "featured": false,
+      "quote": "national security or intelligence purposes without our review and approval",
+      "note": "Ordinary users need OpenAI's approval for national-security or intelligence use; approved government partners face only a short list of bans.",
       "verified": true
     },
     {
@@ -243,6 +437,18 @@
       "url": "https://abcnews.com/Business/anthropic-appeals-court-declines-block-pentagon-blacklisting/story?id=136755690",
       "featured": false,
       "note": "2–1 ruling (Henderson dissenting); a separate district-court ruling against the government remains in effect. News coverage, not the opinion itself.",
+      "verified": true
+    },
+    {
+      "date": "2026-10",
+      "title": "Anthropic Usage Policy update (in force 12 Nov 2026)",
+      "org": "Anthropic",
+      "kind": "policy",
+      "url": "https://www.anthropic.com/news/2026-usage-policy-update",
+      "archive": "2026-10_anthropic_2026-usage-policy-update.html",
+      "featured": false,
+      "quote": "Weaponize or integrate weapons onto drones, vehicles, or any unmanned or autonomous platforms",
+      "note": "Spells out that the weapons ban covers targeting and fire-control software and armed autonomous platforms; Anthropic says it describes existing practice.",
       "verified": true
     }
   ]

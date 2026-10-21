@@ -89,7 +89,7 @@ async function main() {
             row.chart.caveat ? el("div", {}, row.chart.caveat) : null,
             markerNote(row.chart))
         : null,
-      el("h2", {}, "Timeline"),
+      el("h2", { id: "timeline" }, "Timeline"),
       entries.length ? el("div", {}, timeline(entries)) : el("p", { class: "legend-note" }, "No entries yet."),
       el("p", { class: "back" }, el("a", { href: siteUrl(`index.html#${id}`) }, "← Back to overview")));
 
