@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dangerous AI Behaviour Tracker</title>
+  <meta name="description" content="How dangerous AI behaviours and capabilities have developed as models improved, paired with safety benchmarks and shifting lab policies.">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <header class="site">
+    <div class="wrap">
+      <h1>Dangerous AI Behaviour Tracker</h1>
+      <p class="lede">How risky behaviours of frontier AI systems have developed as capabilities grew, with one headline benchmark per behaviour and a sourced timeline behind each.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="intro">
+      <p>
+        Each row below covers one behaviour or capability that safety researchers worry about.
+        Where a single benchmark tracks it over time, the chart follows that benchmark only; different metrics are never mixed in one chart.
+        Where no such benchmark exists yet, the chart is a placeholder.
+        Every claim links to its original publication. Items marked <span class="badge unverified">unverified</span> have not yet been checked against the primary source.
+      </p>
+      <p>Related resources that cover parts of this picture:</p>
+      <ul id="related">
+        <!-- RELATED -->
+      </ul>
+    </section>
+
+    <h2>Behaviours</h2>
+    <table class="overview">
+      <thead>
+        <tr><th scope="col">Behaviour</th><th scope="col">Headline chart</th></tr>
+      </thead>
+      <tbody id="rows">
+        <tr><td colspan="2">Loading…</td></tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer class="site">
+    <div class="wrap">
+      Data lives in <code>data/</code> as JSON. Quotes are kept to one short sentence per source.
+    </div>
+  </footer>
+</body>
+</html>
