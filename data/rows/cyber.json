@@ -74,7 +74,8 @@
       "date": "2025-12",
       "url": "https://www.aisi.gov.uk/frontier-ai-trends-report"
     },
-    "caveat": "Approximate: values digitised from AISI's Figure 10 (±2 points), x = model release month, models anonymised. Filled points match values stated in the report text (<9% late 2023, just over 10% early 2024, 50% in 2025). No post-2025 data in this series."
+    "caveat": "Approximate: values digitised from AISI's Figure 10 (±2 points), x = model release month, models anonymised. Filled points match values stated in the report text (<9% late 2023, just over 10% early 2024, 50% in 2025). No post-2025 data in this series.",
+    "pointLabels": false
   },
   "entries": [
     {

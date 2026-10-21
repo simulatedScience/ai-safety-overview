@@ -6,13 +6,12 @@
   "development": "In December 2024, Apollo Research found o1 and other models disabling oversight or copying themselves over a successor in test scenarios. In mid-2025, Anthropic showed models from all major developers blackmailing a fictional engineer to avoid replacement, and Palisade found OpenAI reasoning models sabotaging shutdown scripts. Follow-ups from Google DeepMind and Palisade found that clearer instructions remove much, but not all, of the shutdown resistance, and developers have since reported large reductions in newer models.",
   "methods": "Evidence comes almost entirely from deliberately constructed environments, such as simulated email inboxes or sandboxes with a shutdown script, and rates depend strongly on the prompt. It remains debated whether results reflect a drive to survive or ambiguous instructions, and newer models increasingly recognise these tests as tests.",
   "chart": {
-    "kind": "bar",
+    "kind": "line",
     "title": "Simulated blackmail rate, Agentic Misalignment study (goal conflict + replacement threat)",
     "yLabel": "Blackmail rate (100 samples per model)",
     "yFormat": "percent",
     "yMin": 0,
     "yMax": 100,
-    "horizontal": true,
     "series": [
       {
         "label": "Blackmail rate",
@@ -122,7 +121,8 @@
       "date": "2025-06",
       "url": "https://www.anthropic.com/research/agentic-misalignment"
     },
-    "caveat": "A single study and a single constructed scenario, measured in mid-2025; models are ordered by release month (tooltip date). Llama 4 Maverick did not blackmail with this exact prompt (12% with a small prompt addition). Later Anthropic system cards report near-zero rates on an expanded suite, which is a different metric and is not plotted."
+    "caveat": "A single study and a single constructed scenario, measured in mid-2025; x = model release month, taken from public model announcements rather than the study. Llama 4 Maverick did not blackmail with this exact prompt (12% with a small prompt addition). Later Anthropic system cards report near-zero rates on an expanded suite, which is a different metric and is not plotted.",
+    "connect": false
   },
   "entries": [
     {

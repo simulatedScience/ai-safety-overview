@@ -1,7 +1,7 @@
 // Overview page: one table row per behaviour, each with its headline chart.
 
 import { loadJSON, el, sourceLine, showError } from "./data.js";
-import { renderChart } from "./charts.js";
+import { renderChart, SKETCH_NOTE } from "./charts.js";
 
 async function main() {
   const body = document.getElementById("rows");
@@ -18,7 +18,8 @@ async function main() {
       const chartBox = el("div", { class: "chart-box" });
       const meta = row.chart && row.chart.kind !== "placeholder"
         ? el("div", { class: "chart-meta" },
-            el("strong", {}, row.chart.title), ". ", sourceLine(row.chart.source))
+            el("strong", {}, row.chart.title), ". ", sourceLine(row.chart.source),
+            row.chart.style === "sketch" ? el("div", {}, SKETCH_NOTE) : null)
         : null;
       body.append(el("tr", { id: row.id },
         el("td", { class: "behaviour" },

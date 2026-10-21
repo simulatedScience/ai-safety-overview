@@ -68,7 +68,14 @@
       "date": "2025-12",
       "url": "https://www.aisi.gov.uk/frontier-ai-trends-report"
     },
-    "caveat": "Approximate: values digitised from AISI's Figure 5 (±0.03), x = model release month, models anonymised. PhD holders score about 38% in absolute terms. Filled points match the report text (models first reached the expert baseline in 2024 and now exceed it by up to 60%)."
+    "caveat": "Approximate: values digitised from AISI's Figure 5 (±0.03), x = model release month, models anonymised. PhD holders score about 38% in absolute terms. Filled points match the report text (models first reached the expert baseline in 2024 and now exceed it by up to 60%).",
+    "pointLabels": false,
+    "references": [
+      {
+        "label": "PhD expert baseline",
+        "y": 1
+      }
+    ]
   },
   "entries": [
     {

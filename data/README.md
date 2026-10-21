@@ -26,11 +26,15 @@ One benchmark (or one aggregate benchmark) per chart. Never mix incompatible met
 
 ```jsonc
 {
-  "kind": "line",                      // "line" (over time), "bar" (one study across models) or "placeholder"
+  "kind": "line",                      // "line" (x = release date; set connect:false for one-off studies), "bar" or "placeholder"
   "title": "METR 50% time horizon (TH1.1)",
   "yLabel": "Task length (human time)",
   "yScale": "log",                     // "log" or "linear" (default)
-  "yFormat": "duration",               // "duration" (value in minutes), "percent" (value 0–100) or "number"
+  "yFormat": "duration",               // "duration" (value in minutes), "percent" (0–100), "number" or "integer"
+  "xLabel": "Model release date",      // optional; default "Model release date"
+  "style": "sketch",                   // optional: hand-drawn look for indicative, hand-curated data
+  "pointLabels": false,                // optional: hide point labels (e.g. anonymised models)
+  "references": [{ "label": "PhD expert baseline", "y": 1 }],  // optional dashed reference lines
   "yMin": 0, "yMax": 100,              // optional
   "connect": true,                     // line only: draw lines between points (default true)
   "horizontal": false,                 // bar only

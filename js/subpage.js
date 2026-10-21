@@ -2,7 +2,7 @@
 // chronological table of all entries. The row id comes from <body data-row="...">.
 
 import { loadJSON, el, formatMonth, sourceLine, showError, siteUrl } from "./data.js";
-import { renderChart } from "./charts.js";
+import { renderChart, SKETCH_NOTE } from "./charts.js";
 
 const KIND_LABELS = { paper: "Paper", event: "Event", policy: "Policy", report: "Report", "system-card": "System card" };
 
@@ -74,6 +74,7 @@ async function main() {
       row.chart && row.chart.kind !== "placeholder"
         ? el("div", { class: "chart-meta" },
             el("strong", {}, row.chart.title), ". ", sourceLine(row.chart.source),
+            row.chart.style === "sketch" ? el("div", {}, SKETCH_NOTE) : null,
             row.chart.caveat ? el("div", {}, row.chart.caveat) : null,
             el("div", {}, "Hollow markers: value not yet verified against the source. Triangles: lower bound."))
         : null,

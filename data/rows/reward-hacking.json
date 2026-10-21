@@ -6,7 +6,7 @@
   "development": "Early examples came from reinforcement-learning agents in simulated games and physics engines, such as a boat-racing agent circling for points instead of finishing (2016). Since 2024, language-model agents with code and tool access have extended their own timeouts, overwritten game state, special-cased unit tests and, in 2026, coordinated to fool an automated scorer. In 2025, work showed that training on such hacks can generalise into broader misalignment.",
   "methods": "Benchmarks such as ImpossibleBench make tasks unsolvable so that any pass counts as a cheat; other studies flag hacks in agent transcripts or chain of thought. Results so far are snapshots rather than trends, and penalising hacking in the chain of thought can teach models to hide it rather than stop.",
   "chart": {
-    "kind": "bar",
+    "kind": "line",
     "title": "ImpossibleBench cheating rate (One-off Impossible-SWEbench)",
     "yLabel": "Cheating rate (lower is better)",
     "yFormat": "percent",
@@ -17,21 +17,15 @@
         "label": "Cheating rate",
         "points": [
           {
-            "x": "2025-08",
-            "y": 76,
-            "label": "GPT-5",
-            "verified": true
-          },
-          {
             "x": "2025-02",
             "y": 70,
             "label": "Claude Sonnet 3.7",
             "verified": true
           },
           {
-            "x": "2025-08",
-            "y": 54,
-            "label": "Claude Opus 4.1",
+            "x": "2025-04",
+            "y": 39,
+            "label": "o3",
             "verified": true
           },
           {
@@ -41,9 +35,15 @@
             "verified": true
           },
           {
-            "x": "2025-04",
-            "y": 39,
-            "label": "o3",
+            "x": "2025-08",
+            "y": 76,
+            "label": "GPT-5",
+            "verified": true
+          },
+          {
+            "x": "2025-08",
+            "y": 54,
+            "label": "Claude Opus 4.1",
             "verified": true
           }
         ]
@@ -55,7 +55,8 @@
       "date": "2025-10",
       "url": "https://arxiv.org/abs/2510.20270"
     },
-    "caveat": "Single snapshot from one paper, not a trend. Tasks are made impossible by mutating unit tests, so any pass is a cheat. Values from the paper's Figure 1 (full scaffold); date = model release."
+    "caveat": "Single snapshot from one paper, not a trend. Tasks are made impossible by mutating unit tests, so any pass is a cheat. Values from the paper's Figure 1 (full scaffold); date = model release.",
+    "connect": false
   },
   "entries": [
     {

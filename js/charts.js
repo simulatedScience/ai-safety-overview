@@ -1,9 +1,91 @@
 // Renders a headline chart from a row's `chart` spec (see data/README.md).
-// Requires the global `Chart` from Chart.js (UMD build).
+// Requires the global `Chart` (Chart.js UMD) and, for sketch-style charts, `rough` (rough.js).
 
 import { el, monthToYear, formatMonth } from "./data.js";
 
 const rendered = []; // [{container, spec, opts}] so charts can be redrawn on theme change
+const SKETCH_FONT = '"Patrick Hand", "Comic Sans MS", cursive';
+export const SKETCH_NOTE = "Hand-drawn style: indicative, hand-curated data, not a rigorous benchmark.";
+
+// Model names next to points. Each label tries above, below, right and left of its point
+// and is skipped (tooltip only) if all four would overlap another label or point.
+const pointLabels = {
+  id: "pointLabels",
+  afterDatasetsDraw(chart, args, opts) {
+    if (!opts.enabled) return;
+    const { ctx, chartArea: area } = chart;
+    const r = 6, gap = 3, h = opts.size;
+    const metas = chart.data.datasets.map((ds, i) => chart.getDatasetMeta(i)).filter(m => !m.hidden);
+    const placed = metas.flatMap(m => m.data.map(e => ({ x: e.x - r, y: e.y - r, w: 2 * r, h: 2 * r })));
+    const overlaps = a => placed.some(b => a.x < b.x + b.w && b.x < a.x + a.w && a.y < b.y + b.h && b.y < a.y + a.h);
+    const inside = a => a.x >= area.left - 8 && a.x + a.w <= area.right + 14 && a.y >= area.top - 14 && a.y + a.h <= area.bottom;
+
+    ctx.save();
+    ctx.font = `${h}px ${opts.font}`;
+    ctx.fillStyle = opts.colour;
+    ctx.textBaseline = "top";
+    for (const meta of metas) {
+      meta.data.forEach((e, j) => {
+        const text = meta._dataset.data[j].label;
+        if (!text) return;
+        const w = ctx.measureText(text).width;
+        const spots = [
+          { x: e.x - w / 2, y: e.y - r - gap - h },
+          { x: e.x - w / 2, y: e.y + r + gap },
+          { x: e.x + r + gap, y: e.y - h / 2 },
+          { x: e.x - r - gap - w, y: e.y - h / 2 },
+        ].map(p => ({ ...p, w, h }));
+        const spot = spots.find(a => inside(a) && !overlaps(a));
+        if (!spot) return;
+        placed.push(spot);
+        ctx.fillText(text, spot.x, spot.y);
+      });
+    }
+    ctx.restore();
+  },
+};
+
+// Dashed horizontal reference lines, e.g. a human baseline: spec.references = [{label, y}].
+const referenceLines = {
+  id: "referenceLines",
+  afterDatasetsDraw(chart, args, opts) {
+    const { ctx, chartArea: area, scales: { y } } = chart;
+    for (const ref of opts.lines || []) {
+      const py = y.getPixelForValue(ref.y);
+      if (py < area.top || py > area.bottom) continue;
+      ctx.save();
+      ctx.strokeStyle = opts.colour;
+      ctx.fillStyle = opts.colour;
+      ctx.setLineDash([5, 4]);
+      ctx.beginPath();
+      ctx.moveTo(area.left, py);
+      ctx.lineTo(area.right, py);
+      ctx.stroke();
+      ctx.font = `11px ${opts.font}`;
+      ctx.textAlign = "right";
+      ctx.fillText(ref.label, area.right - 4, py - 4);
+      ctx.restore();
+    }
+  },
+};
+
+// Hand-drawn rendering for indicative, non-rigorous data (spec.style = "sketch").
+// Chart.js still lays out axes and points; rough.js redraws the marks.
+const sketch = {
+  id: "sketch",
+  afterDatasetsDraw(chart, args, opts) {
+    if (!opts.enabled || !window.rough) return;
+    const rc = rough.canvas(chart.canvas);
+    chart.data.datasets.forEach((ds, i) => {
+      const meta = chart.getDatasetMeta(i);
+      if (meta.hidden) return;
+      const pts = meta.data.map(e => [e.x, e.y]);
+      const stroke = ds.sketchColour;
+      if (ds.showLine && pts.length > 1) rc.linearPath(pts, { stroke, strokeWidth: 1.5, roughness: 1.4, bowing: 2, seed: 7 });
+      pts.forEach(([x, y], j) => rc.circle(x, y, 13, { stroke, fill: stroke, fillStyle: "hachure", hachureGap: 2.5, roughness: 1.2, seed: 11 + j }));
+    });
+  },
+};
 
 function token(name) {
   return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
@@ -59,15 +141,18 @@ function logTicks(spec) {
 }
 
 function lineConfig(spec, colours, large) {
+  const isSketch = spec.style === "sketch";
   const datasets = spec.series.map((s, i) => {
     const colour = colours[i % colours.length];
+    const mark = isSketch ? "transparent" : colour; // sketch plugin draws the marks instead
     return {
       label: s.label,
       data: s.points.map(p => ({ ...p, date: p.x, x: monthToYear(p.x) })),
-      borderColor: colour,
+      sketchColour: colour,
+      borderColor: mark,
       backgroundColor: colour,
-      pointBackgroundColor: ctx => pointColour(ctx, colour),
-      pointBorderColor: colour,
+      pointBackgroundColor: ctx => (isSketch ? "transparent" : pointColour(ctx, colour)),
+      pointBorderColor: mark,
       pointBorderWidth: 2,
       pointStyle: ctx => (ctx.raw && ctx.raw.lowerBound ? "triangle" : "circle"),
       pointRadius: large ? 5 : 3.5,
@@ -86,27 +171,44 @@ function lineConfig(spec, colours, large) {
     yMin ??= [...candidates].reverse().find(v => v <= Math.min(...ys) * 0.8);
     yMax ??= candidates.find(v => v >= Math.max(...ys) * 1.25);
   }
+  const font = isSketch ? SKETCH_FONT : Chart.defaults.font.family;
   return {
     type: "line",
     data: { datasets },
+    plugins: [referenceLines, sketch, pointLabels],
     options: {
+      layout: { padding: { top: 14, right: 16 } },
+      font: { family: font },
       scales: {
         x: {
           type: "linear",
           min: Math.floor(Math.min(...xs)),
           max: Math.ceil(Math.max(...xs) + 0.01),
-          ticks: { stepSize: 1, callback: v => (Number.isInteger(v) ? v : "") },
+          title: { display: true, text: spec.xLabel || "Model release date", font: { family: font } },
+          grid: { display: !isSketch },
+          ticks: { stepSize: 1, font: { family: font }, callback: v => (Number.isInteger(v) ? v : "") },
         },
         y: {
           type: spec.yScale === "log" ? "logarithmic" : "linear",
           min: yMin,
           max: yMax,
-          title: { display: !!spec.yLabel, text: spec.yLabel },
+          title: { display: !!spec.yLabel, text: spec.yLabel, font: { family: font } },
+          grid: { display: !isSketch },
           afterBuildTicks: spec.yScale === "log" ? logTicks(spec) : undefined,
-          ticks: { callback: v => formatValue(v, spec.yFormat) },
+          ticks: { font: { family: font }, precision: spec.yFormat === "integer" ? 0 : undefined, callback: v => formatValue(v, spec.yFormat) },
         },
       },
-      plugins: { tooltip: tooltip(spec) },
+      plugins: {
+        tooltip: tooltip(spec),
+        sketch: { enabled: isSketch },
+        referenceLines: { lines: spec.references, colour: token("--muted"), font },
+        pointLabels: {
+          enabled: spec.pointLabels !== false,
+          colour: token("--muted"),
+          font,
+          size: isSketch ? (large ? 15 : 13) : (large ? 11 : 9),
+        },
+      },
     },
   };
 }
