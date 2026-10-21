@@ -4,7 +4,6 @@
 import { el, monthToYear, formatMonth, MONTH_NAMES } from "./data.js";
 import { COMPANIES, companyOf, companyName, companyColour } from "./companies.js";
 
-const rendered = []; // [{container, spec, opts, state}] so charts can be redrawn on theme change
 const SKETCH_FONT = '"Patrick Hand", "Comic Sans MS", cursive';
 export const SKETCH_NOTE = "Hand-drawn style: indicative, hand-curated data, not a rigorous benchmark.";
 
@@ -85,8 +84,8 @@ const referenceLines = {
   },
 };
 
-// Least-squares trend lines over the visible points (spec.trend = true makes them available).
-// On a log axis the fit is exponential and labelled with its doubling time.
+// Least-squares trend lines over the visible points (offered on every line chart unless spec.trend is false).
+// On a log axis the fit is exponential and labelled with its doubling time. Each group needs two or more points.
 function fit(points, log) {
   const xs = points.map(p => p.x), ys = points.map(p => (log ? Math.log(p.y) : p.y));
   const mx = xs.reduce((a, b) => a + b) / xs.length, my = ys.reduce((a, b) => a + b) / ys.length;
@@ -102,23 +101,25 @@ const trendLines = {
     const mode = stateOf(chart).trend;
     if (!mode || mode === "off") return;
     const { ctx, chartArea: area, scales: { x, y } } = chart;
-    const points = chart.data.datasets
-      .flatMap((ds, i) => (chart.getDatasetMeta(i).hidden ? [] : ds.data))
-      .filter(p => !isHidden(chart, p) && !p.lowerBound && (!opts.log || p.y > 0));
-    const groups = new Map();
-    for (const p of points) {
-      const key = mode === "company" ? p.company || "other" : "all";
-      groups.set(key, [...(groups.get(key) || []), p]);
-    }
+    const groups = new Map(); // key -> {colour, points}
+    chart.data.datasets.forEach((ds, i) => {
+      if (chart.getDatasetMeta(i).hidden) return;
+      for (const p of ds.data) {
+        if (isHidden(chart, p) || p.lowerBound || (opts.log && p.y <= 0)) continue;
+        const key = mode === "company" ? `org:${p.company}` : mode === "series" ? `series:${i}` : "all";
+        const colour = mode === "company" ? companyColour(p.company) : mode === "series" ? ds.lineColour : opts.colour;
+        if (!groups.has(key)) groups.set(key, { colour, points: [] });
+        groups.get(key).points.push(p);
+      }
+    });
     ctx.save();
     ctx.beginPath();
     ctx.rect(area.left, area.top, area.width, area.height);
     ctx.clip();
-    for (const [key, pts] of groups) {
-      if (pts.length < 3) continue;
+    for (const [key, { colour, points: pts }] of groups) {
+      if (pts.length < 2) continue;
       const f = fit(pts, opts.log);
-      if (!(f.to - f.from >= 0.25) || !isFinite(f.slope)) continue;
-      const colour = key === "all" ? opts.colour : companyColour(key);
+      if (!(f.to - f.from >= 0.05) || !isFinite(f.slope)) continue;
       const x1 = x.getPixelForValue(f.from), y1 = y.getPixelForValue(f.value(f.from));
       const x2 = x.getPixelForValue(f.to), y2 = y.getPixelForValue(f.value(f.to));
       if (opts.sketch && window.rough) {
@@ -493,11 +494,16 @@ function controls(entry, chart, byCompany, colours) {
     box.addEventListener("change", () => { state.labels = box.checked; update(); });
     parts.push(el("label", {}, box, "Model names"));
   }
-  if (spec.trend) {
-    const options = [["off", "None"], ["all", "All shown"], ...(byCompany ? [["company", "By company"]] : [])];
+  if (spec.kind === "line" && spec.trend !== false) {
+    const options = [
+      ["off", "None"],
+      ["all", "All shown"],
+      ...(byCompany ? [["company", "By company"]] : []),
+      ...(spec.series.length > 1 ? [["series", "By series"]] : []),
+    ];
     const select = el("select", {}, options.map(([v, t]) => el("option", { value: v, selected: state.trend === v }, t)));
     select.addEventListener("change", () => { state.trend = select.value; update(); });
-    parts.push(el("label", { title: "Least-squares fit over the visible points (lower bounds excluded; needs 3 or more points)" }, "Trend line:", select));
+    parts.push(el("label", { title: "Least-squares fit over the visible points (lower bounds excluded; needs 2 or more points per line)" }, "Trend line:", select));
   }
   return parts.length ? el("div", { class: "chart-controls" }, parts) : null;
 }
@@ -554,9 +560,6 @@ export function renderChart(container, spec, opts = {}) {
     hiddenOrgs: new Set(),
     hiddenSeries: new Set(),
   };
-  const entry = { container, spec, opts, state };
-  rendered.push(entry);
-  draw(entry);
+  draw({ container, spec, opts, state });
 }
 
-window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => rendered.forEach(draw));

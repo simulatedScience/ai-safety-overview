@@ -39,7 +39,7 @@ One benchmark (or one aggregate benchmark) per chart. Never mix incompatible met
   "yMin": 0, "yMax": 100,              // optional
   "connect": true,                     // line only: draw lines between points (default true)
   "stepped": true,                     // line only: draw steps instead of slopes (cumulative counts)
-  "trend": true,                       // line only: offer a least-squares trend line (all points or per company)
+  "trend": false,                      // line only: hide the trend-line selector (shown by default)
   "horizontal": false,                 // bar only
   "series": [
     {

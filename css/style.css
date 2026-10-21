@@ -4,12 +4,14 @@
   --text: #1d1d1b;
   --muted: #5f5d57;
   --border: #e3e0d8;
-  --accent: #b4441f;
-  --accent-soft: #f6e6df;
-  --chart-1: #b4441f;
-  --chart-2: #2f6f8f;
-  --chart-3: #6a8f2f;
-  --chart-4: #8a5a9e;
+  /* Wine accent: kept clear of every company hue below */
+  --accent: #9b2348;
+  --accent-soft: #f7e4ea;
+  /* Series colours for anonymised charts (validated as a set) */
+  --chart-1: #9b2348;
+  --chart-2: #1f6f9a;
+  --chart-3: #6a7f1f;
+  --chart-4: #6b4fa0;
   --chart-grid: #e9e6de;
   /* Company colours (slots 1–7 of the validated dataviz reference palette, in order) */
   --org-google: #2a78d6;
@@ -25,60 +27,6 @@
   --radius: 10px;
   --maxw: 1100px;
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #161614;
-    --surface: #1f1f1c;
-    --text: #ecebe6;
-    --muted: #a7a49b;
-    --border: #34332e;
-    --accent: #e8794f;
-    --accent-soft: #3a261d;
-    --chart-1: #e8794f;
-    --chart-2: #6fb3d6;
-    --chart-3: #a6c96a;
-    --chart-4: #c49ad6;
-    --chart-grid: #2c2b27;
-    --org-google: #3987e5;
-    --org-anthropic: #d95926;
-    --org-openai: #199e70;
-    --org-meta: #c98500;
-    --org-deepseek: #d55181;
-    --org-alibaba: #008300;
-    --org-xai: #9085e9;
-    --org-other: #8f8c84;
-    --warn-bg: #3a2f12;
-    --warn-text: #f0cf7a;
-    color-scheme: dark;
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg: #161614;
-  --surface: #1f1f1c;
-  --text: #ecebe6;
-  --muted: #a7a49b;
-  --border: #34332e;
-  --accent: #e8794f;
-  --accent-soft: #3a261d;
-  --chart-1: #e8794f;
-  --chart-2: #6fb3d6;
-  --chart-3: #a6c96a;
-  --chart-4: #c49ad6;
-  --chart-grid: #2c2b27;
-  --org-google: #3987e5;
-  --org-anthropic: #d95926;
-  --org-openai: #199e70;
-  --org-meta: #c98500;
-  --org-deepseek: #d55181;
-  --org-alibaba: #008300;
-  --org-xai: #9085e9;
-  --org-other: #8f8c84;
-  --warn-bg: #3a2f12;
-  --warn-text: #f0cf7a;
-  color-scheme: dark;
 }
 
 * { box-sizing: border-box; }

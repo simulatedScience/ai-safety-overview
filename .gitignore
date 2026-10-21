@@ -1,2 +1,6 @@
 # Offline copies of cited publications (see tools/fetch_sources.py)
 sources/
+
+# Local working files (not part of the site)
+.claude/
+HANDOFF.md

@@ -140,8 +140,9 @@
       "pdf": "https://arxiv.org/pdf/2609.01611",
       "archive": "2026-06_lasr-aisi_evaldetectbench.pdf",
       "featured": false,
-      "note": "An open benchmark that corrects biases in earlier measurements; a candidate for a future headline chart if it is run across model generations.",
-      "verified": true
+      "note": "Shows that earlier measurements, such as Needham et al. (2025), were biased: which model wrote the 'deployment' transcripts explained 11% of the variance and could reorder model rankings, and probe questions tuned on one model performed near chance on others. The open benchmark corrects for both.",
+      "verified": true,
+      "quote": "We identify two methodological choices in the existing literature that introduce systematic bias"
     }
   ]
 }

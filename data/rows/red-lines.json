@@ -7,7 +7,7 @@
   "methods": "Tracked by diffing archived policy pages (Midas Watchtower, Wayback Machine) and by expert scorecards (FLI, SaferAI). Diffs catch wording changes but not how policies are applied in practice, and scorecards rest on panel judgement.",
   "chart": {
     "kind": "placeholder",
-    "reason": "Policy changes are not a measurable benchmark. A possible future chart: count of disclosed vs. undisclosed framework changes per year (e.g. from Midas Watchtower or the 'Silent Revision' dataset)."
+    "reason": "Policy changes are events, not measurements, so they are listed in the timeline below rather than charted."
   },
   "entries": [
     {

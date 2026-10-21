@@ -14,7 +14,7 @@
     "connect": false,
     "series": [
       {
-        "label": "State of the art at release (per METR)",
+        "label": "METR 50% time horizon",
         "points": [
           {
             "x": "2023-03",
@@ -26,6 +26,18 @@
             "x": "2023-11",
             "y": 4.0,
             "label": "GPT-4 Turbo (1106)",
+            "verified": true
+          },
+          {
+            "x": "2024-03",
+            "y": 4.0,
+            "label": "Claude 3 Opus",
+            "verified": true
+          },
+          {
+            "x": "2024-04",
+            "y": 3.7,
+            "label": "GPT-4 Turbo (2024-04)",
             "verified": true
           },
           {
@@ -71,9 +83,21 @@
             "verified": true
           },
           {
+            "x": "2025-05",
+            "y": 100.4,
+            "label": "Claude Opus 4",
+            "verified": true
+          },
+          {
             "x": "2025-08",
             "y": 203.0,
             "label": "GPT-5",
+            "verified": true
+          },
+          {
+            "x": "2025-08",
+            "y": 100.5,
+            "label": "Claude Opus 4.1",
             "verified": true
           },
           {
@@ -89,6 +113,12 @@
             "verified": true
           },
           {
+            "x": "2025-11",
+            "y": 223.7,
+            "label": "GPT-5.1-Codex-Max",
+            "verified": true
+          },
+          {
             "x": "2025-12",
             "y": 352.2,
             "label": "GPT-5.2",
@@ -98,48 +128,6 @@
             "x": "2026-02",
             "y": 718.8,
             "label": "Claude Opus 4.6",
-            "verified": true
-          },
-          {
-            "x": "2026-04",
-            "y": 960,
-            "label": "Claude Mythos Preview (early snapshot)",
-            "verified": true,
-            "lowerBound": true
-          }
-        ]
-      },
-      {
-        "label": "Other models",
-        "points": [
-          {
-            "x": "2024-03",
-            "y": 4.0,
-            "label": "Claude 3 Opus",
-            "verified": true
-          },
-          {
-            "x": "2024-04",
-            "y": 3.7,
-            "label": "GPT-4 Turbo (2024-04)",
-            "verified": true
-          },
-          {
-            "x": "2025-05",
-            "y": 100.4,
-            "label": "Claude Opus 4",
-            "verified": true
-          },
-          {
-            "x": "2025-08",
-            "y": 100.5,
-            "label": "Claude Opus 4.1",
-            "verified": true
-          },
-          {
-            "x": "2025-11",
-            "y": 223.7,
-            "label": "GPT-5.1-Codex-Max",
             "verified": true
           },
           {
@@ -161,6 +149,13 @@
             "verified": true
           },
           {
+            "x": "2026-04",
+            "y": 960,
+            "label": "Claude Mythos Preview (early snapshot)",
+            "verified": true,
+            "lowerBound": true
+          },
+          {
             "x": "2026-06",
             "y": 678,
             "label": "GPT-5.6 Sol",
@@ -175,8 +170,7 @@
       "date": "2026-05",
       "url": "https://metr.org/time-horizons/"
     },
-    "caveat": "METR: measurements above 16 h are unreliable with the current task suite, so Mythos Preview is shown at METR's stated lower bound of 16 h. GPT-5.6 Sol is from METR's June 2026 evaluation post. Pre-2023 models are omitted because only TH1.0 estimates exist for them. Values include METR's March 2026 regularization correction.",
-    "trend": true
+    "caveat": "METR: measurements above 16 h are unreliable with the current task suite, so Mythos Preview is shown at METR's stated lower bound of 16 h. GPT-5.6 Sol is from METR's June 2026 evaluation post. Pre-2023 models are omitted because only TH1.0 estimates exist for them. Values include METR's March 2026 regularization correction."
   },
   "entries": [
     {
@@ -189,7 +183,7 @@
       "archive": "2025-03_metr_time-horizons.pdf",
       "featured": true,
       "quote": "frontier AI time horizon has doubled approximately every seven months since 2019",
-      "note": "Introduced the time-horizon metric behind the headline chart (version 1.0; the chart uses the later 1.1 suite).",
+      "note": "Introduced the time-horizon metric behind the chart above (version 1.0; the chart uses the later 1.1 suite).",
       "verified": true
     },
     {

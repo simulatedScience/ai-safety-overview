@@ -122,8 +122,7 @@
       "url": "https://www.anthropic.com/research/agentic-misalignment"
     },
     "caveat": "A single study and a single constructed scenario, measured in mid-2025; x = model release month, taken from public model announcements rather than the study. Llama 4 Maverick did not blackmail with this exact prompt (12% with a small prompt addition). Later Anthropic system cards report near-zero rates on an expanded suite, which is a different metric and is not plotted.",
-    "connect": false,
-    "trend": true
+    "connect": false
   },
   "entries": [
     {
@@ -170,7 +169,7 @@
       "archive": "2025-06_anthropic_agentic-misalignment.html",
       "featured": true,
       "quote": "In at least some cases, models from all developers resorted to malicious insider behaviors",
-      "note": "Showed the blackmail behaviour is not specific to Claude: 16 models from six developers were tested, with blackmail rates up to 96% in the main scenario (headline chart).",
+      "note": "Showed the blackmail behaviour is not specific to Claude: 16 models from six developers were tested, with blackmail rates up to 96% in the main scenario (chart above).",
       "verified": true
     },
     {

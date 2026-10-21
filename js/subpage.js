@@ -53,6 +53,16 @@ function context(row) {
   return blocks.length ? el("div", { class: "context" }, blocks) : null;
 }
 
+// Explains marker styles only when the chart uses them.
+function markerNote(chart) {
+  const points = (chart.series || []).flatMap(s => s.points);
+  const notes = [
+    points.some(p => p.verified === false) && "Hollow markers: value not yet verified against the source.",
+    points.some(p => p.lowerBound) && "Triangles: lower bound.",
+  ].filter(Boolean);
+  return notes.length ? el("div", {}, notes.join(" ")) : null;
+}
+
 async function main() {
   const id = document.body.dataset.row;
   const content = document.getElementById("content");
@@ -66,17 +76,18 @@ async function main() {
 
     const entries = [...(row.entries || [])].sort((a, b) => a.date.localeCompare(b.date));
     const chartBox = el("div", { class: "chart-box large" });
+    const hasChart = row.chart && row.chart.kind !== "placeholder";
 
     content.replaceChildren(
       context(row) || "",
-      el("h2", {}, "Headline chart"),
+      el("h2", {}, hasChart ? row.chart.title : `Measuring ${row.title.toLowerCase()}`),
       chartBox,
-      row.chart && row.chart.kind !== "placeholder"
+      hasChart
         ? el("div", { class: "chart-meta" },
-            el("strong", {}, row.chart.title), ". ", sourceLine(row.chart.source),
+            sourceLine(row.chart.source),
             row.chart.style === "sketch" ? el("div", {}, SKETCH_NOTE) : null,
             row.chart.caveat ? el("div", {}, row.chart.caveat) : null,
-            el("div", {}, "Hollow markers: value not yet verified against the source. Triangles: lower bound."))
+            markerNote(row.chart))
         : null,
       el("h2", {}, "Timeline"),
       entries.length ? el("div", {}, timeline(entries)) : el("p", { class: "legend-note" }, "No entries yet."),
