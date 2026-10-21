@@ -5,7 +5,7 @@ const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "
 // Paths are resolved relative to the site root (one level above /js).
 export async function loadJSON(path) {
   const url = new URL("../" + path, import.meta.url);
-  const res = await fetch(url);
+  const res = await fetch(url, { cache: "no-cache" }); // revalidate so data edits show up immediately
   if (!res.ok) throw new Error(`Could not load ${path} (${res.status})`);
   return res.json();
 }

@@ -46,6 +46,18 @@ function tooltip(spec) {
   };
 }
 
+// Readable ticks on log axes: steps of ×4 for durations (1 min, 4 min, 15 min, 1 h, 4 h, 16 h …),
+// 1-2-5 steps otherwise.
+const DURATION_TICKS = [1, 4, 15, 60, 240, 960, 3840];
+const DECADE_TICKS = [1, 2, 5].flatMap(m => [0.01, 0.1, 1, 10, 100, 1000, 10000].map(d => m * d)).sort((a, b) => a - b);
+
+function logTicks(spec) {
+  const candidates = spec.yFormat === "duration" ? DURATION_TICKS : DECADE_TICKS;
+  return axis => {
+    axis.ticks = candidates.filter(v => v >= axis.min && v <= axis.max).map(value => ({ value }));
+  };
+}
+
 function lineConfig(spec, colours, large) {
   const datasets = spec.series.map((s, i) => {
     const colour = colours[i % colours.length];
@@ -66,6 +78,14 @@ function lineConfig(spec, colours, large) {
     };
   });
   const xs = datasets.flatMap(d => d.data.map(p => p.x));
+  const ys = datasets.flatMap(d => d.data.map(p => p.y));
+  let { yMin, yMax } = spec;
+  if (spec.yScale === "log") {
+    // Snap the range to the surrounding ticks so edge points are not clipped.
+    const candidates = spec.yFormat === "duration" ? DURATION_TICKS : DECADE_TICKS;
+    yMin ??= [...candidates].reverse().find(v => v <= Math.min(...ys) * 0.8);
+    yMax ??= candidates.find(v => v >= Math.max(...ys) * 1.25);
+  }
   return {
     type: "line",
     data: { datasets },
@@ -79,15 +99,11 @@ function lineConfig(spec, colours, large) {
         },
         y: {
           type: spec.yScale === "log" ? "logarithmic" : "linear",
-          min: spec.yMin,
-          max: spec.yMax,
+          min: yMin,
+          max: yMax,
           title: { display: !!spec.yLabel, text: spec.yLabel },
-          ticks: {
-            callback: v => {
-              if (spec.yScale === "log" && ![1, 2, 5].includes(+String(v)[0])) return "";
-              return formatValue(v, spec.yFormat);
-            },
-          },
+          afterBuildTicks: spec.yScale === "log" ? logTicks(spec) : undefined,
+          ticks: { callback: v => formatValue(v, spec.yFormat) },
         },
       },
       plugins: { tooltip: tooltip(spec) },
@@ -110,6 +126,7 @@ function barConfig(spec, colours) {
         backgroundColor: data.map(p => (p.verified === false ? colour + "55" : colour)),
         borderColor: colour,
         borderWidth: 1,
+        maxBarThickness: 44,
       }],
     },
     options: {

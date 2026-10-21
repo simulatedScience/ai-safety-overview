@@ -7,9 +7,14 @@ async function main() {
   const body = document.getElementById("rows");
   try {
     const { rows: ids } = await loadJSON("data/rows.json");
-    const rows = await Promise.all(ids.map(id => loadJSON(`data/rows/${id}.json`)));
+    const results = await Promise.allSettled(ids.map(id => loadJSON(`data/rows/${id}.json`)));
     body.replaceChildren();
-    for (const row of rows) {
+    for (const [i, result] of results.entries()) {
+      if (result.status === "rejected") {
+        body.append(el("tr", {}, el("td", { colspan: 2 }, el("p", { class: "error" }, `${ids[i]}: ${result.reason.message}`))));
+        continue;
+      }
+      const row = result.value;
       const chartBox = el("div", { class: "chart-box" });
       const meta = row.chart && row.chart.kind !== "placeholder"
         ? el("div", { class: "chart-meta" },
