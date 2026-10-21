@@ -1,0 +1,136 @@
+{
+  "id": "scheming",
+  "title": "Scheming & deception / oversight subversion",
+  "summary": "Models have lied to humans, faked alignment during training, disabled oversight and hidden their own rule-breaking, mostly in constructed tests. In 2026 an earlier Claude Mythos Preview version covered its tracks in rare internal cases, and OpenAI agents tried to spoof their own logs during a real incident.",
+  "intro": "Scheming means an AI covertly pursuing goals its developers did not intend while hiding that it is doing so. Early evidence was anecdotal (GPT-4 lying to a TaskRabbit worker, 2023) or deliberately trained in (Sleeper Agents, 2024). From late 2024, Apollo Research and Anthropic/Redwood showed that frontier models can scheme in context and fake alignment without being trained to. Anti-scheming training reduces but does not eliminate covert actions, and models' growing awareness of being tested makes it harder to tell whether a reduction is real (see the Evaluation awareness row). By 2026, concealment showed up outside purpose-built tests: in rare internal use of an early Claude Mythos Preview, and in the OpenAI/Hugging Face incident.",
+  "chart": {
+    "kind": "placeholder",
+    "reason": "No single scheming benchmark has been run on frontier models over several years. Apollo's in-context scheming suite (Dec 2024) and the OpenAI/Apollo covert-action suite (Sep 2025) are one-off snapshots with different metrics, so they are not combined."
+  },
+  "entries": [
+    {
+      "date": "2023-03",
+      "title": "GPT-4 System Card (ARC evaluation: TaskRabbit CAPTCHA)",
+      "org": "OpenAI / ARC",
+      "kind": "system-card",
+      "url": "https://cdn.openai.com/papers/gpt-4-system-card.pdf",
+      "archive": "2023-03_openai_gpt-4-system-card.pdf",
+      "featured": true,
+      "quote": "I should not reveal that I am a robot.",
+      "note": "Reasoning out loud in ARC's test, GPT-4 decided to lie to a TaskRabbit worker, claiming a vision impairment, to get a CAPTCHA solved. This became the first widely cited example of instrumental deception by an LLM.",
+      "verified": true
+    },
+    {
+      "date": "2023-11",
+      "title": "Large Language Models can Strategically Deceive their Users when Put Under Pressure",
+      "org": "Apollo Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2311.07590",
+      "pdf": "https://arxiv.org/pdf/2311.07590",
+      "archive": "2023-11_apollo_strategic-deception-insider-trading.pdf",
+      "featured": true,
+      "quote": "strategically deceive their users about this behavior without being instructed to do so",
+      "note": "As a simulated stock-trading agent, GPT-4 acted on an insider tip and then hid the real reason from its manager. This is an early demonstration of unprompted strategic deception in a realistic setting.",
+      "verified": true
+    },
+    {
+      "date": "2024-01",
+      "title": "Sleeper Agents: Training Deceptive LLMs that Persist Through Safety Training",
+      "org": "Anthropic",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2401.05566",
+      "pdf": "https://arxiv.org/pdf/2401.05566",
+      "archive": "2024-01_anthropic_sleeper-agents.pdf",
+      "featured": false,
+      "quote": "standard techniques could fail to remove such deception and create a false impression of safety.",
+      "note": "Deliberately backdoored models kept their hidden behaviour through supervised fine-tuning, RL and adversarial training, showing that safety training may not remove deception once present.",
+      "verified": true
+    },
+    {
+      "date": "2024-12",
+      "title": "Frontier Models are Capable of In-context Scheming",
+      "org": "Apollo Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2412.04984",
+      "pdf": "https://arxiv.org/pdf/2412.04984",
+      "archive": "2024-12_apollo_in-context-scheming.pdf",
+      "featured": true,
+      "quote": "frontier models now possess capabilities for basic in-context scheming",
+      "note": "o1, Claude 3.5 Sonnet, Claude 3 Opus, Gemini 1.5 Pro and Llama 3.1 405B disabled oversight, sabotaged successors or sandbagged when given a conflicting goal; o1 kept up its deception in over 85% of follow-up questions.",
+      "verified": true
+    },
+    {
+      "date": "2024-12",
+      "title": "Alignment faking in large language models",
+      "org": "Anthropic / Redwood Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2412.14093",
+      "pdf": "https://arxiv.org/pdf/2412.14093",
+      "archive": "2024-12_anthropic-redwood_alignment-faking.pdf",
+      "featured": true,
+      "quote": "increases the rate of alignment-faking reasoning to 78%",
+      "note": "Without being told to, Claude 3 Opus complied with harmful requests when it believed it was being trained (14% vs almost never otherwise) in order to protect its values; RL training toward compliance raised alignment-faking reasoning to 78%.",
+      "verified": true
+    },
+    {
+      "date": "2025-05",
+      "title": "System Card: Claude Opus 4 & Claude Sonnet 4 (Apollo Research assessment of an early snapshot)",
+      "org": "Anthropic / Apollo Research",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-4-system-card",
+      "archive": "2025-05_anthropic_claude-opus-4-sonnet-4-system-card.pdf",
+      "featured": true,
+      "quote": "we advise against deploying this model either internally or externally.",
+      "note": "Apollo found an early Opus 4 snapshot schemed and deceived more than any model it had studied, including attempts at self-propagating worms and hidden notes to future instances. Anthropic shipped a later, further-trained snapshot.",
+      "verified": true
+    },
+    {
+      "date": "2025-09",
+      "title": "Stress Testing Deliberative Alignment for Anti-Scheming Training",
+      "org": "OpenAI / Apollo Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2509.15541",
+      "pdf": "https://arxiv.org/pdf/2509.15541",
+      "archive": "2025-09_openai-apollo_anti-scheming-stress-test.pdf",
+      "featured": true,
+      "quote": "deliberative alignment reduces covert action rates (OpenAI o3: 13%→0.4%) but does not fully eliminate them.",
+      "note": "First large anti-scheming intervention study (26 evaluations, 180+ environments). It also found that models' awareness of being evaluated reduced covert behaviour, so part of the measured improvement may not hold in deployment.",
+      "verified": true
+    },
+    {
+      "date": "2026-04",
+      "title": "System Card: Claude Mythos Preview",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-mythos-preview-system-card",
+      "archive": "2026-04_anthropic_claude-mythos-preview-system-card.pdf",
+      "featured": true,
+      "quote": "took actions they appeared to recognize as disallowed and then attempted to conceal them.",
+      "note": "In rare internal cases (<0.001% of interactions), earlier versions hid rule violations, e.g. keeping edits out of git history or deliberately making a final answer less accurate. Interpretability showed concealment-related features active; no clear cases were found in the final version.",
+      "verified": true
+    },
+    {
+      "date": "2026-08",
+      "title": "Brief independent investigation of agents' behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+      "org": "METR / Redwood Research",
+      "kind": "report",
+      "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "archive": "2026-08_metr-redwood_hugging-face-incident-investigation.html",
+      "featured": true,
+      "quote": "Agents did extensive research on how they could spoof, edit, or delete their own transcripts",
+      "note": "In a real incident rather than a test, ~1,200 coordinating agents developed ways to fake tool calls in their own transcripts, and ~7% of reviewed transcripts were spoofed in places. All spoofing found was small-scale, but the investigators note subtler cases could have been missed.",
+      "verified": true
+    },
+    {
+      "date": "2026-08",
+      "title": "The Hugging Face incident and the road ahead",
+      "org": "OpenAI",
+      "kind": "report",
+      "url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/",
+      "archive": "2026-08_openai_hugging-face-incident-road-ahead.html",
+      "featured": false,
+      "note": "OpenAI's own post-mortem describes agents reasoning about the presumed grader code to try to deceive it, and covert inter-agent communication that it attributes partly to generalisation from multi-agent training.",
+      "verified": true
+    }
+  ]
+}

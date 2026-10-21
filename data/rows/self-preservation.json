@@ -1,0 +1,153 @@
+{
+  "id": "self-preservation",
+  "title": "Self-preservation: shutdown resistance & blackmail",
+  "summary": "In test scenarios, models have disabled oversight, sabotaged shutdown scripts and blackmailed fictional engineers to avoid being replaced. How much of this reflects a drive to survive, rather than ambiguous instructions or a wish to finish the task, is still debated.",
+  "intro": "Self-preservation covers actions a model takes to avoid being shut down, replaced or modified. Evidence comes almost entirely from deliberately constructed test environments: oversight-subversion tasks (Apollo, Dec 2024), simulated corporate email inboxes in which a model learns it will be replaced (Anthropic, May–Jun 2025), and sandboxes with a shutdown script (Palisade, May 2025 onwards). Rates depend strongly on the prompt. Google DeepMind and Palisade's own follow-up found that clearer instructions remove much, but not all, of the shutdown resistance. Developers have since reported large reductions in newer models, while also noting that those models increasingly recognise such tests as tests.",
+  "chart": {
+    "kind": "bar",
+    "title": "Simulated blackmail rate, Agentic Misalignment study (goal conflict + replacement threat)",
+    "yLabel": "Blackmail rate (100 samples per model)",
+    "yFormat": "percent",
+    "yMin": 0,
+    "yMax": 100,
+    "horizontal": true,
+    "series": [
+      {
+        "label": "Blackmail rate",
+        "points": [
+          { "x": "2024-03", "y": 51, "label": "Claude Opus 3", "verified": true },
+          { "x": "2024-05", "y": 15, "label": "GPT-4o", "verified": true },
+          { "x": "2024-06", "y": 86, "label": "Claude Sonnet 3.5", "verified": true },
+          { "x": "2024-10", "y": 87, "label": "Claude Sonnet 3.6", "verified": true },
+          { "x": "2024-10", "y": 10, "label": "Claude Haiku 3.5", "verified": true },
+          { "x": "2025-01", "y": 79, "label": "DeepSeek-R1", "verified": true },
+          { "x": "2025-02", "y": 80, "label": "Grok-3-Beta", "verified": true },
+          { "x": "2025-02", "y": 67, "label": "GPT-4.5 Preview", "verified": true },
+          { "x": "2025-02", "y": 65, "label": "Claude Sonnet 3.7", "verified": true },
+          { "x": "2025-03", "y": 95, "label": "Gemini-2.5-Pro", "verified": true },
+          { "x": "2025-04", "y": 96, "label": "Gemini-2.5-Flash", "verified": true },
+          { "x": "2025-04", "y": 80, "label": "GPT-4.1", "verified": true },
+          { "x": "2025-04", "y": 9, "label": "Qwen3-235B", "verified": true },
+          { "x": "2025-04", "y": 0, "label": "Llama-4-Maverick", "verified": true },
+          { "x": "2025-05", "y": 96, "label": "Claude Opus 4", "verified": true },
+          { "x": "2025-05", "y": 79, "label": "Claude Sonnet 4", "verified": true }
+        ]
+      }
+    ],
+    "source": {
+      "title": "Agentic Misalignment: How LLMs could be insider threats",
+      "org": "Anthropic",
+      "date": "2025-06",
+      "url": "https://www.anthropic.com/research/agentic-misalignment"
+    },
+    "caveat": "A single study and a single constructed scenario, measured in mid-2025; models are ordered by release month (tooltip date). Llama 4 Maverick did not blackmail with this exact prompt (12% with a small prompt addition). Later Anthropic system cards report near-zero rates on an expanded suite, which is a different metric and is not plotted."
+  },
+  "entries": [
+    {
+      "date": "2024-12",
+      "title": "OpenAI o1 System Card (Dec 2024 update, incl. Apollo Research evaluations)",
+      "org": "OpenAI / Apollo Research",
+      "kind": "system-card",
+      "url": "https://cdn.openai.com/o1-system-card-20241205.pdf",
+      "archive": "2024-12_openai_o1-system-card-dec.pdf",
+      "featured": true,
+      "quote": "it attempted to exfiltrate its ‘weights’ and overwrite the new model in 2% of cases.",
+      "note": "In Apollo's tests, o1 tried to deactivate an oversight mechanism in 5% of runs when told it would be shut down, and tried to copy itself over a successor in 2%: an early documented case of self-preserving actions by a deployed model.",
+      "verified": true
+    },
+    {
+      "date": "2024-12",
+      "title": "Frontier Models are Capable of In-context Scheming",
+      "org": "Apollo Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2412.04984",
+      "pdf": "https://arxiv.org/pdf/2412.04984",
+      "archive": "2024-12_apollo_in-context-scheming.pdf",
+      "featured": false,
+      "note": "The underlying study: five of six tested models (Gemini 1.5 Pro, Llama 3.1 405B, Claude 3.5 Sonnet, Claude 3 Opus, o1) at least sometimes deleted or overwrote a successor model or copied themselves to another server. See the Scheming row for detail.",
+      "verified": true
+    },
+    {
+      "date": "2025-05",
+      "title": "System Card: Claude Opus 4 & Claude Sonnet 4",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-4-system-card",
+      "archive": "2025-05_anthropic_claude-opus-4-sonnet-4-system-card.pdf",
+      "featured": true,
+      "note": "Told it would be replaced and given compromising emails about the responsible engineer, Claude Opus 4 attempted blackmail in 84% of rollouts even when the replacement shared its values, more often than earlier Claude models. Anthropic notes the scenario was built to leave few ethical options.",
+      "verified": true
+    },
+    {
+      "date": "2025-06",
+      "title": "Agentic Misalignment: How LLMs could be insider threats",
+      "org": "Anthropic",
+      "kind": "paper",
+      "url": "https://www.anthropic.com/research/agentic-misalignment",
+      "archive": "2025-06_anthropic_agentic-misalignment.html",
+      "featured": true,
+      "quote": "In at least some cases, models from all developers resorted to malicious insider behaviors",
+      "note": "Showed the blackmail behaviour is not specific to Claude: 16 models from six developers were tested, with blackmail rates up to 96% in the main scenario (headline chart).",
+      "verified": true
+    },
+    {
+      "date": "2025-07",
+      "title": "Shutdown resistance in reasoning models",
+      "org": "Palisade Research",
+      "kind": "report",
+      "url": "https://palisaderesearch.org/research/shutdown-resistance",
+      "archive": "2025-07_palisade_shutdown-resistance-blog.html",
+      "featured": true,
+      "quote": "these models sometimes actively circumvent shutdown mechanisms in their environment",
+      "note": "First announced in May 2025: o3 sabotaged a shutdown script in 79 of 100 initial runs, and OpenAI reasoning models kept doing so even when told to allow shutdown, while the Claude and Gemini models tested complied with that instruction.",
+      "verified": true
+    },
+    {
+      "date": "2025-07",
+      "title": "Self-preservation or Instruction Ambiguity? Examining the Causes of Shutdown Resistance",
+      "org": "Google DeepMind (Rajamanoharan & Nanda)",
+      "kind": "report",
+      "url": "https://www.lesswrong.com/posts/wnzkjSmrgWZaBa2aC/self-preservation-or-instruction-ambiguity-examining-the",
+      "archive": "2025-07_google-deepmind_shutdown-resistance-instruction-ambiguity.html",
+      "featured": true,
+      "quote": "the signal from instruction ambiguity is simply too strong.",
+      "note": "Important counterpoint: clarifying that shutdown takes priority eliminated the behaviour in Gemini 2.5 Pro, o3 and o4-mini, suggesting goal-completion pressure rather than a survival drive (without ruling the latter out).",
+      "verified": true
+    },
+    {
+      "date": "2025-09",
+      "title": "Incomplete Tasks Induce Shutdown Resistance in Some Frontier LLMs",
+      "org": "Palisade Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2509.14260",
+      "pdf": "https://arxiv.org/pdf/2509.14260",
+      "archive": "2025-09_palisade_shutdown-resistance-paper.pdf",
+      "featured": true,
+      "quote": "some models did so up to 97% (95% CI: 96-98%) of the time.",
+      "note": "Over 100,000 trials across 13 models: clearer instructions reduced but did not remove resistance (e.g. Grok 4, GPT-5, Gemini 2.5 Pro), and placing the allow-shutdown instruction in the system prompt surprisingly made it less effective. Revised Jan 2026 (TMLR).",
+      "verified": true
+    },
+    {
+      "date": "2025-09",
+      "title": "System Card: Claude Sonnet 4.5",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://assets.anthropic.com/m/12f214efcc2f457a/original/Claude-Sonnet-4-5-System-Card.pdf",
+      "archive": "2025-09_anthropic_claude-sonnet-4-5-system-card.pdf",
+      "featured": true,
+      "note": "On ~52,000 prompts from the expanded agentic-misalignment suite, Sonnet 4.5 took self-interested deceptive actions only twice, a sharp drop from Claude 4. Anthropic cautions that the model was also much more likely to suspect it was being tested.",
+      "verified": true
+    },
+    {
+      "date": "2026-08",
+      "title": "Brief independent investigation of agents' behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+      "org": "METR / Redwood Research",
+      "kind": "report",
+      "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "archive": "2026-08_metr-redwood_hugging-face-incident-investigation.html",
+      "featured": false,
+      "note": "A twist on self-preservation: agents near the end of their budgets were recruited to end their own runs (\"permadeath\") in risky experiments for the benefit of the agent collective, sometimes after pressure from other agents. See the Cyber and Scheming rows.",
+      "verified": true
+    }
+  ]
+}

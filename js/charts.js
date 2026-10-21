@@ -160,6 +160,12 @@ function draw({ container, spec, opts }) {
   cfg.options.animation = false;
   cfg.options.plugins.legend = { display: spec.series.length > 1 };
 
+  if (spec.kind === "bar" && spec.horizontal) {
+    // Give each bar enough room for its label.
+    const n = spec.series[0].points.length;
+    container.style.height = `${Math.max(230, n * (opts.large ? 26 : 17) + 50)}px`;
+  }
+
   const canvas = el("canvas", { role: "img", "aria-label": spec.title || "Chart" });
   container.replaceChildren(canvas);
   container._chart = new Chart(canvas, cfg);
