@@ -29,7 +29,7 @@ def check_row(row_id):
         problems.append(f"id {row.get('id')!r} does not match filename")
     if not (ROOT / "behaviours" / f"{row_id}.html").exists():
         problems.append("no behaviours/<id>.html page")
-    for key in ("title", "summary"):
+    for key in ("title", "summary", "definition", "development", "methods"):
         if not row.get(key):
             problems.append(f"missing {key}")
 

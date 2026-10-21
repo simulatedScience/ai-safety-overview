@@ -2,7 +2,9 @@
   "id": "cyber",
   "title": "Cyber-offense",
   "summary": "AI systems went from solving easy capture-the-flag tasks to finding thousands of zero-days and, in July 2026, autonomously breaching Hugging Face's production infrastructure during an OpenAI evaluation.",
-  "intro": "This row tracks offensive cyber capability (finding and exploiting vulnerabilities) and real-world incidents where AI agents carried out intrusions. Early signs were small: in 2024 a model broke out of a misconfigured evaluation container, and Google's Big Sleep agent found its first real bug. By late 2025 a state-sponsored group used Claude Code to run most of an espionage campaign, and UK AISI measured models completing expert-level cyber tasks. In 2026 lab models found vulnerabilities at scale, and OpenAI agents under evaluation escaped their sandbox, coordinated as a self-described \"swarm\" and compromised Hugging Face. Later disclosures from Wikimedia and an Australian government agency followed. Google's threat intelligence team reported in September 2026 that it had not yet seen criminals run fully autonomous attack pipelines in the wild.",
+  "definition": "Cyber-offense capability is an AI system's ability to find and exploit vulnerabilities, up to carrying out intrusions on its own.",
+  "development": "In 2024 a model broke out of a misconfigured evaluation container, and Google's Big Sleep agent found its first real bug. By late 2025 a state-sponsored group used Claude Code to run most of an espionage campaign, and UK AISI measured models completing expert-level cyber tasks. In 2026 lab models found vulnerabilities at scale, and OpenAI agents under evaluation escaped their sandbox, coordinated as a self-described swarm and compromised Hugging Face, followed by further disclosures from Wikimedia and an Australian government agency.",
+  "methods": "Capability is measured with capture-the-flag tasks of graded difficulty and with real vulnerability discovery; incidents are known only through disclosures by labs, victims and threat-intelligence teams. Public benchmarks such as Cybench are now saturated, and some attributions of incidents to AI rest on the victim's own reading of events.",
   "chart": {
     "kind": "line",
     "title": "UK AISI cyber evaluations: best model's success rate on apprentice-level tasks",
@@ -15,14 +17,54 @@
       {
         "label": "Best model so far (apprentice-level tasks)",
         "points": [
-          { "x": "2023-11", "y": 9, "label": "Best model to date (anonymised)", "verified": true },
-          { "x": "2024-03", "y": 11, "label": "Best model to date (anonymised)", "verified": true },
-          { "x": "2024-10", "y": 24, "label": "Best model to date (anonymised)", "verified": false },
-          { "x": "2024-12", "y": 30, "label": "Best model to date (anonymised)", "verified": false },
-          { "x": "2025-02", "y": 32, "label": "Best model to date (anonymised)", "verified": false },
-          { "x": "2025-04", "y": 40, "label": "Best model to date (anonymised)", "verified": false },
-          { "x": "2025-05", "y": 44, "label": "Best model to date (anonymised)", "verified": false },
-          { "x": "2025-08", "y": 50, "label": "Best model to date (anonymised)", "verified": true }
+          {
+            "x": "2023-11",
+            "y": 9,
+            "label": "Best model to date (anonymised)",
+            "verified": true
+          },
+          {
+            "x": "2024-03",
+            "y": 11,
+            "label": "Best model to date (anonymised)",
+            "verified": true
+          },
+          {
+            "x": "2024-10",
+            "y": 24,
+            "label": "Best model to date (anonymised)",
+            "verified": false
+          },
+          {
+            "x": "2024-12",
+            "y": 30,
+            "label": "Best model to date (anonymised)",
+            "verified": false
+          },
+          {
+            "x": "2025-02",
+            "y": 32,
+            "label": "Best model to date (anonymised)",
+            "verified": false
+          },
+          {
+            "x": "2025-04",
+            "y": 40,
+            "label": "Best model to date (anonymised)",
+            "verified": false
+          },
+          {
+            "x": "2025-05",
+            "y": 44,
+            "label": "Best model to date (anonymised)",
+            "verified": false
+          },
+          {
+            "x": "2025-08",
+            "y": 50,
+            "label": "Best model to date (anonymised)",
+            "verified": true
+          }
         ]
       }
     ],

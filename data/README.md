@@ -10,8 +10,10 @@ renders both its line on the overview table (`index.html`) and its subpage
 {
   "id": "sandbagging",                 // must match the filename and behaviours/<id>.html
   "title": "Sandbagging",
-  "summary": "1–2 sentences shown in the overview table and as the subpage lede.",
-  "intro": "Optional longer paragraph shown at the top of the subpage.",
+  "summary": "1–2 sentences shown in the overview table only.",
+  "definition": "One clear sentence defining the behaviour; the subpage lede.",
+  "development": "2–4 sentences on how it developed over time ('How it developed').",
+  "methods": "1–3 sentences on how it is measured or tracked, and the drawbacks ('Methods and limitations').",
   "chart": { ... },                    // see below
   "entries": [ ... ]                   // see below
 }
@@ -52,8 +54,9 @@ Unverified points render as hollow markers (line) or faded bars (bar); lower bou
 
 ## Entries
 
-All entries appear on the subpage timeline. Entries with `"featured": true` (aim for 5–8
-per row) also get a card with quote and note.
+All entries appear in the subpage's timeline table (date | link, authors, quote | note).
+Entries with `"featured": true` (aim for 5–8 per row) are highlighted as key items and
+remain visible under the "Key items only" filter.
 
 ```jsonc
 {

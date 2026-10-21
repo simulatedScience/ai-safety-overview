@@ -48,10 +48,8 @@ function timeline(entries) {
 
 function context(row) {
   const blocks = [];
-  // `intro` is the older single-paragraph format; show it until a row is split up.
-  const development = row.development || row.intro;
-  if (development) blocks.push(el("section", { class: "development" }, el("h2", {}, "How it developed"), el("p", {}, development)));
-  if (row.methods) blocks.push(el("section", { class: "methods" }, el("h2", {}, "How it is measured"), el("p", {}, row.methods)));
+  if (row.development) blocks.push(el("section", { class: "development" }, el("h2", {}, "How it developed"), el("p", {}, row.development)));
+  if (row.methods) blocks.push(el("section", { class: "methods" }, el("h2", {}, "Methods and limitations"), el("p", {}, row.methods)));
   return blocks.length ? el("div", { class: "context" }, blocks) : null;
 }
 

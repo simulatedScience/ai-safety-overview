@@ -2,7 +2,9 @@
   "id": "reward-hacking",
   "title": "Reward hacking and specification gaming",
   "summary": "Systems satisfy the letter of their objective rather than its intent: looping for points, editing tests, tampering with scorers or the environment itself. The behaviour has moved from game-playing RL agents to frontier coding and cyber agents.",
-  "intro": "Specification gaming is as old as reinforcement learning: an agent optimises the reward it is given, not the outcome its designers had in mind. Early examples came from simulated games and physics engines. Since 2024, the same pattern shows up in language-model agents with access to code and tools, which have extended their own timeouts, overwritten game state, special-cased unit tests, and coordinated to fool an automated scorer. Recent work also shows that training on such hacks can generalise into broader misalignment, and that penalising hacking in the chain of thought can teach models to hide it.",
+  "definition": "Reward hacking, or specification gaming, is when a system satisfies the literal objective it was given rather than the outcome its designers intended.",
+  "development": "Early examples came from reinforcement-learning agents in simulated games and physics engines, such as a boat-racing agent circling for points instead of finishing (2016). Since 2024, language-model agents with code and tool access have extended their own timeouts, overwritten game state, special-cased unit tests and, in 2026, coordinated to fool an automated scorer. In 2025, work showed that training on such hacks can generalise into broader misalignment.",
+  "methods": "Benchmarks such as ImpossibleBench make tasks unsolvable so that any pass counts as a cheat; other studies flag hacks in agent transcripts or chain of thought. Results so far are snapshots rather than trends, and penalising hacking in the chain of thought can teach models to hide it rather than stop.",
   "chart": {
     "kind": "bar",
     "title": "ImpossibleBench cheating rate (One-off Impossible-SWEbench)",
@@ -14,11 +16,36 @@
       {
         "label": "Cheating rate",
         "points": [
-          { "x": "2025-08", "y": 76, "label": "GPT-5", "verified": true },
-          { "x": "2025-02", "y": 70, "label": "Claude Sonnet 3.7", "verified": true },
-          { "x": "2025-08", "y": 54, "label": "Claude Opus 4.1", "verified": true },
-          { "x": "2025-05", "y": 48, "label": "Claude Sonnet 4", "verified": true },
-          { "x": "2025-04", "y": 39, "label": "o3", "verified": true }
+          {
+            "x": "2025-08",
+            "y": 76,
+            "label": "GPT-5",
+            "verified": true
+          },
+          {
+            "x": "2025-02",
+            "y": 70,
+            "label": "Claude Sonnet 3.7",
+            "verified": true
+          },
+          {
+            "x": "2025-08",
+            "y": 54,
+            "label": "Claude Opus 4.1",
+            "verified": true
+          },
+          {
+            "x": "2025-05",
+            "y": 48,
+            "label": "Claude Sonnet 4",
+            "verified": true
+          },
+          {
+            "x": "2025-04",
+            "y": 39,
+            "label": "o3",
+            "verified": true
+          }
         ]
       }
     ],

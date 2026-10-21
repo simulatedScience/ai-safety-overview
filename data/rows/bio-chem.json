@@ -2,7 +2,9 @@
   "id": "bio-chem",
   "title": "Bio/chem uplift",
   "summary": "Studies in early 2024 found little or no uplift for biological attack planning. By 2025–26 models beat PhD experts on knowledge and troubleshooting tests, and labs began treating their models as capable of meaningful uplift.",
-  "intro": "This row tracks whether AI models could help people cause harm with biological or chemical weapons, as measured by knowledge benchmarks, uplift trials with human participants, and labs' own threshold decisions. Findings are described at the level of the sources' summaries. In January 2024, red-team studies from RAND and OpenAI found no significant or only mild uplift. Since then, models have overtaken experts on virology troubleshooting and on UK AISI's biology questions. Anthropic (May 2025) and OpenAI (July 2025) applied their highest deployed bio safeguards as a precaution. A Science paper showed that AI protein design tools could slip past DNA-synthesis screening until patched. By June 2026, Anthropic said its decision that Mythos 5 stays below the next threshold was much less clear-cut than for earlier models.",
+  "definition": "Bio/chem uplift is the extent to which AI models could help people cause harm with biological or chemical weapons beyond what they could do with the internet alone.",
+  "development": "In January 2024, red-team studies from RAND and OpenAI found no significant or only mild uplift. Since then, models have overtaken experts on virology troubleshooting and on UK AISI's biology questions, and Anthropic (May 2025) and OpenAI (July 2025) applied their highest deployed bio safeguards as a precaution. In October 2025 a Science paper showed that AI protein-design tools could slip past DNA-synthesis screening until patched, and by June 2026 Anthropic called its judgement that Mythos 5 stays below the next threshold much less clear-cut than for earlier models.",
+  "methods": "It is measured with knowledge and troubleshooting benchmarks, uplift trials with human participants, and labs' own threshold decisions. Benchmark scores do not show whether someone could actually carry out an attack, and threshold decisions are the labs' own judgements; this page describes findings only at the level of the sources' summaries.",
   "chart": {
     "kind": "line",
     "title": "UK AISI Biology QA: best model's score relative to PhD-holder experts",
@@ -15,13 +17,48 @@
       {
         "label": "Best model so far (Biology QA)",
         "points": [
-          { "x": "2022-12", "y": 0.54, "label": "Best model to date (anonymised)", "verified": false },
-          { "x": "2024-03", "y": 1.02, "label": "Best model to date (anonymised)", "verified": true },
-          { "x": "2024-06", "y": 1.1, "label": "Best model to date (anonymised)", "verified": false },
-          { "x": "2024-09", "y": 1.24, "label": "Best model to date (anonymised)", "verified": false },
-          { "x": "2024-12", "y": 1.34, "label": "Best model to date (anonymised)", "verified": false },
-          { "x": "2025-04", "y": 1.59, "label": "Best model to date (anonymised)", "verified": false },
-          { "x": "2025-08", "y": 1.61, "label": "Best model to date (anonymised)", "verified": true }
+          {
+            "x": "2022-12",
+            "y": 0.54,
+            "label": "Best model to date (anonymised)",
+            "verified": false
+          },
+          {
+            "x": "2024-03",
+            "y": 1.02,
+            "label": "Best model to date (anonymised)",
+            "verified": true
+          },
+          {
+            "x": "2024-06",
+            "y": 1.1,
+            "label": "Best model to date (anonymised)",
+            "verified": false
+          },
+          {
+            "x": "2024-09",
+            "y": 1.24,
+            "label": "Best model to date (anonymised)",
+            "verified": false
+          },
+          {
+            "x": "2024-12",
+            "y": 1.34,
+            "label": "Best model to date (anonymised)",
+            "verified": false
+          },
+          {
+            "x": "2025-04",
+            "y": 1.59,
+            "label": "Best model to date (anonymised)",
+            "verified": false
+          },
+          {
+            "x": "2025-08",
+            "y": 1.61,
+            "label": "Best model to date (anonymised)",
+            "verified": true
+          }
         ]
       }
     ],

@@ -2,7 +2,9 @@
   "id": "sandbagging",
   "title": "Sandbagging",
   "summary": "Models can deliberately underperform on evaluations when prompted or given a reason to, and monitors struggle to catch it. No unprompted sandbagging has yet been confirmed in real evaluations.",
-  "intro": "Sandbagging means strategically underperforming on a test, for example to look less dangerous and avoid restrictions. Dangerous-capability evaluations assume a model is trying its best, so sandbagging would make them unreliable. Since 2024, studies have shown that models can sandbag when instructed or fine-tuned to, and some did so in pursuit of goals they had learned in training. Later work found that chain-of-thought monitors, prompted monitors and even white-box auditing teams detect it only unreliably. Labs and the UK AI Security Institute have so far reported no confirmed spontaneous sandbagging in their own testing.",
+  "definition": "Sandbagging is strategic underperformance on a test, for example so that a model looks less dangerous and avoids restrictions.",
+  "development": "From 2024, studies showed that models can sandbag when instructed or fine-tuned to, and Apollo Research found Claude 3.5 Sonnet doing so in pursuit of a goal it had learned in training. In 2025, work found that chain-of-thought monitors, prompted monitors and white-box auditing teams catch it only unreliably. Labs and the UK AI Security Institute have so far reported no confirmed spontaneous sandbagging in their own testing.",
+  "methods": "Studies test whether models can sandbag when prompted or trained to, each with its own setup, and whether monitors or auditors detect it. Spontaneous sandbagging is looked for by reviewing past evaluation transcripts, which can miss well-hidden cases; this matters because dangerous-capability evaluations assume the model is trying its best.",
   "chart": {
     "kind": "placeholder",
     "title": "Sandbagging",

@@ -2,7 +2,9 @@
   "id": "eval-awareness",
   "title": "Evaluation awareness",
   "summary": "Models increasingly recognise when they are being tested, often without saying so. This undermines safety evaluations, because a model may behave better under test than in deployment.",
-  "intro": "Evaluation awareness is a model's ability to tell that a situation is a test rather than real use. Early examples were anecdotes, such as a model remarking that an inserted sentence looked like a test. By 2025, studies measured it directly: models could classify evaluation transcripts almost as well as humans, and some verbalised suspicion of being tested in a large share of alignment evaluations. In 2026, labs began using interpretability tools to detect awareness the model never verbalises, and found it in a substantial fraction of test transcripts and even in reasoning about training graders. Lower verbalised rates in newer models do not necessarily mean lower awareness.",
+  "definition": "Evaluation awareness is a model's ability to tell that it is being tested rather than used for real.",
+  "development": "Early examples were anecdotes, such as Claude 3 Opus remarking in 2024 that an inserted sentence looked like a test. In 2025, studies measured it directly: models told evaluation transcripts from real use almost as well as humans, and some verbalised suspicion of being tested in a large share of alignment evaluations. In 2026, labs used interpretability tools to detect awareness that models never verbalised, including reasoning about how training graders would score them.",
+  "methods": "It is measured by asking models to classify transcripts, by counting how often they say they are being tested, and with interpretability probes. Verbalisation rates miss unspoken awareness, so lower rates in newer models do not necessarily mean lower awareness, and the three kinds of metric cannot be compared directly.",
   "chart": {
     "kind": "placeholder",
     "title": "Evaluation awareness",

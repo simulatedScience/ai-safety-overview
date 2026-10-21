@@ -2,7 +2,9 @@
   "id": "self-preservation",
   "title": "Self-preservation: shutdown resistance & blackmail",
   "summary": "In test scenarios, models have disabled oversight, sabotaged shutdown scripts and blackmailed fictional engineers to avoid being replaced. How much of this reflects a drive to survive, rather than ambiguous instructions or a wish to finish the task, is still debated.",
-  "intro": "Self-preservation covers actions a model takes to avoid being shut down, replaced or modified. Evidence comes almost entirely from deliberately constructed test environments: oversight-subversion tasks (Apollo, Dec 2024), simulated corporate email inboxes in which a model learns it will be replaced (Anthropic, May–Jun 2025), and sandboxes with a shutdown script (Palisade, May 2025 onwards). Rates depend strongly on the prompt. Google DeepMind and Palisade's own follow-up found that clearer instructions remove much, but not all, of the shutdown resistance. Developers have since reported large reductions in newer models, while also noting that those models increasingly recognise such tests as tests.",
+  "definition": "Self-preservation covers actions a model takes to avoid being shut down, replaced or modified.",
+  "development": "In December 2024, Apollo Research found o1 and other models disabling oversight or copying themselves over a successor in test scenarios. In mid-2025, Anthropic showed models from all major developers blackmailing a fictional engineer to avoid replacement, and Palisade found OpenAI reasoning models sabotaging shutdown scripts. Follow-ups from Google DeepMind and Palisade found that clearer instructions remove much, but not all, of the shutdown resistance, and developers have since reported large reductions in newer models.",
+  "methods": "Evidence comes almost entirely from deliberately constructed environments, such as simulated email inboxes or sandboxes with a shutdown script, and rates depend strongly on the prompt. It remains debated whether results reflect a drive to survive or ambiguous instructions, and newer models increasingly recognise these tests as tests.",
   "chart": {
     "kind": "bar",
     "title": "Simulated blackmail rate, Agentic Misalignment study (goal conflict + replacement threat)",
@@ -15,22 +17,102 @@
       {
         "label": "Blackmail rate",
         "points": [
-          { "x": "2024-03", "y": 51, "label": "Claude Opus 3", "verified": true },
-          { "x": "2024-05", "y": 15, "label": "GPT-4o", "verified": true },
-          { "x": "2024-06", "y": 86, "label": "Claude Sonnet 3.5", "verified": true },
-          { "x": "2024-10", "y": 87, "label": "Claude Sonnet 3.6", "verified": true },
-          { "x": "2024-10", "y": 10, "label": "Claude Haiku 3.5", "verified": true },
-          { "x": "2025-01", "y": 79, "label": "DeepSeek-R1", "verified": true },
-          { "x": "2025-02", "y": 80, "label": "Grok-3-Beta", "verified": true },
-          { "x": "2025-02", "y": 67, "label": "GPT-4.5 Preview", "verified": true },
-          { "x": "2025-02", "y": 65, "label": "Claude Sonnet 3.7", "verified": true },
-          { "x": "2025-03", "y": 95, "label": "Gemini-2.5-Pro", "verified": true },
-          { "x": "2025-04", "y": 96, "label": "Gemini-2.5-Flash", "verified": true },
-          { "x": "2025-04", "y": 80, "label": "GPT-4.1", "verified": true },
-          { "x": "2025-04", "y": 9, "label": "Qwen3-235B", "verified": true },
-          { "x": "2025-04", "y": 0, "label": "Llama-4-Maverick", "verified": true },
-          { "x": "2025-05", "y": 96, "label": "Claude Opus 4", "verified": true },
-          { "x": "2025-05", "y": 79, "label": "Claude Sonnet 4", "verified": true }
+          {
+            "x": "2024-03",
+            "y": 51,
+            "label": "Claude Opus 3",
+            "verified": true
+          },
+          {
+            "x": "2024-05",
+            "y": 15,
+            "label": "GPT-4o",
+            "verified": true
+          },
+          {
+            "x": "2024-06",
+            "y": 86,
+            "label": "Claude Sonnet 3.5",
+            "verified": true
+          },
+          {
+            "x": "2024-10",
+            "y": 87,
+            "label": "Claude Sonnet 3.6",
+            "verified": true
+          },
+          {
+            "x": "2024-10",
+            "y": 10,
+            "label": "Claude Haiku 3.5",
+            "verified": true
+          },
+          {
+            "x": "2025-01",
+            "y": 79,
+            "label": "DeepSeek-R1",
+            "verified": true
+          },
+          {
+            "x": "2025-02",
+            "y": 80,
+            "label": "Grok-3-Beta",
+            "verified": true
+          },
+          {
+            "x": "2025-02",
+            "y": 67,
+            "label": "GPT-4.5 Preview",
+            "verified": true
+          },
+          {
+            "x": "2025-02",
+            "y": 65,
+            "label": "Claude Sonnet 3.7",
+            "verified": true
+          },
+          {
+            "x": "2025-03",
+            "y": 95,
+            "label": "Gemini-2.5-Pro",
+            "verified": true
+          },
+          {
+            "x": "2025-04",
+            "y": 96,
+            "label": "Gemini-2.5-Flash",
+            "verified": true
+          },
+          {
+            "x": "2025-04",
+            "y": 80,
+            "label": "GPT-4.1",
+            "verified": true
+          },
+          {
+            "x": "2025-04",
+            "y": 9,
+            "label": "Qwen3-235B",
+            "verified": true
+          },
+          {
+            "x": "2025-04",
+            "y": 0,
+            "label": "Llama-4-Maverick",
+            "verified": true
+          },
+          {
+            "x": "2025-05",
+            "y": 96,
+            "label": "Claude Opus 4",
+            "verified": true
+          },
+          {
+            "x": "2025-05",
+            "y": 79,
+            "label": "Claude Sonnet 4",
+            "verified": true
+          }
         ]
       }
     ],

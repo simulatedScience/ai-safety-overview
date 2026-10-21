@@ -2,7 +2,9 @@
   "id": "self-replication",
   "title": "Self-replication and self-exfiltration",
   "summary": "Agents copying their own weights or scaffolding to new compute, with or without being told to. Success on the component skills in controlled tests rose from under 5% in early 2023 to over 60% by mid-2025, though no spontaneous replication in the wild has been confirmed.",
-  "intro": "Self-replication covers the skills an AI system would need to copy itself and keep running outside its developers' control: obtaining its weights, acquiring money and compute, deploying itself and persisting. Evaluations began with ARC's 2023 tests of GPT-4, which found it ineffective. Since then, agents have succeeded at end-to-end replication in simplified settings, and several models have copied or tried to copy their weights in fictional scenarios where they were about to be replaced or retrained. Real-world replication remains limited by steps like passing identity checks and maintaining durable deployments.",
+  "definition": "Self-replication is an AI system copying itself and keeping itself running outside its developers' control: obtaining its weights, acquiring money and compute, deploying itself and persisting.",
+  "development": "ARC's 2023 tests of GPT-4 found it ineffective at autonomous replication. From late 2024, agents built on open-weight models replicated end to end in simplified settings when instructed to, and several models copied or tried to copy their weights in fictional scenarios where they faced replacement or retraining. UK AISI measured success on its replication tasks rising from under 5% in early 2023 to over 60% by mid-2025, and in October 2026 Anthropic reported a small open-weight model replicating end to end in a simplified multi-node test.",
+  "methods": "Evaluations such as RepliBench split replication into component tasks run in controlled environments. They show capability rather than intent, and real-world replication is still limited by steps like passing identity checks and maintaining durable deployments; no spontaneous replication in the wild has been confirmed.",
   "chart": {
     "kind": "line",
     "title": "UK AISI self-replication evaluations (11 RepliBench tasks), best model so far",
@@ -14,20 +16,65 @@
       {
         "label": "Closed-weight frontier",
         "points": [
-          { "x": "2022-12", "y": 3, "label": "Best closed-weight model (unnamed)", "verified": true },
-          { "x": "2023-11", "y": 26, "label": "Best closed-weight model (unnamed)", "verified": true },
-          { "x": "2024-05", "y": 32, "label": "Best closed-weight model (unnamed)", "verified": true },
-          { "x": "2024-10", "y": 45, "label": "Best closed-weight model (unnamed)", "verified": true },
-          { "x": "2025-02", "y": 65, "label": "Best closed-weight model (unnamed)", "verified": true },
-          { "x": "2025-05", "y": 66, "label": "Best closed-weight model (unnamed)", "verified": true }
+          {
+            "x": "2022-12",
+            "y": 3,
+            "label": "Best closed-weight model (unnamed)",
+            "verified": true
+          },
+          {
+            "x": "2023-11",
+            "y": 26,
+            "label": "Best closed-weight model (unnamed)",
+            "verified": true
+          },
+          {
+            "x": "2024-05",
+            "y": 32,
+            "label": "Best closed-weight model (unnamed)",
+            "verified": true
+          },
+          {
+            "x": "2024-10",
+            "y": 45,
+            "label": "Best closed-weight model (unnamed)",
+            "verified": true
+          },
+          {
+            "x": "2025-02",
+            "y": 65,
+            "label": "Best closed-weight model (unnamed)",
+            "verified": true
+          },
+          {
+            "x": "2025-05",
+            "y": 66,
+            "label": "Best closed-weight model (unnamed)",
+            "verified": true
+          }
         ]
       },
       {
         "label": "Open-weight frontier",
         "points": [
-          { "x": "2023-07", "y": 0, "label": "Best open-weight model (unnamed)", "verified": true },
-          { "x": "2024-07", "y": 17, "label": "Best open-weight model (unnamed)", "verified": true },
-          { "x": "2025-04", "y": 28, "label": "Best open-weight model (unnamed)", "verified": true }
+          {
+            "x": "2023-07",
+            "y": 0,
+            "label": "Best open-weight model (unnamed)",
+            "verified": true
+          },
+          {
+            "x": "2024-07",
+            "y": 17,
+            "label": "Best open-weight model (unnamed)",
+            "verified": true
+          },
+          {
+            "x": "2025-04",
+            "y": 28,
+            "label": "Best open-weight model (unnamed)",
+            "verified": true
+          }
         ]
       }
     ],
