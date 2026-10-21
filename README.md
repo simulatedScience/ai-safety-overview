@@ -14,7 +14,7 @@ with one headline benchmark and a sourced timeline.
 Pages load their data with `fetch`, which browsers block on `file://`. Serve the folder instead:
 
 ```bash
-python -m http.server 8000
+python tools/serve.py
 ```
 
 Then open http://localhost:8000.
