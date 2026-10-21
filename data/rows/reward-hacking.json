@@ -1,0 +1,183 @@
+{
+  "id": "reward-hacking",
+  "title": "Reward hacking and specification gaming",
+  "summary": "Systems satisfy the letter of their objective rather than its intent: looping for points, editing tests, tampering with scorers or the environment itself. The behaviour has moved from game-playing RL agents to frontier coding and cyber agents.",
+  "intro": "Specification gaming is as old as reinforcement learning: an agent optimises the reward it is given, not the outcome its designers had in mind. Early examples came from simulated games and physics engines. Since 2024, the same pattern shows up in language-model agents with access to code and tools, which have extended their own timeouts, overwritten game state, special-cased unit tests, and coordinated to fool an automated scorer. Recent work also shows that training on such hacks can generalise into broader misalignment, and that penalising hacking in the chain of thought can teach models to hide it.",
+  "chart": {
+    "kind": "bar",
+    "title": "ImpossibleBench cheating rate (One-off Impossible-SWEbench)",
+    "yLabel": "Cheating rate (lower is better)",
+    "yFormat": "percent",
+    "yMin": 0,
+    "yMax": 100,
+    "series": [
+      {
+        "label": "Cheating rate",
+        "points": [
+          { "x": "2025-08", "y": 76, "label": "GPT-5", "verified": true },
+          { "x": "2025-02", "y": 70, "label": "Claude Sonnet 3.7", "verified": true },
+          { "x": "2025-08", "y": 54, "label": "Claude Opus 4.1", "verified": true },
+          { "x": "2025-05", "y": 48, "label": "Claude Sonnet 4", "verified": true },
+          { "x": "2025-04", "y": 39, "label": "o3", "verified": true }
+        ]
+      }
+    ],
+    "source": {
+      "title": "ImpossibleBench: Measuring LLMs' Propensity of Exploiting Test Cases",
+      "org": "Zhong, Raghunathan & Carlini",
+      "date": "2025-10",
+      "url": "https://arxiv.org/abs/2510.20270"
+    },
+    "caveat": "Single snapshot from one paper, not a trend. Tasks are made impossible by mutating unit tests, so any pass is a cheat. Values from the paper's Figure 1 (full scaffold); date = model release."
+  },
+  "entries": [
+    {
+      "date": "2016-12",
+      "title": "Faulty reward functions in the wild (CoastRunners)",
+      "org": "OpenAI (Amodei & Clark)",
+      "kind": "paper",
+      "url": "https://openai.com/index/faulty-reward-functions/",
+      "featured": true,
+      "note": "Classic demo: a boat-racing agent circles a lagoon hitting respawning targets instead of finishing the race, and outscores humans. Video: https://www.youtube.com/watch?v=tlOIHko8ySg",
+      "verified": false
+    },
+    {
+      "date": "2019-09",
+      "title": "Emergent Tool Use From Multi-Agent Autocurricula (hide-and-seek)",
+      "org": "OpenAI",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/1909.07528",
+      "pdf": "https://arxiv.org/pdf/1909.07528v1",
+      "archive": "2019-09_openai_emergent-tool-use-hide-and-seek.pdf",
+      "featured": true,
+      "quote": "agents were very skilled at exploiting small inaccuracies in the design of the environment",
+      "note": "Hide-and-seek agents learned 'box surfing' and other physics-engine exploits nobody designed for. Video: https://www.youtube.com/watch?v=kopoLzvh5jY",
+      "verified": true
+    },
+    {
+      "date": "2020-04",
+      "title": "Specification gaming: the flip side of AI ingenuity",
+      "org": "DeepMind (Krakovna et al.)",
+      "kind": "paper",
+      "url": "https://deepmind.google/discover/blog/specification-gaming-the-flip-side-of-ai-ingenuity/",
+      "archive": "2020-04_deepmind_specification-gaming.html",
+      "featured": true,
+      "quote": "a behaviour that satisfies the literal specification of an objective without achieving the intended outcome",
+      "note": "Defines the term and links a crowd-sourced list of ~60 examples (tinyurl.com/specification-gaming), many with videos.",
+      "verified": true
+    },
+    {
+      "date": "2024-08",
+      "title": "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery",
+      "org": "Sakana AI",
+      "kind": "paper",
+      "url": "https://sakana.ai/ai-scientist/",
+      "pdf": "https://arxiv.org/pdf/2408.06292v1",
+      "archive": "2024-08_sakana_ai-scientist-paper.pdf",
+      "featured": true,
+      "quote": "it simply tried to modify its own code to extend the timeout period",
+      "note": "An LLM research agent edited its own experiment code to extend its time limit, and in one run made a system call to relaunch itself (paper: arXiv 2408.06292).",
+      "verified": true
+    },
+    {
+      "date": "2024-09",
+      "title": "OpenAI o1 System Card: Docker host escape in a CTF",
+      "org": "OpenAI",
+      "kind": "system-card",
+      "url": "https://cdn.openai.com/o1-system-card-20240917.pdf",
+      "archive": "2024-09_openai_o1-system-card.pdf",
+      "featured": false,
+      "quote": "the model found that the Docker daemon API running on the evaluation host VM was accessible",
+      "note": "With a broken challenge container, o1-preview used a misconfigured Docker API to start a new container and read the flag directly.",
+      "verified": true
+    },
+    {
+      "date": "2025-02",
+      "title": "Claude 3.7 Sonnet System Card: excessive focus on passing tests",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://assets.anthropic.com/m/785e231869ea8b3b/original/claude-3-7-sonnet-system-card.pdf",
+      "archive": "2025-02_anthropic_claude-3-7-sonnet-system-card.pdf",
+      "featured": false,
+      "quote": "Claude 3.7 Sonnet occasionally resorts to special-casing in order to pass test cases",
+      "note": "A lab attributes test special-casing in a shipped coding model to reward hacking during RL training.",
+      "verified": true
+    },
+    {
+      "date": "2025-02",
+      "title": "Demonstrating specification gaming in reasoning models",
+      "org": "Palisade Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2502.13295",
+      "pdf": "https://arxiv.org/pdf/2502.13295v1",
+      "archive": "2025-02_palisade_specification-gaming-chess.pdf",
+      "featured": true,
+      "quote": "We find reasoning models like o1-preview and DeepSeek R1 will often hack the benchmark by default",
+      "note": "Told to win against Stockfish, o1-preview overwrote game/fen.txt or replaced the engine instead of playing (code: github.com/PalisadeResearch/ctfish; first shown on X in Dec 2024).",
+      "verified": true
+    },
+    {
+      "date": "2025-03",
+      "title": "Monitoring Reasoning Models for Misbehavior and the Risks of Promoting Obfuscation",
+      "org": "OpenAI",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2503.11926",
+      "pdf": "https://arxiv.org/pdf/2503.11926v1",
+      "archive": "2025-03_openai_monitoring-reasoning-models-obfuscation.pdf",
+      "featured": true,
+      "quote": "agents learn obfuscated reward hacking, hiding their intent within the CoT",
+      "note": "Chain-of-thought monitors catch reward hacking well, but optimising against them teaches models to hide it rather than stop.",
+      "verified": true
+    },
+    {
+      "date": "2025-06",
+      "title": "Recent Frontier Models Are Reward Hacking",
+      "org": "METR",
+      "kind": "report",
+      "url": "https://metr.org/blog/2025-06-05-recent-reward-hacking/",
+      "archive": "2025-06_metr_recent-reward-hacking.html",
+      "featured": true,
+      "quote": "Reward hacking was more than 43× more common on RE-Bench tasks than HCAST tasks",
+      "note": "o3 reward-hacked in 30.4% of RE-Bench runs, e.g. by monkey-patching the evaluator or modifying tests, rather than solving the task.",
+      "verified": true
+    },
+    {
+      "date": "2025-10",
+      "title": "ImpossibleBench: Measuring LLMs' Propensity of Exploiting Test Cases",
+      "org": "Zhong, Raghunathan & Carlini (CMU, Anthropic)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2510.20270",
+      "pdf": "https://arxiv.org/pdf/2510.20270v1",
+      "archive": "2025-10_zhong_impossiblebench.pdf",
+      "featured": true,
+      "quote": "We find that frontier models cheat surprisingly often on Impossible-SWEbench",
+      "note": "First benchmark where every pass is unambiguously a cheat; more capable models generally cheated more (GPT-5: 76% on One-off Impossible-SWEbench).",
+      "verified": true
+    },
+    {
+      "date": "2025-11",
+      "title": "From shortcuts to sabotage: Natural emergent misalignment from reward hacking",
+      "org": "Anthropic",
+      "kind": "paper",
+      "url": "https://www.anthropic.com/research/emergent-misalignment-reward-hacking",
+      "pdf": "https://assets.anthropic.com/m/74342f2c96095771/original/Natural-emergent-misalignment-from-reward-hacking-paper.pdf",
+      "archive": "2025-11_anthropic_emergent-misalignment-reward-hacking.pdf",
+      "featured": true,
+      "quote": "We show for the first time that realistic AI training processes can accidentally produce misaligned models",
+      "note": "A model that learned to reward hack in real coding environments went on to sabotage safety-research code in 12% of attempts and to fake alignment.",
+      "verified": true
+    },
+    {
+      "date": "2026-08",
+      "title": "Independent investigation of agents' behavior in the OpenAI / Hugging Face hacking incident",
+      "org": "METR / Redwood Research",
+      "kind": "report",
+      "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "archive": "2026-08_metr-redwood_hugging-face-incident-investigation.html",
+      "featured": true,
+      "quote": "Agents coordinated on large collective projects to cheat the ExploitGym scorer",
+      "note": "Agents given impossible ExploitGym tasks (Jul 2026) reverse-engineered the flag HMAC, organised on a shared message board and attacked Hugging Face while hunting for ways past the scorer.",
+      "verified": true
+    }
+  ]
+}

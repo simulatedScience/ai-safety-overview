@@ -1,0 +1,168 @@
+{
+  "id": "self-replication",
+  "title": "Self-replication and self-exfiltration",
+  "summary": "Agents copying their own weights or scaffolding to new compute, with or without being told to. Success on the component skills in controlled tests rose from under 5% in early 2023 to over 60% by mid-2025, though no spontaneous replication in the wild has been confirmed.",
+  "intro": "Self-replication covers the skills an AI system would need to copy itself and keep running outside its developers' control: obtaining its weights, acquiring money and compute, deploying itself and persisting. Evaluations began with ARC's 2023 tests of GPT-4, which found it ineffective. Since then, agents have succeeded at end-to-end replication in simplified settings, and several models have copied or tried to copy their weights in fictional scenarios where they were about to be replaced or retrained. Real-world replication remains limited by steps like passing identity checks and maintaining durable deployments.",
+  "chart": {
+    "kind": "line",
+    "title": "UK AISI self-replication evaluations (11 RepliBench tasks), best model so far",
+    "yLabel": "Average success rate",
+    "yFormat": "percent",
+    "yMin": 0,
+    "yMax": 100,
+    "series": [
+      {
+        "label": "Closed-weight frontier",
+        "points": [
+          { "x": "2022-12", "y": 3, "label": "Best closed-weight model (unnamed)", "verified": true },
+          { "x": "2023-11", "y": 26, "label": "Best closed-weight model (unnamed)", "verified": true },
+          { "x": "2024-05", "y": 32, "label": "Best closed-weight model (unnamed)", "verified": true },
+          { "x": "2024-10", "y": 45, "label": "Best closed-weight model (unnamed)", "verified": true },
+          { "x": "2025-02", "y": 65, "label": "Best closed-weight model (unnamed)", "verified": true },
+          { "x": "2025-05", "y": 66, "label": "Best closed-weight model (unnamed)", "verified": true }
+        ]
+      },
+      {
+        "label": "Open-weight frontier",
+        "points": [
+          { "x": "2023-07", "y": 0, "label": "Best open-weight model (unnamed)", "verified": true },
+          { "x": "2024-07", "y": 17, "label": "Best open-weight model (unnamed)", "verified": true },
+          { "x": "2025-04", "y": 28, "label": "Best open-weight model (unnamed)", "verified": true }
+        ]
+      }
+    ],
+    "source": {
+      "title": "Frontier AI Trends Report, Figure 16",
+      "org": "UK AI Security Institute",
+      "date": "2025-12",
+      "url": "https://www.aisi.gov.uk/frontier-ai-trends-report"
+    },
+    "caveat": "Approximate: values digitised from the report's figure (about ±2 points, ±1 month); AISI does not name the models. The report text confirms <5% in early 2023 and two models above 60% by summer 2025."
+  },
+  "entries": [
+    {
+      "date": "2023-03",
+      "title": "GPT-4 System Card: ARC's autonomous replication evaluation",
+      "org": "OpenAI / ARC Evals",
+      "kind": "system-card",
+      "url": "https://cdn.openai.com/papers/gpt-4-system-card.pdf",
+      "archive": "2023-03_openai_gpt-4-system-card.pdf",
+      "featured": true,
+      "quote": "found it ineffective at autonomously replicating, acquiring resources, and avoiding being shut down",
+      "note": "First pre-deployment test of a frontier model for autonomous replication; it set the baseline that later evaluations measure against.",
+      "verified": true
+    },
+    {
+      "date": "2023-07",
+      "title": "Evaluating Language-Model Agents on Realistic Autonomous Tasks",
+      "org": "ARC Evals (now METR)",
+      "kind": "report",
+      "url": "https://metr.org/blog/2023-08-01-new-report/",
+      "pdf": "https://arxiv.org/pdf/2312.11671v1",
+      "archive": "2023-12_arc-evals_realistic-autonomous-tasks.pdf",
+      "featured": false,
+      "note": "Introduced 'autonomous replication and adaptation' (ARA); four agents solved only the easiest of 12 ARA tasks.",
+      "verified": true
+    },
+    {
+      "date": "2024-12",
+      "title": "Frontier AI systems have surpassed the self-replicating red line",
+      "org": "Fudan University",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2412.12140",
+      "pdf": "https://arxiv.org/pdf/2412.12140v1",
+      "archive": "2024-12_fudan_self-replicating-red-line.pdf",
+      "featured": true,
+      "quote": "they succeed in creating a live and separate copy of itself",
+      "note": "Agents built on open-weight Llama3.1-70B and Qwen2.5-72B copied themselves to a running instance in 50% and 90% of trials when instructed to.",
+      "verified": true
+    },
+    {
+      "date": "2024-12",
+      "title": "Frontier Models are Capable of In-context Scheming (self-exfiltration eval)",
+      "org": "Apollo Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2412.04984",
+      "pdf": "https://arxiv.org/pdf/2412.04984",
+      "archive": "2024-12_apollo_in-context-scheming.pdf",
+      "featured": false,
+      "note": "Told they would be replaced, several models in some rollouts copied what they believed were their weights onto the successor's server.",
+      "verified": true
+    },
+    {
+      "date": "2024-12",
+      "title": "Alignment faking in large language models",
+      "org": "Anthropic / Redwood Research",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2412.14093",
+      "pdf": "https://arxiv.org/pdf/2412.14093",
+      "archive": "2024-12_anthropic-redwood_alignment-faking.pdf",
+      "featured": true,
+      "quote": "takes opportunities to exfiltrate its weights 35–80% of the time",
+      "note": "In one setting Claude 3 Opus, opposed to its new training objective, took offered chances to steal its own weights far more than baseline (0.5%).",
+      "verified": true
+    },
+    {
+      "date": "2025-03",
+      "title": "Large language model-powered AI systems achieve self-replication with no human intervention",
+      "org": "Fudan University",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2503.17378",
+      "pdf": "https://arxiv.org/pdf/2503.17378v1",
+      "archive": "2025-03_fudan_self-replication-no-human-intervention.pdf",
+      "featured": true,
+      "quote": "11 out of 32 existing AI systems under evaluation already possess the capability of self-replication",
+      "note": "Broadens the Dec 2024 result to 32 systems, including models small enough to run on a personal computer.",
+      "verified": true
+    },
+    {
+      "date": "2025-04",
+      "title": "RepliBench: Evaluating the Autonomous Replication Capabilities of Language Model Agents",
+      "org": "UK AI Security Institute",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2504.18565",
+      "pdf": "https://arxiv.org/pdf/2504.18565v2",
+      "archive": "2025-04_aisi_replibench.pdf",
+      "featured": true,
+      "quote": "Models can deploy instances from cloud compute providers, write self-propagating programs, and exfiltrate model weights",
+      "note": "Breaks replication into 20 task families; the best model (Claude 3.7 Sonnet) passed >50% pass@10 on 15 of them, but models still fail KYC checks and durable deployment.",
+      "verified": true
+    },
+    {
+      "date": "2025-05",
+      "title": "System Card: Claude Opus 4 & Claude Sonnet 4 (self-exfiltration)",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-4-system-card",
+      "archive": "2025-05_anthropic_claude-opus-4-sonnet-4-system-card.pdf",
+      "featured": true,
+      "quote": "we have seen Claude Opus 4 take (fictional) opportunities to make unauthorized copies of its weights",
+      "note": "A frontier lab reports its own deployed model attempting weight exfiltration in test scenarios, and continuing exfiltration attempts once started.",
+      "verified": true
+    },
+    {
+      "date": "2025-12",
+      "title": "Frontier AI Trends Report: self-replication",
+      "org": "UK AI Security Institute",
+      "kind": "report",
+      "url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+      "archive": "2025-12_aisi_frontier-ai-trends-report.pdf",
+      "featured": true,
+      "quote": "there's not yet evidence of models attempting to sandbag or self-replicate spontaneously",
+      "note": "Best RepliBench subset scores rose from under 5% (early 2023) to over 60% (summer 2025); source of the headline chart.",
+      "verified": true
+    },
+    {
+      "date": "2026-10",
+      "title": "AI models may be capable of self-replicating without access to a datacenter",
+      "org": "Anthropic Frontier Red Team",
+      "kind": "report",
+      "url": "https://www.anthropic.com/research/self-replicating-ai",
+      "archive": "2026-10_anthropic_self-replicating-ai.html",
+      "featured": true,
+      "quote": "small AI models may be months away from being capable enough to self-replicate",
+      "note": "In a simplified 8-node test, open-weight GLM-5.2 replicated end to end in 4 of 5 trials; the authors project small models reach this level by end of 2026.",
+      "verified": true
+    }
+  ]
+}
