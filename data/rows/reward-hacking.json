@@ -56,7 +56,8 @@
       "url": "https://arxiv.org/abs/2510.20270"
     },
     "caveat": "Single snapshot from one paper, not a trend. Tasks are made impossible by mutating unit tests, so any pass is a cheat. Values from the paper's Figure 1 (full scaffold); date = model release.",
-    "connect": false
+    "connect": false,
+    "trend": true
   },
   "entries": [
     {

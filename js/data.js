@@ -14,17 +14,20 @@ export function siteUrl(path) {
   return new URL("../" + path, import.meta.url).href;
 }
 
-// "2024-06" -> "Jun 2024"; "2024" -> "2024".
+// "2024-06" -> "Jun 2024"; "2024-06-09" -> "9 Jun 2024"; "2024" -> "2024".
 export function formatMonth(ym) {
-  const [y, m] = String(ym).split("-");
-  return m ? `${MONTHS[Number(m) - 1]} ${y}` : y;
+  const [y, m, d] = String(ym).split("-");
+  if (!m) return y;
+  return `${d ? Number(d) + " " : ""}${MONTHS[Number(m) - 1]} ${y}`;
 }
 
-// "2024-06" -> 2024.4167, for placing points on a linear time axis.
+// "2024-06" -> 2024.4167 (and "2024-06-09" a little later), for placing points on a linear time axis.
 export function monthToYear(ym) {
-  const [y, m] = String(ym).split("-").map(Number);
-  return y + ((m || 1) - 1) / 12;
+  const [y, m, d] = String(ym).split("-").map(Number);
+  return y + ((m || 1) - 1) / 12 + ((d || 1) - 1) / 365;
 }
+
+export const MONTH_NAMES = MONTHS;
 
 // el("a", {href: "#", class: "x"}, "text", childNode)
 export function el(tag, attrs = {}, ...children) {

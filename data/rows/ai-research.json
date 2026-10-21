@@ -1,13 +1,145 @@
 {
   "id": "ai-research",
   "title": "AI research contributions",
-  "summary": "AI systems have moved from tools for specific scientific problems (AlphaFold) to agents that propose, run and write up research, and in 2025–26 to claimed new results in algorithms and mathematics. Many claims are contested or involved substantial human help.",
+  "summary": "AI systems have moved from tools for specific scientific problems (AlphaFold) to agents that propose, run and write up research. In the first half of 2026, AI working without significant human help fully solved 18 open Erdős problems. Many other claims are contested or involved substantial human help.",
   "definition": "AI research contributions are new scientific or technical results in which an AI system produced a key part of the work, such as the idea, the method or the proof.",
-  "development": "AlphaFold (2021) solved protein-structure prediction as a narrow tool, and its developers shared the 2024 Chemistry Nobel. From 2024, pipelines such as Sakana's AI Scientist wrote papers end to end, one passing workshop peer review in 2025, and Google's AI co-scientist proposed hypotheses that were then tested in the lab. AlphaEvolve (2025) improved on Strassen's 1969 algorithm for multiplying 4×4 complex matrices, open-source loops such as Karpathy's autoresearch (2026) let agents iterate on training code, and in 2026 OpenAI claimed an AI-produced result on the Navier–Stokes problem that is not yet independently verified.",
-  "methods": "No benchmark tracks novel contributions; related benchmarks such as RE-Bench and PaperBench measure research engineering or the replication of known results. Individual claims vary widely in novelty, difficulty and how much humans contributed, and some are contested or only workshop-level.",
+  "development": "AlphaFold (2021) solved protein-structure prediction as a narrow tool, and its developers shared the 2024 Chemistry Nobel. From 2024, pipelines such as Sakana's AI Scientist wrote papers end to end, one passing workshop peer review in 2025, and Google's AI co-scientist proposed hypotheses that were then tested in the lab. AlphaEvolve (2025) improved on Strassen's 1969 algorithm for multiplying 4×4 complex matrices, open-source loops such as Karpathy's autoresearch (2026) let agents iterate on training code, and in 2026 OpenAI claimed an AI-produced result on the Navier–Stokes problem that is not yet independently verified. Between January and June 2026, AI systems working alone fully solved 18 Erdős problems, including the long-open #90, according to an expert-maintained registry.",
+  "methods": "No benchmark yet tracks novel contributions over a long period. The headline chart is a hand-curated tally from an expert-run registry: it shows that AI-alone solutions started appearing in 2026, not how hard they were. FrontierMath Erdős (Epoch AI, Sep 2026) tests models on open Erdős problems under a fixed budget with Lean-checked proofs and should replace the tally once it covers a year of releases. FrontierMath Tier 4 and CritPt use research-level problems with known answers, and RE-Bench and PaperBench measure research engineering or replication, so they track capability rather than new results. Claims elsewhere vary widely in novelty and human involvement, and some are contested.",
   "chart": {
-    "kind": "placeholder",
-    "reason": "Chart under review: no benchmark tracks novel research contributions; options are being evaluated."
+    "kind": "line",
+    "style": "sketch",
+    "stepped": true,
+    "title": "Erdős problems solved by AI alone (cumulative)",
+    "xLabel": "Date of result",
+    "yLabel": "Problems fully solved",
+    "yFormat": "integer",
+    "yMin": 0,
+    "yMax": 20,
+    "series": [
+      {
+        "label": "Full solutions, no significant human involvement",
+        "points": [
+          {
+            "x": "2026-01-10",
+            "y": 1,
+            "label": "Aristotle + GPT-5.2",
+            "note": "#205; Harmonic's Aristotle with GPT-5.2 Thinking; Lean-verified",
+            "verified": true,
+            "org": "other"
+          },
+          {
+            "x": "2026-01-29",
+            "y": 2,
+            "label": "Aletheia",
+            "note": "#1051; Google DeepMind; Lean-verified",
+            "verified": true,
+            "org": "google"
+          },
+          {
+            "x": "2026-03-02",
+            "y": 3,
+            "label": "Aristotle + GPT-5.2 Pro",
+            "note": "#457; Lean-verified",
+            "verified": true,
+            "org": "other"
+          },
+          {
+            "x": "2026-03-30",
+            "y": 4,
+            "label": "DeepMind prover",
+            "note": "#125; Google DeepMind prover agent; Lean-verified",
+            "verified": true,
+            "org": "google"
+          },
+          {
+            "x": "2026-04-01",
+            "y": 5,
+            "label": "GPT-5.4 Pro",
+            "note": "#1202",
+            "verified": true
+          },
+          {
+            "x": "2026-04-09",
+            "y": 10,
+            "label": "OpenAI internal model ×5",
+            "note": "#960, #987, #990, #1091, #1141 on the same day",
+            "verified": true
+          },
+          {
+            "x": "2026-04-13",
+            "y": 11,
+            "label": "GPT-5.4 Pro",
+            "note": "#1196, a problem experts had already spent substantial effort on",
+            "verified": true
+          },
+          {
+            "x": "2026-04-16",
+            "y": 12,
+            "label": "DeepMind prover",
+            "note": "#741; Lean-verified",
+            "verified": true,
+            "org": "google"
+          },
+          {
+            "x": "2026-04-16",
+            "y": 13,
+            "label": "GPT-5.4 Pro",
+            "note": "#1217",
+            "verified": true
+          },
+          {
+            "x": "2026-04-23",
+            "y": 14,
+            "label": "OpenAI internal model",
+            "note": "#1014",
+            "verified": true
+          },
+          {
+            "x": "2026-04-25",
+            "y": 15,
+            "label": "GPT-5.5 Pro",
+            "note": "#38",
+            "verified": true
+          },
+          {
+            "x": "2026-05-01",
+            "y": 16,
+            "label": "GPT-5.5 Pro",
+            "note": "#694",
+            "verified": true
+          },
+          {
+            "x": "2026-05-20",
+            "y": 17,
+            "label": "OpenAI internal model",
+            "note": "#90, a major open problem (disproved). erdosproblems.com links OpenAI's proof but does not itself credit AI",
+            "verified": true
+          },
+          {
+            "x": "2026-05-26",
+            "y": 17,
+            "label": "Claude Mythos",
+            "note": "#90 again: an independent second solution, so the count does not rise",
+            "verified": true
+          },
+          {
+            "x": "2026-06-09",
+            "y": 18,
+            "label": "Claude Fable 5 + Codex + GPT-5.5",
+            "note": "#619; Lean-verified",
+            "verified": true,
+            "org": "other"
+          }
+        ]
+      }
+    ],
+    "source": {
+      "title": "AI contributions to Erdős problems (§1(a), full solutions)",
+      "org": "Terence Tao et al., community wiki",
+      "date": "2026-06",
+      "url": "https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems"
+    },
+    "caveat": "A curated tally, not a benchmark. Counts problems the wiki lists as fully solved by AI with no significant human involvement and no comparable prior literature. Every problem counts once, whatever its difficulty, and failed attempts are invisible. Erdős problems only. The wiki stopped updating on 30 Jun 2026, so later results are missing. Candidate solutions (#550, #671, #730) are excluded."
   },
   "entries": [
     {
@@ -21,6 +153,30 @@
       "featured": true,
       "quote": "the first computational method that can regularly predict protein structures with atomic accuracy",
       "note": "A narrow AI system solved a 50-year-old open problem in biology; it is a tool used by researchers, not an autonomous researcher.",
+      "verified": true
+    },
+    {
+      "date": "2022-10",
+      "title": "Discovering faster matrix multiplication algorithms with reinforcement learning (AlphaTensor)",
+      "org": "DeepMind (Fawzi et al.)",
+      "kind": "paper",
+      "url": "https://www.nature.com/articles/s41586-022-05172-4",
+      "archive": "2022-10_deepmind_alphatensor-nature.html",
+      "featured": false,
+      "quote": "AlphaTensor’s algorithm improves on Strassen’s two-level algorithm for the first time",
+      "note": "Purpose-built system; peer-reviewed (Nature). New matrix-multiplication algorithms, e.g. 4×5 by 5×5 in 76 multiplications (previous best 80).",
+      "verified": true
+    },
+    {
+      "date": "2023-12",
+      "title": "Mathematical discoveries from program search with large language models (FunSearch)",
+      "org": "DeepMind (Romera-Paredes et al.)",
+      "kind": "paper",
+      "url": "https://www.nature.com/articles/s41586-023-06924-6",
+      "archive": "2023-12_deepmind_funsearch-nature.html",
+      "featured": false,
+      "quote": "we discover new constructions of large cap sets going beyond the best-known ones",
+      "note": "Purpose-built system (LLM plus automated evaluator); peer-reviewed (Nature). First LLM-driven discovery on an open maths problem (cap sets).",
       "verified": true
     },
     {
@@ -56,7 +212,7 @@
       "url": "https://arxiv.org/abs/2411.15114",
       "pdf": "https://arxiv.org/pdf/2411.15114",
       "archive": "2024-11_metr_re-bench.pdf",
-      "featured": true,
+      "featured": false,
       "quote": "the best AI agents achieve a score 4× higher than human experts",
       "note": "Direct comparison with ML experts on AI research engineering tasks: agents led at a 2-hour budget, humans at 8 hours.",
       "verified": true
@@ -111,6 +267,44 @@
       "verified": true
     },
     {
+      "date": "2025-05",
+      "title": "Robin: A multi-agent system for automating scientific discovery",
+      "org": "Ghareeb et al. (FutureHouse, Oxford)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2505.13400",
+      "pdf": "https://arxiv.org/pdf/2505.13400",
+      "archive": "2025-05_futurehouse_robin.pdf",
+      "featured": false,
+      "quote": "Ripasudil significantly enhances RPE phagocytosis.",
+      "note": "AI-led: Robin proposed ripasudil for dry AMD and analysed the data; humans ran the wet lab. Preprint, in-vitro only (cell assay, no animal or clinical data).",
+      "verified": true
+    },
+    {
+      "date": "2025-10",
+      "title": "Google’s Gemma AI model helps discover new potential cancer therapy pathway (C2S-Scale 27B)",
+      "org": "Google DeepMind, Google Research, Yale",
+      "kind": "report",
+      "url": "https://blog.google/innovation-and-ai/products/google-gemma-ai-cancer-therapy-discovery/",
+      "archive": "2025-10_google_c2s-scale-silmitasertib.html",
+      "featured": false,
+      "quote": "Treating the cells with both silmitasertib and low-dose interferon produced a marked, synergistic amplification",
+      "note": "AI-led hypothesis (silmitasertib boosts antigen presentation only with low-dose interferon), confirmed in human cell models (~50% increase). In-vitro only; preprint (bioRxiv 2025.04.14.648850).",
+      "verified": true
+    },
+    {
+      "date": "2026-01",
+      "title": "Resolution of Erdős Problem #728: a writeup of Aristotle's Lean proof",
+      "org": "Sothanaphan (system: GPT-5.2 Pro + Harmonic Aristotle, operated by K. Barreto)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2601.07421",
+      "pdf": "https://arxiv.org/pdf/2601.07421",
+      "archive": "2026-01_sothanaphan_erdos-728-aristotle.pdf",
+      "featured": false,
+      "quote": "The final result of the system is a formal proof written in Lean",
+      "note": "AI-led, but Tao's wiki lists it under §1(b) (AI alongside prior literature, Pomerance 2014), not §1(a). Lean-checked; solves a variant of an ambiguously stated problem.",
+      "verified": true
+    },
+    {
       "date": "2026-03",
       "title": "autoresearch: AI agents running research on single-GPU nanochat training automatically",
       "org": "Andrej Karpathy",
@@ -120,6 +314,29 @@
       "featured": true,
       "quote": "It modifies the code, trains for 5 minutes, checks if the result improved",
       "note": "Open-source loop in which a coding agent edits training code, runs short experiments and keeps what improves; widely forked.",
+      "verified": true
+    },
+    {
+      "date": "2026-06",
+      "title": "AI contributions to Erdős problems",
+      "org": "Terence Tao et al. (community wiki)",
+      "kind": "report",
+      "url": "https://github.com/teorth/erdosproblems/wiki/AI-contributions-to-Erd%C5%91s-problems",
+      "featured": true,
+      "quote": "The wiki is no longer updated. The latest data is as of Jun 30, 2026.",
+      "note": "Expert-maintained registry that sorts each AI claim by human involvement and outcome. 18 problems were fully solved by AI alone between Jan and Jun 2026, including #90, a major open problem.",
+      "verified": true
+    },
+    {
+      "date": "2026-08",
+      "title": "Hadamard matrix of order 668 (FrontierMath: Open Problems)",
+      "org": "Epoch AI",
+      "kind": "event",
+      "url": "https://epoch.ai/frontiermath/open-problems/hadamard",
+      "archive": "2026-08_epoch_hadamard-668.html",
+      "featured": false,
+      "quote": "crediting a team of three humans and Claude",
+      "note": "AI-assisted (three humans + Claude, reported by an Anthropic researcher). Programmatically verified but provisional: card says “Solved (human + AI)”, 12 Aug 2026 changelog says “solved by AI”.",
       "verified": true
     },
     {

@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATE = re.compile(r"^\d{4}(-(0[1-9]|1[0-2]))?$")
+POINT_DATE = re.compile(r"^\d{4}-(0[1-9]|1[0-2])(-(0[1-9]|[12]\d|3[01]))?$")
 KINDS = {"paper", "system-card", "report", "event", "policy"}
 CHART_KINDS = {"line", "bar", "placeholder"}
 MAX_QUOTE_WORDS = 20  # rule of thumb is ~15; flag anything clearly longer
@@ -41,7 +42,7 @@ def check_row(row_id):
             problems.append("chart has no source url")
         for s in chart.get("series", []):
             for p in s.get("points", []):
-                if not DATE.match(str(p.get("x", ""))):
+                if not POINT_DATE.match(str(p.get("x", ""))):
                     problems.append(f"chart point {p.get('label')!r}: bad x {p.get('x')!r}")
                 if not isinstance(p.get("y"), (int, float)):
                     problems.append(f"chart point {p.get('label')!r}: y is not a number")

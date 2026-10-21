@@ -122,7 +122,8 @@
       "url": "https://www.anthropic.com/research/agentic-misalignment"
     },
     "caveat": "A single study and a single constructed scenario, measured in mid-2025; x = model release month, taken from public model announcements rather than the study. Llama 4 Maverick did not blackmail with this exact prompt (12% with a small prompt addition). Later Anthropic system cards report near-zero rates on an expanded suite, which is a different metric and is not plotted.",
-    "connect": false
+    "connect": false,
+    "trend": true
   },
   "entries": [
     {

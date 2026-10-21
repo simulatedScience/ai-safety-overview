@@ -11,6 +11,15 @@
   --chart-3: #6a8f2f;
   --chart-4: #8a5a9e;
   --chart-grid: #e9e6de;
+  /* Company colours (slots 1–7 of the validated dataviz reference palette, in order) */
+  --org-google: #2a78d6;
+  --org-anthropic: #eb6834;
+  --org-openai: #1baf7a;
+  --org-meta: #eda100;
+  --org-deepseek: #e87ba4;
+  --org-alibaba: #008300;
+  --org-xai: #6250d6;
+  --org-other: #8a877f;
   --warn-bg: #fff4d6;
   --warn-text: #7a5600;
   --radius: 10px;
@@ -32,6 +41,14 @@
     --chart-3: #a6c96a;
     --chart-4: #c49ad6;
     --chart-grid: #2c2b27;
+    --org-google: #3987e5;
+    --org-anthropic: #d95926;
+    --org-openai: #199e70;
+    --org-meta: #c98500;
+    --org-deepseek: #d55181;
+    --org-alibaba: #008300;
+    --org-xai: #9085e9;
+    --org-other: #8f8c84;
     --warn-bg: #3a2f12;
     --warn-text: #f0cf7a;
     color-scheme: dark;
@@ -51,6 +68,14 @@
   --chart-3: #a6c96a;
   --chart-4: #c49ad6;
   --chart-grid: #2c2b27;
+  --org-google: #3987e5;
+  --org-anthropic: #d95926;
+  --org-openai: #199e70;
+  --org-meta: #c98500;
+  --org-deepseek: #d55181;
+  --org-alibaba: #008300;
+  --org-xai: #9085e9;
+  --org-other: #8f8c84;
   --warn-bg: #3a2f12;
   --warn-text: #f0cf7a;
   color-scheme: dark;
@@ -131,9 +156,48 @@ table.overview td.behaviour p { margin: 0 0 8px; }
 .chart-box.large { height: 360px; }
 
 .chart-meta {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--muted);
   margin-top: 6px;
+}
+
+/* Legend chips and toggles under a chart */
+.chart-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.chart-controls .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chart-controls .chip {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px 9px 2px 7px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+.chart-controls .chip[aria-pressed="false"] { color: var(--muted); text-decoration: line-through; opacity: 0.7; }
+.chart-controls .chip:focus-visible,
+.chart-controls select:focus-visible,
+.chart-controls input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.chart-controls .swatch { width: 10px; height: 10px; border-radius: 50%; flex: none; }
+.chart-controls .shape { color: var(--muted); font-size: 1.15em; line-height: 1; }
+.chart-controls label { display: inline-flex; align-items: center; gap: 4px; cursor: pointer; }
+.chart-controls select {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 4px;
 }
 
 .placeholder {

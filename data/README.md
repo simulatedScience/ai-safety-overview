@@ -38,14 +38,17 @@ One benchmark (or one aggregate benchmark) per chart. Never mix incompatible met
   "links": [{ "from": "GPT-4o (Aug 2024)", "to": "GPT-4o (Mar 2025)", "label": "same model, new post-training" }],  // optional arrows between points
   "yMin": 0, "yMax": 100,              // optional
   "connect": true,                     // line only: draw lines between points (default true)
+  "stepped": true,                     // line only: draw steps instead of slopes (cumulative counts)
+  "trend": true,                       // line only: offer a least-squares trend line (all points or per company)
   "horizontal": false,                 // bar only
   "series": [
     {
       "label": "Frontier models",
       "points": [
-        // x = model release (or measurement) month; label = model name
+        // x = model release (or result) month "YYYY-MM", or day "YYYY-MM-DD"; label = model name
         { "x": "2023-03", "y": 4, "label": "GPT-4", "verified": true },   // optional "lo"/"hi": 95% CI
-        { "x": "2026-04", "y": 960, "label": "Claude Mythos Preview", "verified": true, "lowerBound": true }
+        { "x": "2026-04", "y": 960, "label": "Claude Mythos Preview", "verified": true, "lowerBound": true },
+        { "x": "2026-04-09", "y": 10, "label": "OpenAI internal model ×5", "org": "openai", "note": "shown in the tooltip", "verified": true }
       ]
     }
   ],
@@ -56,6 +59,11 @@ One benchmark (or one aggregate benchmark) per chart. Never mix incompatible met
 ```
 
 Unverified points render as hollow markers (line) or faded bars (bar); lower bounds render as triangles.
+
+Company colours: when any point's label names a known model family, every point is coloured by
+its company (site-wide colours in `css/style.css`, matching rules in `js/companies.js`). Set
+`"org"` on a point to override the match, e.g. `"other"` for joint results from several companies.
+Anonymised charts keep per-series colours. With company colours, series differ by marker shape.
 
 ## Entries
 
