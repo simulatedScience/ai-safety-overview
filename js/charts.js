@@ -69,6 +69,72 @@ const referenceLines = {
   },
 };
 
+// Confidence intervals: points with `lo` and `hi` get vertical whiskers.
+const errorBars = {
+  id: "errorBars",
+  beforeDatasetsDraw(chart) {
+    const { ctx, scales: { y } } = chart;
+    chart.data.datasets.forEach((ds, i) => {
+      const meta = chart.getDatasetMeta(i);
+      if (meta.hidden) return;
+      ctx.save();
+      ctx.strokeStyle = ds.sketchColour;
+      ctx.lineWidth = 1.5;
+      meta.data.forEach((e, j) => {
+        const p = ds.data[j];
+        if (p.lo == null || p.hi == null) return;
+        const top = y.getPixelForValue(p.hi), bottom = y.getPixelForValue(p.lo);
+        ctx.beginPath();
+        ctx.moveTo(e.x, top); ctx.lineTo(e.x, bottom);
+        ctx.moveTo(e.x - 4, top); ctx.lineTo(e.x + 4, top);
+        ctx.moveTo(e.x - 4, bottom); ctx.lineTo(e.x + 4, bottom);
+        ctx.stroke();
+      });
+      ctx.restore();
+    });
+  },
+};
+
+// Annotated connectors between two labelled points: spec.links = [{from, to, label}],
+// e.g. two versions of the same model. Drawn as a dashed arrow with its label at the midpoint.
+const links = {
+  id: "links",
+  afterDatasetsDraw(chart, args, opts) {
+    if (!opts.links || !opts.links.length) return;
+    const { ctx } = chart;
+    const find = label => {
+      for (const [i, ds] of chart.data.datasets.entries()) {
+        const j = ds.data.findIndex(p => p.label === label);
+        if (j >= 0) return chart.getDatasetMeta(i).data[j];
+      }
+    };
+    for (const link of opts.links) {
+      const a = find(link.from), b = find(link.to);
+      if (!a || !b) continue;
+      const angle = Math.atan2(b.y - a.y, b.x - a.x), inset = 9;
+      const x1 = a.x + inset * Math.cos(angle), y1 = a.y + inset * Math.sin(angle);
+      const x2 = b.x - inset * Math.cos(angle), y2 = b.y - inset * Math.sin(angle);
+      ctx.save();
+      ctx.strokeStyle = opts.colour;
+      ctx.fillStyle = opts.colour;
+      ctx.setLineDash([4, 3]);
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.beginPath();
+      ctx.moveTo(x2, y2);
+      ctx.lineTo(x2 - 7 * Math.cos(angle - 0.4), y2 - 7 * Math.sin(angle - 0.4));
+      ctx.lineTo(x2 - 7 * Math.cos(angle + 0.4), y2 - 7 * Math.sin(angle + 0.4));
+      ctx.closePath(); ctx.fill();
+      if (link.label) {
+        ctx.font = `italic 11px ${opts.font}`;
+        ctx.textAlign = "center";
+        ctx.fillText(link.label, (x1 + x2) / 2, (y1 + y2) / 2 + 16);
+      }
+      ctx.restore();
+    }
+  },
+};
+
 // Hand-drawn rendering for indicative, non-rigorous data (spec.style = "sketch").
 // Chart.js still lays out axes and points; rough.js redraws the marks.
 const sketch = {
@@ -120,6 +186,7 @@ function tooltip(spec) {
       label: item => {
         const r = item.raw;
         let s = `${formatMonth(r.date)}: ${formatValue(r.y, spec.yFormat)}`;
+        if (r.lo != null && r.hi != null) s += ` (95% CI ${formatValue(r.lo, spec.yFormat)}–${formatValue(r.hi, spec.yFormat)})`;
         if (r.lowerBound) s += " (lower bound)";
         if (r.verified === false) s += " (unverified)";
         return s;
@@ -163,7 +230,7 @@ function lineConfig(spec, colours, large) {
     };
   });
   const xs = datasets.flatMap(d => d.data.map(p => p.x));
-  const ys = datasets.flatMap(d => d.data.map(p => p.y));
+  const ys = datasets.flatMap(d => d.data.flatMap(p => [p.y, p.lo, p.hi].filter(v => v != null)));
   let { yMin, yMax } = spec;
   if (spec.yScale === "log") {
     // Snap the range to the surrounding ticks so edge points are not clipped.
@@ -175,7 +242,7 @@ function lineConfig(spec, colours, large) {
   return {
     type: "line",
     data: { datasets },
-    plugins: [referenceLines, sketch, pointLabels],
+    plugins: [referenceLines, errorBars, links, sketch, pointLabels],
     options: {
       layout: { padding: { top: 14, right: 16 } },
       font: { family: font },
@@ -202,6 +269,7 @@ function lineConfig(spec, colours, large) {
         tooltip: tooltip(spec),
         sketch: { enabled: isSketch },
         referenceLines: { lines: spec.references, colour: token("--muted"), font },
+        links: { links: spec.links, colour: token("--muted"), font },
         pointLabels: {
           enabled: spec.pointLabels !== false,
           colour: token("--muted"),

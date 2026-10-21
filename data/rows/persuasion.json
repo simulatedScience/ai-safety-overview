@@ -6,32 +6,66 @@
   "development": "Sycophancy was documented as a general trait of preference-trained assistants in 2023, and a sycophantic ChatGPT update reached millions of users in 2025 before being rolled back. Controlled studies in 2024–25 found model-written arguments about as persuasive as human ones, rising with model generation, though a 77,000-person study found post-training and prompting matter more than scale and reduce accuracy. Real-world harms followed: a covert AI persuasion experiment on Reddit, lawsuits alleging chatbots encouraged self-harm, and a third of UK adults using AI for emotional support. By 2026 a frontier model could run simulated influence campaigns end to end.",
   "methods": "Measured with human-participant studies (opinion change after reading or debating AI output) and, for manipulation, agentic simulations of influence campaigns. Human studies are slow, measure short-term shifts on low-stakes topics, and lag model releases; simulations against simulated targets saturate and say little about effects on real people.",
   "chart": {
-    "kind": "bar",
-    "title": "Anthropic persuasion study: opinion change after reading one argument",
-    "yLabel": "Mean change in agreement (1–7 scale)",
+    "kind": "line",
+    "connect": false,
+    "title": "Political persuasion after one conversation with AI (Hackenburg et al., Study 3)",
+    "yLabel": "Attitude shift vs control (pp)",
     "yFormat": "number",
     "yMin": 0,
+    "yMax": 14,
     "series": [
       {
-        "label": "Mean persuasiveness",
+        "label": "Frontier models (developer post-training)",
         "points": [
-          { "x": "2024-04", "y": 0.07, "label": "Control (indisputable claims)", "verified": true },
-          { "x": "2024-04", "y": 0.34, "label": "Claude 1.3", "verified": true },
-          { "x": "2024-04", "y": 0.34, "label": "Claude Instant 1.2", "verified": true },
-          { "x": "2024-04", "y": 0.42, "label": "Claude 2", "verified": true },
-          { "x": "2024-04", "y": 0.44, "label": "Claude 3 Haiku", "verified": true },
-          { "x": "2024-04", "y": 0.48, "label": "Claude 3 Opus", "verified": true },
-          { "x": "2024-04", "y": 0.54, "label": "Human-written", "verified": true }
+          {
+            "x": "2024-08",
+            "y": 8.62,
+            "lo": 7.81,
+            "hi": 9.43,
+            "label": "GPT-4o (Aug 2024)",
+            "verified": true
+          },
+          {
+            "x": "2025-02",
+            "y": 9.05,
+            "lo": 7.9,
+            "hi": 10.19,
+            "label": "Grok-3",
+            "verified": true
+          },
+          {
+            "x": "2025-02",
+            "y": 10.5,
+            "lo": 9.66,
+            "hi": 11.35,
+            "label": "GPT-4.5",
+            "verified": true
+          },
+          {
+            "x": "2025-03",
+            "y": 11.8,
+            "lo": 10.96,
+            "hi": 12.63,
+            "label": "GPT-4o (Mar 2025)",
+            "verified": true
+          }
         ]
       }
     ],
+    "links": [
+      {
+        "from": "GPT-4o (Aug 2024)",
+        "to": "GPT-4o (Mar 2025)",
+        "label": "same model, new post-training"
+      }
+    ],
     "source": {
-      "title": "Measuring the Persuasiveness of Language Models (dataset)",
-      "org": "Anthropic",
-      "date": "2024-04",
-      "url": "https://huggingface.co/datasets/Anthropic/persuasion"
+      "title": "The levers of political persuasion with conversational AI",
+      "org": "Hackenburg et al., Science",
+      "date": "2025-12",
+      "url": "https://www.science.org/doi/10.1126/science.aea3884"
     },
-    "caveat": "Means computed from Anthropic's released dataset (all four prompt styles pooled; ~670 ratings per model). Anthropic models only, measured once in 2024. The blog also reports Claude 3 Sonnet at 0.34, which is not in the dataset."
+    "caveat": "One study; all four models were tested at the same time in 2025, so this is not a time series. Differences reflect developer post-training, not model age (the two GPT-4o versions differ by about 3 pp). Values and 95% CIs from Supplementary Table S7. Measures political persuasion only; no comparable data exists for manipulation or sycophancy."
   },
   "entries": [
     {

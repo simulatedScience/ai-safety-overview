@@ -35,6 +35,7 @@ One benchmark (or one aggregate benchmark) per chart. Never mix incompatible met
   "style": "sketch",                   // optional: hand-drawn look for indicative, hand-curated data
   "pointLabels": false,                // optional: hide point labels (e.g. anonymised models)
   "references": [{ "label": "PhD expert baseline", "y": 1 }],  // optional dashed reference lines
+  "links": [{ "from": "GPT-4o (Aug 2024)", "to": "GPT-4o (Mar 2025)", "label": "same model, new post-training" }],  // optional arrows between points
   "yMin": 0, "yMax": 100,              // optional
   "connect": true,                     // line only: draw lines between points (default true)
   "horizontal": false,                 // bar only
@@ -43,7 +44,7 @@ One benchmark (or one aggregate benchmark) per chart. Never mix incompatible met
       "label": "Frontier models",
       "points": [
         // x = model release (or measurement) month; label = model name
-        { "x": "2023-03", "y": 4, "label": "GPT-4", "verified": true },
+        { "x": "2023-03", "y": 4, "label": "GPT-4", "verified": true },   // optional "lo"/"hi": 95% CI
         { "x": "2026-04", "y": 960, "label": "Claude Mythos Preview", "verified": true, "lowerBound": true }
       ]
     }
