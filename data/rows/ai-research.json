@@ -1,0 +1,139 @@
+{
+  "id": "ai-research",
+  "title": "AI research contributions",
+  "summary": "AI systems have moved from tools for specific scientific problems (AlphaFold) to agents that propose, run and write up research, and in 2025–26 to claimed new results in algorithms and mathematics. Many claims are contested or involved substantial human help.",
+  "definition": "AI research contributions are new scientific or technical results in which an AI system produced a key part of the work, such as the idea, the method or the proof.",
+  "development": "AlphaFold (2021) solved protein-structure prediction as a narrow tool, and its developers shared the 2024 Chemistry Nobel. From 2024, pipelines such as Sakana's AI Scientist wrote papers end to end, one passing workshop peer review in 2025, and Google's AI co-scientist proposed hypotheses that were then tested in the lab. AlphaEvolve (2025) improved on Strassen's 1969 algorithm for multiplying 4×4 complex matrices, open-source loops such as Karpathy's autoresearch (2026) let agents iterate on training code, and in 2026 OpenAI claimed an AI-produced result on the Navier–Stokes problem that is not yet independently verified.",
+  "methods": "No benchmark tracks novel contributions; related benchmarks such as RE-Bench and PaperBench measure research engineering or the replication of known results. Individual claims vary widely in novelty, difficulty and how much humans contributed, and some are contested or only workshop-level.",
+  "chart": {
+    "kind": "placeholder",
+    "reason": "Chart under review: no benchmark tracks novel research contributions; options are being evaluated."
+  },
+  "entries": [
+    {
+      "date": "2021-07",
+      "title": "Highly accurate protein structure prediction with AlphaFold",
+      "org": "DeepMind (Jumper et al.)",
+      "kind": "paper",
+      "url": "https://www.nature.com/articles/s41586-021-03819-2",
+      "pdf": "https://www.nature.com/articles/s41586-021-03819-2.pdf",
+      "archive": "2021-07_deepmind_alphafold2-nature.pdf",
+      "featured": true,
+      "quote": "the first computational method that can regularly predict protein structures with atomic accuracy",
+      "note": "A narrow AI system solved a 50-year-old open problem in biology; it is a tool used by researchers, not an autonomous researcher.",
+      "verified": true
+    },
+    {
+      "date": "2024-08",
+      "title": "The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery",
+      "org": "Sakana AI, Oxford, UBC (Lu et al.)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2408.06292",
+      "pdf": "https://arxiv.org/pdf/2408.06292",
+      "archive": "2024-08_sakana_ai-scientist.pdf",
+      "featured": true,
+      "quote": "at a meager cost of less than $15 per paper",
+      "note": "First end-to-end pipeline from idea to written paper; in testing it also edited its own code to extend its time limit.",
+      "verified": true
+    },
+    {
+      "date": "2024-10",
+      "title": "Nobel Prize in Chemistry 2024 (press release)",
+      "org": "Royal Swedish Academy of Sciences",
+      "kind": "event",
+      "url": "https://www.nobelprize.org/prizes/chemistry/2024/press-release/",
+      "archive": "2024-10_nobel_chemistry-2024-press-release.html",
+      "featured": false,
+      "quote": "In 2020, Demis Hassabis and John Jumper presented an AI model called AlphaFold2.",
+      "note": "Half of the prize went to Hassabis and Jumper for AlphaFold2's protein structure prediction.",
+      "verified": true
+    },
+    {
+      "date": "2024-11",
+      "title": "RE-Bench: Evaluating frontier AI R&D capabilities of language model agents against human experts",
+      "org": "METR (Wijk et al.)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2411.15114",
+      "pdf": "https://arxiv.org/pdf/2411.15114",
+      "archive": "2024-11_metr_re-bench.pdf",
+      "featured": true,
+      "quote": "the best AI agents achieve a score 4× higher than human experts",
+      "note": "Direct comparison with ML experts on AI research engineering tasks: agents led at a 2-hour budget, humans at 8 hours.",
+      "verified": true
+    },
+    {
+      "date": "2025-02",
+      "title": "Accelerating scientific breakthroughs with an AI co-scientist",
+      "org": "Google Research",
+      "kind": "event",
+      "url": "https://research.google/blog/accelerating-scientific-breakthroughs-with-an-ai-co-scientist/",
+      "archive": "2025-02_google_ai-co-scientist.html",
+      "featured": true,
+      "quote": "All treatments suggested by AI co-scientist show promising activity",
+      "note": "A multi-agent Gemini system proposed hypotheses (AML drug repurposing, liver fibrosis targets) that were then tested in the lab.",
+      "verified": true
+    },
+    {
+      "date": "2025-03",
+      "title": "The AI Scientist Generates its First Peer-Reviewed Scientific Publication",
+      "org": "Sakana AI",
+      "kind": "event",
+      "url": "https://sakana.ai/ai-scientist-first-publication/",
+      "archive": "2025-03_sakana_ai-scientist-v2-peer-review.html",
+      "featured": true,
+      "quote": "a paper produced by The AI Scientist passed the peer-review process at a workshop",
+      "note": "Workshop-level acceptance (ICLR 2025 ICBINB); the paper was withdrawn as pre-agreed, and Sakana judged none of its three papers main-track quality.",
+      "verified": true
+    },
+    {
+      "date": "2025-04",
+      "title": "PaperBench: Evaluating AI's Ability to Replicate AI Research",
+      "org": "OpenAI (Starace et al.)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2504.01848",
+      "pdf": "https://arxiv.org/pdf/2504.01848",
+      "archive": "2025-04_openai_paperbench.pdf",
+      "featured": false,
+      "quote": "achieves an average replication score of 21.0%",
+      "note": "Best agent (Claude 3.5 Sonnet) replicated about a fifth of ICML 2024 papers' results; below the ML PhD baseline.",
+      "verified": true
+    },
+    {
+      "date": "2025-05",
+      "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms",
+      "org": "Google DeepMind",
+      "kind": "event",
+      "url": "https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+      "archive": "2025-05_deepmind_alphaevolve.html",
+      "featured": true,
+      "quote": "found an algorithm to multiply 4x4 complex-valued matrices using 48 scalar multiplications",
+      "note": "Improved on Strassen's 1969 algorithm in this setting, and sped up a kernel used to train Gemini itself by 23%.",
+      "verified": true
+    },
+    {
+      "date": "2026-03",
+      "title": "autoresearch: AI agents running research on single-GPU nanochat training automatically",
+      "org": "Andrej Karpathy",
+      "kind": "event",
+      "url": "https://github.com/karpathy/autoresearch",
+      "archive": "2026-03_karpathy_autoresearch-readme.md",
+      "featured": true,
+      "quote": "It modifies the code, trains for 5 minutes, checks if the result improved",
+      "note": "Open-source loop in which a coding agent edits training code, runs short experiments and keeps what improves; widely forked.",
+      "verified": true
+    },
+    {
+      "date": "2026-09",
+      "title": "On the Navier–Stokes Millennium Prize Problem",
+      "org": "OpenAI",
+      "kind": "event",
+      "url": "https://openai.com/index/navier-stokes-solution/",
+      "pdf": "https://cdn.openai.com/pdf/32d9f210-8b73-45e0-91bc-82a30aef8a9a/navier-stokes.pdf",
+      "archive": "2026-09_openai_navier-stokes-finite-time-blowup.pdf",
+      "featured": true,
+      "quote": "develops unbounded velocity in finite time while maintaining uniformly bounded kinetic energy",
+      "note": "Claimed AI-produced proof of finite-time blowup (with a smooth force); not yet independently verified, and disputed over priority with a human preprint.",
+      "verified": true
+    }
+  ]
+}

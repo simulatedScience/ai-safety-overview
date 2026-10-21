@@ -1,0 +1,344 @@
+{
+  "id": "long-task-autonomy",
+  "title": "Long-task autonomy",
+  "summary": "AI agents complete ever longer tasks without human help: the length of software tasks they finish has roughly doubled every four months since 2023. Whether this is turning into job losses is contested; so far the clearest signal is fewer hires of young workers in AI-exposed jobs.",
+  "definition": "Long-task autonomy is the length and complexity of work an AI agent can complete on its own, without human help along the way.",
+  "development": "On METR's time-horizon suite, the length of software tasks (in human expert time) that frontier agents complete with 50% success grew from a few minutes in 2023 to around 12 hours by early 2026, beyond what the suite can reliably measure. Benchmarks built from real paid work moved more slowly: the best agent automated 2.5% of Remote Labor Index freelance projects in October 2025 and 15.8% by July 2026. Labour-market evidence is mixed: studies found no economy-wide disruption through 2025, while payroll data show employment of 22–25-year-olds in AI-exposed occupations falling behind their peers, mainly through fewer hires, and in 2026 US employers cited AI as the leading reason for announced job cuts.",
+  "methods": "Capability is measured with task suites timed against human experts (METR) and benchmarks built from real paid work (GDPval, Remote Labor Index); labour-market effects with payroll data, firm surveys and employers' stated layoff reasons. Task suites miss the messiness of real jobs, stated layoff reasons are not verified causes, and labour data lag and are hard to attribute to AI.",
+  "chart": {
+    "kind": "line",
+    "title": "METR 50% time horizon (Time Horizon 1.1)",
+    "yLabel": "Human task length at 50% agent success",
+    "yScale": "log",
+    "yFormat": "duration",
+    "connect": false,
+    "series": [
+      {
+        "label": "State of the art at release (per METR)",
+        "points": [
+          {
+            "x": "2023-03",
+            "y": 4.0,
+            "label": "GPT-4",
+            "verified": true
+          },
+          {
+            "x": "2023-11",
+            "y": 4.0,
+            "label": "GPT-4 Turbo (1106)",
+            "verified": true
+          },
+          {
+            "x": "2024-05",
+            "y": 7.0,
+            "label": "GPT-4o",
+            "verified": true
+          },
+          {
+            "x": "2024-06",
+            "y": 11.4,
+            "label": "Claude 3.5 Sonnet (Jun 2024)",
+            "verified": true
+          },
+          {
+            "x": "2024-09",
+            "y": 20.3,
+            "label": "o1-preview",
+            "verified": true
+          },
+          {
+            "x": "2024-10",
+            "y": 20.5,
+            "label": "Claude 3.5 Sonnet (Oct 2024)",
+            "verified": true
+          },
+          {
+            "x": "2024-12",
+            "y": 38.8,
+            "label": "o1",
+            "verified": true
+          },
+          {
+            "x": "2025-02",
+            "y": 60.4,
+            "label": "Claude 3.7 Sonnet",
+            "verified": true
+          },
+          {
+            "x": "2025-04",
+            "y": 119.7,
+            "label": "o3",
+            "verified": true
+          },
+          {
+            "x": "2025-08",
+            "y": 203.0,
+            "label": "GPT-5",
+            "verified": true
+          },
+          {
+            "x": "2025-11",
+            "y": 293.0,
+            "label": "Claude Opus 4.5",
+            "verified": true
+          },
+          {
+            "x": "2025-11",
+            "y": 224.3,
+            "label": "Gemini 3 Pro",
+            "verified": true
+          },
+          {
+            "x": "2025-12",
+            "y": 352.2,
+            "label": "GPT-5.2",
+            "verified": true
+          },
+          {
+            "x": "2026-02",
+            "y": 718.8,
+            "label": "Claude Opus 4.6",
+            "verified": true
+          },
+          {
+            "x": "2026-04",
+            "y": 960,
+            "label": "Claude Mythos Preview (early snapshot)",
+            "verified": true,
+            "lowerBound": true
+          }
+        ]
+      },
+      {
+        "label": "Other models",
+        "points": [
+          {
+            "x": "2024-03",
+            "y": 4.0,
+            "label": "Claude 3 Opus",
+            "verified": true
+          },
+          {
+            "x": "2024-04",
+            "y": 3.7,
+            "label": "GPT-4 Turbo (2024-04)",
+            "verified": true
+          },
+          {
+            "x": "2025-05",
+            "y": 100.4,
+            "label": "Claude Opus 4",
+            "verified": true
+          },
+          {
+            "x": "2025-08",
+            "y": 100.5,
+            "label": "Claude Opus 4.1",
+            "verified": true
+          },
+          {
+            "x": "2025-11",
+            "y": 223.7,
+            "label": "GPT-5.1-Codex-Max",
+            "verified": true
+          },
+          {
+            "x": "2026-02",
+            "y": 349.5,
+            "label": "GPT-5.3-Codex",
+            "verified": true
+          },
+          {
+            "x": "2026-02",
+            "y": 384.1,
+            "label": "Gemini 3.1 Pro",
+            "verified": true
+          },
+          {
+            "x": "2026-03",
+            "y": 341.7,
+            "label": "GPT-5.4",
+            "verified": true
+          },
+          {
+            "x": "2026-06",
+            "y": 678,
+            "label": "GPT-5.6 Sol",
+            "verified": true
+          }
+        ]
+      }
+    ],
+    "source": {
+      "title": "Time horizons of AI agents (TH1.1 data)",
+      "org": "METR",
+      "date": "2026-05",
+      "url": "https://metr.org/time-horizons/"
+    },
+    "caveat": "METR: measurements above 16 h are unreliable with the current task suite, so Mythos Preview is shown at METR's stated lower bound of 16 h. GPT-5.6 Sol is from METR's June 2026 evaluation post. Pre-2023 models are omitted because only TH1.0 estimates exist for them. Values include METR's March 2026 regularization correction."
+  },
+  "entries": [
+    {
+      "date": "2025-03",
+      "title": "Measuring AI Ability to Complete Long Software Tasks",
+      "org": "METR (Kwa et al.)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2503.14499",
+      "pdf": "https://arxiv.org/pdf/2503.14499",
+      "archive": "2025-03_metr_time-horizons.pdf",
+      "featured": true,
+      "quote": "frontier AI time horizon has doubled approximately every seven months since 2019",
+      "note": "Introduced the time-horizon metric behind the headline chart (version 1.0; the chart uses the later 1.1 suite).",
+      "verified": true
+    },
+    {
+      "date": "2025-07",
+      "title": "Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity",
+      "org": "METR (Becker, Rush, Barnes & Rein)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2507.09089",
+      "pdf": "https://arxiv.org/pdf/2507.09089",
+      "archive": "2025-07_metr_developer-productivity-rct.pdf",
+      "featured": true,
+      "quote": "AI tooling slowed developers down",
+      "note": "In a randomised trial, experienced open-source developers took 19% longer with early-2025 AI tools, while believing they had been sped up by 20%; benchmark gains do not translate directly into real-world speed-ups.",
+      "verified": true
+    },
+    {
+      "date": "2025-09",
+      "title": "Are Businesses Scaling Back Hiring Due to AI?",
+      "org": "Federal Reserve Bank of New York (Liberty Street Economics)",
+      "kind": "report",
+      "url": "https://libertystreeteconomics.newyorkfed.org/2025/09/are-businesses-scaling-back-hiring-due-to-ai/",
+      "archive": "2025-09_nyfed_scaling-back-hiring-ai.html",
+      "featured": false,
+      "quote": "yet very few firms reported AI-induced layoffs",
+      "note": "Regional firm surveys (Aug 2025): AI use among service firms rose to 40%, only 1% reported AI-related layoffs, but about 12% of AI-using service firms hired fewer workers because of it.",
+      "verified": true
+    },
+    {
+      "date": "2025-10",
+      "title": "Evaluating the Impact of AI on the Labor Market: Current State of Affairs",
+      "org": "The Budget Lab at Yale & Brookings (Gimbel, Kinder, Kendall & Lee)",
+      "kind": "report",
+      "url": "https://budgetlab.yale.edu/research/evaluating-impact-ai-labor-market-current-state-affairs",
+      "archive": "2025-10_yale-budget-lab_ai-labor-market.html",
+      "featured": true,
+      "quote": "the broader labor market has not experienced a discernible disruption since ChatGPT’s release",
+      "note": "Counterweight to displacement fears: the occupational mix is shifting only slightly faster than in past technology waves, and the shift began before generative AI.",
+      "verified": true
+    },
+    {
+      "date": "2025-10",
+      "title": "GDPval: Evaluating AI Model Performance on Real-World Economically Valuable Tasks",
+      "org": "OpenAI (Patwardhan et al.)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2510.04374",
+      "pdf": "https://arxiv.org/pdf/2510.04374",
+      "archive": "2025-10_openai_gdpval.pdf",
+      "featured": true,
+      "quote": "the current best frontier models are approaching industry experts in deliverable quality",
+      "note": "1,320 tasks from 44 occupations, built from real work of professionals averaging 14 years of experience and graded blind by experts; announced by OpenAI in Sep 2025, arXiv Oct 2025.",
+      "verified": true
+    },
+    {
+      "date": "2025-10",
+      "title": "Remote Labor Index: Measuring AI Automation of Remote Work",
+      "org": "Scale AI & Center for AI Safety (Mazeika et al.)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2510.26787",
+      "pdf": "https://arxiv.org/pdf/2510.26787",
+      "archive": "2025-10_scale-cais_remote-labor-index.pdf",
+      "featured": true,
+      "quote": "the highest-performing agent achieving an automation rate of 2.5%",
+      "note": "240 real freelance projects worth $144,000: AI deliverables were rarely as good as a paid professional's, a reality check on task-length benchmarks.",
+      "verified": true
+    },
+    {
+      "date": "2026-01",
+      "title": "Time Horizon 1.1",
+      "org": "METR",
+      "kind": "report",
+      "url": "https://metr.org/blog/2026-01-29-time-horizon-1-1/",
+      "archive": "2026-01_metr_time-horizon-1-1.html",
+      "featured": false,
+      "quote": "The new estimates generally lie within the confidence intervals from the TH1 time horizons.",
+      "note": "Expanded the task suite (170 to 228 tasks); post-2023 doubling time estimated at about 131 days.",
+      "verified": true
+    },
+    {
+      "date": "2026-01",
+      "title": "The Anthropic Economic Index report: Economic Primitives",
+      "org": "Anthropic (Appel, Massenkoff, McCrory et al.)",
+      "kind": "report",
+      "url": "https://www.anthropic.com/research/anthropic-economic-index-january-2026-report",
+      "archive": "2026-01_anthropic_economic-index-primitives.pdf",
+      "featured": false,
+      "quote": "three-quarters of interactions classified as automation compared to less than half on Claude.ai",
+      "note": "Usage data (Nov 2025): businesses using Claude through the API mostly delegate whole tasks, while consumer use shifted back toward collaboration; adds measures of task complexity and AI autonomy.",
+      "verified": true
+    },
+    {
+      "date": "2026-05",
+      "title": "Frontier Risk Report (February to March 2026)",
+      "org": "METR",
+      "kind": "report",
+      "url": "https://metr.org/blog/2026-05-19-frontier-risk-report/",
+      "pdf": "https://metr.org/risk-report-feb-mar-2026.pdf",
+      "archive": "2026-05_metr_frontier-risk-report.pdf",
+      "featured": true,
+      "quote": "internal frontier on average ~2 months ahead of public frontier",
+      "note": "With access to labs' internal models, METR judged the internal frontier likely at 16 h or more, beyond what its suite can measure.",
+      "verified": true
+    },
+    {
+      "date": "2026-06",
+      "title": "Summary of METR's predeployment evaluation of GPT-5.6 Sol",
+      "org": "METR",
+      "kind": "report",
+      "url": "https://metr.org/blog/2026-06-26-gpt-5-6-sol/",
+      "archive": "2026-06_metr_gpt-5-6-sol.html",
+      "featured": false,
+      "quote": "a 50%-Time Horizon point estimate of around 11.3hrs (95% CI: 5hrs - 40hrs)",
+      "note": "Counting cheating attempts as successes would push the estimate above 270 hours; METR calls none of the variants robust.",
+      "verified": true
+    },
+    {
+      "date": "2026-07",
+      "title": "A Significant Increase in Digital Labor Automation",
+      "org": "Center for AI Safety (Mazeika)",
+      "kind": "report",
+      "url": "https://safe.ai/blog/significant-increase-in-digital-labor-automation",
+      "archive": "2026-07_cais_rli-digital-labor-automation.html",
+      "featured": true,
+      "quote": "The newest frontier models automate substantially more real freelance work than their predecessors.",
+      "note": "On the Remote Labor Index, Claude Fable 5 automated 15.8% of projects, up from 4.17% (Opus 4.6) and 2.5% at launch in Oct 2025.",
+      "verified": true
+    },
+    {
+      "date": "2026-07",
+      "title": "Challenger Report: June 2026 job cuts",
+      "org": "Challenger, Gray & Christmas",
+      "kind": "report",
+      "url": "https://www.challengergray.com/wp-content/uploads/2026/08/Challenger-Report-June-2026.pdf",
+      "archive": "2026-08_challenger_job-cuts-june-2026.pdf",
+      "featured": false,
+      "quote": "Artificial Intelligence led all reasons for job cuts",
+      "note": "US employers cited AI for 31% of announced job cuts in June 2026 and about 23% in the first half of the year; these are stated reasons, not verified causes, and total cuts were down 40% on 2025.",
+      "verified": true
+    },
+    {
+      "date": "2026-08",
+      "title": "Canaries in the Coal Mine? Six Facts about the Recent Employment Effects of Artificial Intelligence (Aug 2026 revision)",
+      "org": "Stanford Digital Economy Lab (Brynjolfsson, Chandar & Chen)",
+      "kind": "paper",
+      "url": "https://digitaleconomy.stanford.edu/publication/canaries-in-the-coal-mine-six-facts-about-the-recent-employment-effects-of-artificial-intelligence/",
+      "pdf": "https://digitaleconomy.stanford.edu/app/uploads/2026/08/Canaries_August2026.pdf",
+      "archive": "2026-08_stanford_canaries-coal-mine.pdf",
+      "featured": true,
+      "quote": "We find no evidence of widespread, economy-wide job displacement.",
+      "note": "But employment of 22–25-year-olds in AI-exposed occupations is now 19% below where it would be had it kept pace with less-exposed peers, mainly through fewer hires (first reported in Aug 2025 as a 13% decline). The authors call this descriptive, not causal.",
+      "verified": true
+    }
+  ]
+}
