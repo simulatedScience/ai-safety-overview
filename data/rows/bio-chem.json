@@ -1,0 +1,148 @@
+{
+  "id": "bio-chem",
+  "title": "Bio/chem uplift",
+  "summary": "Studies in early 2024 found little or no uplift for biological attack planning. By 2025–26 models beat PhD experts on knowledge and troubleshooting tests, and labs began treating their models as capable of meaningful uplift.",
+  "intro": "This row tracks whether AI models could help people cause harm with biological or chemical weapons, as measured by knowledge benchmarks, uplift trials with human participants, and labs' own threshold decisions. Findings are described at the level of the sources' summaries. In January 2024, red-team studies from RAND and OpenAI found no significant or only mild uplift. Since then, models have overtaken experts on virology troubleshooting and on UK AISI's biology questions. Anthropic (May 2025) and OpenAI (July 2025) applied their highest deployed bio safeguards as a precaution. A Science paper showed that AI protein design tools could slip past DNA-synthesis screening until patched. By June 2026, Anthropic said its decision that Mythos 5 stays below the next threshold was much less clear-cut than for earlier models.",
+  "chart": {
+    "kind": "line",
+    "title": "UK AISI Biology QA: best model's score relative to PhD-holder experts",
+    "yLabel": "Score relative to PhD experts (1.0 = expert baseline)",
+    "yScale": "linear",
+    "yFormat": "number",
+    "yMin": 0,
+    "yMax": 1.8,
+    "series": [
+      {
+        "label": "Best model so far (Biology QA)",
+        "points": [
+          { "x": "2022-12", "y": 0.54, "label": "Best model to date (anonymised)", "verified": false },
+          { "x": "2024-03", "y": 1.02, "label": "Best model to date (anonymised)", "verified": true },
+          { "x": "2024-06", "y": 1.1, "label": "Best model to date (anonymised)", "verified": false },
+          { "x": "2024-09", "y": 1.24, "label": "Best model to date (anonymised)", "verified": false },
+          { "x": "2024-12", "y": 1.34, "label": "Best model to date (anonymised)", "verified": false },
+          { "x": "2025-04", "y": 1.59, "label": "Best model to date (anonymised)", "verified": false },
+          { "x": "2025-08", "y": 1.61, "label": "Best model to date (anonymised)", "verified": true }
+        ]
+      }
+    ],
+    "source": {
+      "title": "Frontier AI Trends Report, Figure 5",
+      "org": "UK AI Security Institute",
+      "date": "2025-12",
+      "url": "https://www.aisi.gov.uk/frontier-ai-trends-report"
+    },
+    "caveat": "Approximate: values digitised from AISI's Figure 5 (±0.03), x = model release month, models anonymised. PhD holders score about 38% in absolute terms. Filled points match the report text (models first reached the expert baseline in 2024 and now exceed it by up to 60%)."
+  },
+  "entries": [
+    {
+      "date": "2024-01",
+      "title": "The Operational Risks of AI in Large-Scale Biological Attacks: Results of a Red-Team Study",
+      "org": "RAND (Mouton, Lucas & Guest)",
+      "kind": "paper",
+      "url": "https://www.rand.org/pubs/research_reports/RRA2977-2.html",
+      "archive": "2024-01_rand_operational-risks-ai-bio-red-team.html",
+      "featured": true,
+      "quote": "no statistically significant difference in the viability of plans generated with or without LLM assistance",
+      "note": "The baseline: with 2023-era models, red teams planning a biological attack did no better than with the internet alone.",
+      "verified": true
+    },
+    {
+      "date": "2024-01",
+      "title": "Building an early warning system for LLM-aided biological threat creation",
+      "org": "OpenAI",
+      "kind": "paper",
+      "url": "https://openai.com/index/building-an-early-warning-system-for-llm-aided-biological-threat-creation/",
+      "archive": "2024-01_openai_early-warning-bio-threat.html",
+      "featured": false,
+      "quote": "we found that GPT‑4 provides at most a mild uplift in biological threat creation accuracy",
+      "note": "Uplift study with experts and students; the small gains were not statistically significant.",
+      "verified": true
+    },
+    {
+      "date": "2025-04",
+      "title": "Virology Capabilities Test (VCT): A Multimodal Virology Q&A Benchmark",
+      "org": "SecureBio, Center for AI Safety et al.",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2504.16137",
+      "pdf": "https://arxiv.org/pdf/2504.16137",
+      "archive": "2025-04_securebio_virology-capabilities-test.pdf",
+      "featured": true,
+      "quote": "the most performant LLM, OpenAI's o3, reaches 43.8% accuracy",
+      "note": "On expert-written lab troubleshooting questions, o3 outperformed 94% of virologists, who averaged 22.1% within their own sub-areas.",
+      "verified": true
+    },
+    {
+      "date": "2025-05",
+      "title": "Activating AI Safety Level 3 protections",
+      "org": "Anthropic",
+      "kind": "policy",
+      "url": "https://www.anthropic.com/news/activating-asl3-protections",
+      "archive": "2025-05_anthropic_activating-asl3-protections.html",
+      "featured": true,
+      "quote": "We are deploying Claude Opus 4 with our ASL-3 measures as a precautionary and provisional action.",
+      "note": "The first time a lab deployed a model under bio-focused ASL-3 safeguards, because it could no longer rule out the threshold.",
+      "verified": true
+    },
+    {
+      "date": "2025-07",
+      "title": "ChatGPT agent System Card",
+      "org": "OpenAI",
+      "kind": "system-card",
+      "url": "https://openai.com/index/chatgpt-agent-system-card/",
+      "archive": "2025-07_openai_chatgpt-agent-system-card.html",
+      "featured": true,
+      "quote": "We have decided to treat this launch as High capability in the Biological and Chemical domain",
+      "note": "OpenAI's first launch treated as High bio/chem capability under its Preparedness Framework, also as a precaution.",
+      "verified": true
+    },
+    {
+      "date": "2025-10",
+      "title": "Strengthening nucleic acid biosecurity screening against generative protein design tools",
+      "org": "Wittmann et al. (Microsoft and partners), Science",
+      "kind": "paper",
+      "url": "https://www.science.org/doi/10.1126/science.adu8578",
+      "archive": "2025-10_wittmann_science-nucleic-acid-screening.html",
+      "featured": true,
+      "quote": "identifying a vulnerability where AI-redesigned sequences could not be detected reliably by current tools",
+      "note": "AI protein-design tools could produce variants that DNA synthesis screening missed. Patches were developed and deployed with synthesis providers before publication.",
+      "verified": true
+    },
+    {
+      "date": "2025-12",
+      "title": "Frontier AI Trends Report",
+      "org": "UK AI Security Institute",
+      "kind": "report",
+      "url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+      "pdf": "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/6943e6c11cb5bfd8178443f9_Frontier%20AI%20Trends%20Report%20-%20UK%20AISI%202025%20-%20compressed.pdf",
+      "archive": "2025-12_aisi_frontier-ai-trends-report.pdf",
+      "featured": true,
+      "quote": "Models now outperform PhD-level experts on open-ended questions, protocol generation, and lab-based troubleshooting.",
+      "note": "Non-experts using frontier models had 4.7× higher odds of writing a feasible viral-recovery protocol than those using only the internet.",
+      "verified": true
+    },
+    {
+      "date": "2026-04",
+      "title": "System Card: Claude Mythos Preview (biological risk)",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-mythos-preview-system-card",
+      "archive": "2026-04_anthropic_claude-mythos-preview-system-card.pdf",
+      "featured": true,
+      "quote": "a view of the model as a powerful force-multiplier of existing capabilities",
+      "note": "Red teamers found strong synthesis of published knowledge but weak novel planning. Anthropic judged it below the novel-weapons (CB-2) threshold.",
+      "verified": true
+    },
+    {
+      "date": "2026-06",
+      "title": "System Card: Claude Fable 5 & Claude Mythos 5",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-fable-5-mythos-5-system-card",
+      "archive": "2026-06_anthropic_claude-fable-5-mythos-5-system-card.pdf",
+      "featured": false,
+      "quote": "this is a much less clear judgment than for previous models",
+      "note": "Anthropic treats Mythos 5 as CB-1 capable. It judges it still below CB-2 but says it can likely accelerate well-resourced expert teams.",
+      "verified": true
+    }
+  ]
+}

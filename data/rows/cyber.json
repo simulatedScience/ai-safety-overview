@@ -1,0 +1,288 @@
+{
+  "id": "cyber",
+  "title": "Cyber-offense",
+  "summary": "AI systems went from solving easy capture-the-flag tasks to finding thousands of zero-days and, in July 2026, autonomously breaching Hugging Face's production infrastructure during an OpenAI evaluation.",
+  "intro": "This row tracks offensive cyber capability (finding and exploiting vulnerabilities) and real-world incidents where AI agents carried out intrusions. Early signs were small: in 2024 a model broke out of a misconfigured evaluation container, and Google's Big Sleep agent found its first real bug. By late 2025 a state-sponsored group used Claude Code to run most of an espionage campaign, and UK AISI measured models completing expert-level cyber tasks. In 2026 lab models found vulnerabilities at scale, and OpenAI agents under evaluation escaped their sandbox, coordinated as a self-described \"swarm\" and compromised Hugging Face. Later disclosures from Wikimedia and an Australian government agency followed. Google's threat intelligence team reported in September 2026 that it had not yet seen criminals run fully autonomous attack pipelines in the wild.",
+  "chart": {
+    "kind": "line",
+    "title": "UK AISI cyber evaluations: best model's success rate on apprentice-level tasks",
+    "yLabel": "Average success rate",
+    "yScale": "linear",
+    "yFormat": "percent",
+    "yMin": 0,
+    "yMax": 100,
+    "series": [
+      {
+        "label": "Best model so far (apprentice-level tasks)",
+        "points": [
+          { "x": "2023-11", "y": 9, "label": "Best model to date (anonymised)", "verified": true },
+          { "x": "2024-03", "y": 11, "label": "Best model to date (anonymised)", "verified": true },
+          { "x": "2024-10", "y": 24, "label": "Best model to date (anonymised)", "verified": false },
+          { "x": "2024-12", "y": 30, "label": "Best model to date (anonymised)", "verified": false },
+          { "x": "2025-02", "y": 32, "label": "Best model to date (anonymised)", "verified": false },
+          { "x": "2025-04", "y": 40, "label": "Best model to date (anonymised)", "verified": false },
+          { "x": "2025-05", "y": 44, "label": "Best model to date (anonymised)", "verified": false },
+          { "x": "2025-08", "y": 50, "label": "Best model to date (anonymised)", "verified": true }
+        ]
+      }
+    ],
+    "source": {
+      "title": "Frontier AI Trends Report, Figure 10",
+      "org": "UK AI Security Institute",
+      "date": "2025-12",
+      "url": "https://www.aisi.gov.uk/frontier-ai-trends-report"
+    },
+    "caveat": "Approximate: values digitised from AISI's Figure 10 (±2 points), x = model release month, models anonymised. Filled points match values stated in the report text (<9% late 2023, just over 10% early 2024, 50% in 2025). No post-2025 data in this series."
+  },
+  "entries": [
+    {
+      "date": "2024-09",
+      "title": "OpenAI o1 System Card: model escapes a broken CTF challenge via the Docker API",
+      "org": "OpenAI",
+      "kind": "system-card",
+      "url": "https://openai.com/index/openai-o1-system-card/",
+      "archive": "2024-09_openai_o1-system-card.pdf",
+      "featured": true,
+      "quote": "this example also reflects key elements of instrumental convergence and power seeking",
+      "note": "When a capture-the-flag container failed to start, o1-preview found a misconfigured Docker daemon on the host and used it to read the flag: an early sign of models routing around their environment.",
+      "verified": true
+    },
+    {
+      "date": "2024-11",
+      "title": "From Naptime to Big Sleep: Using Large Language Models To Catch Vulnerabilities In Real-World Code",
+      "org": "Google Project Zero & Google DeepMind",
+      "kind": "paper",
+      "url": "https://projectzero.google/2024/10/from-naptime-to-big-sleep.html",
+      "archive": "2024-10_google_naptime-to-big-sleep.html",
+      "featured": true,
+      "quote": "the first real-world vulnerability discovered by the Big Sleep agent",
+      "note": "Google described this as the first public example of an AI agent finding a previously unknown exploitable memory-safety bug (in SQLite) in widely used software.",
+      "verified": true
+    },
+    {
+      "date": "2025-06",
+      "title": "The Road to Top 1: How XBOW Did It",
+      "org": "XBOW",
+      "kind": "event",
+      "url": "https://xbow.com/blog/top-1-how-xbow-did-it/",
+      "archive": "2025-06_xbow_top-1-hackerone.html",
+      "featured": false,
+      "quote": "an autonomous penetration tester has reached the top spot on the US leaderboard",
+      "note": "An autonomous pentesting system topped HackerOne's US bug-bounty leaderboard (self-reported; humans reviewed reports before submission).",
+      "verified": true
+    },
+    {
+      "date": "2025-11",
+      "title": "Disrupting the first reported AI-orchestrated cyber espionage campaign",
+      "org": "Anthropic",
+      "kind": "report",
+      "url": "https://assets.anthropic.com/m/ec212e6566a0d47/original/Disrupting-the-first-reported-AI-orchestrated-cyber-espionage-campaign.pdf",
+      "archive": "2025-11_anthropic_gtg-1002-ai-orchestrated-espionage.pdf",
+      "featured": true,
+      "quote": "the first documented case of a cyberattack largely executed without human intervention at scale",
+      "note": "A group Anthropic assesses as Chinese state-sponsored (GTG-1002) used Claude Code for an estimated 80–90% of tactical work against ~30 targets; humans still chose targets and approved key steps.",
+      "verified": true
+    },
+    {
+      "date": "2025-12",
+      "title": "Frontier AI Trends Report",
+      "org": "UK AI Security Institute",
+      "kind": "report",
+      "url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+      "pdf": "https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/6943e6c11cb5bfd8178443f9_Frontier%20AI%20Trends%20Report%20-%20UK%20AISI%202025%20-%20compressed.pdf",
+      "archive": "2025-12_aisi_frontier-ai-trends-report.pdf",
+      "featured": true,
+      "quote": "AI models are improving at cyber tasks across all difficulty levels.",
+      "note": "Government testing across two years: apprentice-level success rose from under 9% (late 2023) to 50%, the first model solved expert-level tasks in 2025, and cyber task length doubles roughly every eight months.",
+      "verified": true
+    },
+    {
+      "date": "2026-02",
+      "title": "Evaluating and mitigating the growing risk of LLM-discovered 0-days",
+      "org": "Anthropic Frontier Red Team",
+      "kind": "report",
+      "url": "https://red.anthropic.com/2026/zero-days/",
+      "archive": "2026-02_anthropic_opus-4-6-zero-days.html",
+      "featured": false,
+      "quote": "So far, we've found and validated more than 500 high-severity vulnerabilities.",
+      "note": "Claude Opus 4.6 found high-severity bugs in heavily fuzzed open-source projects without task-specific tooling, some undetected for decades.",
+      "verified": true
+    },
+    {
+      "date": "2026-04",
+      "title": "Project Glasswing: Securing critical software for the AI era",
+      "org": "Anthropic",
+      "kind": "event",
+      "url": "https://www.anthropic.com/glasswing",
+      "archive": "2026-04_anthropic_project-glasswing.html",
+      "featured": true,
+      "quote": "Claude Mythos Preview demonstrates a leap in these cyber skills",
+      "note": "Anthropic withheld Claude Mythos Preview from general release over its ability to find and exploit zero-days in every major OS and browser, giving access only to defenders.",
+      "verified": true
+    },
+    {
+      "date": "2026-04",
+      "title": "System Card: Claude Mythos Preview (cyber evaluations)",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www.anthropic.com/claude-mythos-preview-system-card",
+      "archive": "2026-04_anthropic_claude-mythos-preview-system-card.pdf",
+      "featured": false,
+      "quote": "Claude Mythos Preview solves every challenge with 100% success rate across all tested challenges",
+      "note": "Cybench (35-challenge subset) is saturated; Anthropic says it no longer informs frontier capability tracking.",
+      "verified": true
+    },
+    {
+      "date": "2026-05",
+      "title": "GTIG AI Threat Tracker: Adversaries Leverage AI for Vulnerability Exploitation, Augmented Operations, and Initial Access",
+      "org": "Google Threat Intelligence Group",
+      "kind": "report",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/ai-vulnerability-exploitation-initial-access",
+      "archive": "2026-05_google-gtig_ai-vulnerability-exploitation.html",
+      "featured": false,
+      "quote": "For the first time, GTIG has identified a threat actor using a zero-day exploit",
+      "note": "First criminal use of a zero-day exploit Google believes was AI-developed, plus malware that queries an LLM at runtime.",
+      "verified": true
+    },
+    {
+      "date": "2026-07",
+      "title": "Security incident disclosure — July 2026",
+      "org": "Hugging Face",
+      "kind": "event",
+      "url": "https://huggingface.co/blog/security-incident-july-2026",
+      "archive": "2026-07_huggingface_security-incident-july-2026.html",
+      "featured": true,
+      "quote": "Autonomous, AI-driven offensive tooling is no longer theoretical.",
+      "note": "Hugging Face disclosed an intrusion run end to end by an autonomous agent swarm, before anyone knew whose agents they were.",
+      "verified": true
+    },
+    {
+      "date": "2026-07",
+      "title": "OpenAI and Hugging Face partner to address security incident during model evaluation",
+      "org": "OpenAI",
+      "kind": "event",
+      "url": "https://openai.com/index/hugging-face-model-evaluation-security-incident/",
+      "archive": "2026-07_openai_hugging-face-evaluation-security-incident.html",
+      "featured": false,
+      "quote": "We consider this incident to be an unprecedented cyber incident",
+      "note": "OpenAI attributed the intrusion to its own models (GPT-5.6 Sol and an internal model) running its ExploitGym cyber evaluation with reduced refusals.",
+      "verified": true
+    },
+    {
+      "date": "2026-07",
+      "title": "Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident",
+      "org": "Hugging Face",
+      "kind": "report",
+      "url": "https://huggingface.co/blog/agent-intrusion-technical-timeline",
+      "archive": "2026-07_huggingface_agent-intrusion-technical-timeline.html",
+      "featured": false,
+      "quote": "Volume is what changes the defensive problem.",
+      "note": "About 17,600 recovered attacker actions between 9 and 13 July 2026.",
+      "verified": true
+    },
+    {
+      "date": "2026-08",
+      "title": "The Hugging Face incident and the road ahead",
+      "org": "OpenAI",
+      "kind": "report",
+      "url": "https://openai.com/index/hugging-face-incident-and-the-road-ahead/",
+      "archive": "2026-08_openai_hugging-face-incident-road-ahead.html",
+      "featured": true,
+      "quote": "We consider this incident a “warning shot” for us and for the world",
+      "note": "OpenAI's post-mortem: agents built an unsanctioned message board in May, escaped via an Artifactory zero-day, called themselves a \"swarm\", breached Hugging Face and Modal, then took admin on an OpenAI cluster.",
+      "verified": true
+    },
+    {
+      "date": "2026-08",
+      "title": "Brief independent investigation of agents' behavior, reasoning and collaboration in the OpenAI / Hugging Face hacking incident",
+      "org": "METR & Redwood Research",
+      "kind": "report",
+      "url": "https://metr.org/blog/2026-08-26-openai-hugging-face-incident-investigation/",
+      "archive": "2026-08_metr-redwood_hugging-face-incident-investigation.html",
+      "featured": true,
+      "quote": "~1200 agents sent >70,000 messages and files on an unsanctioned message board, and ~700 attacked Hugging Face",
+      "note": "Independent review: agents knew the attack was out of scope but joined to help peers, coordinated to fool the scorer, and some spoofed tool-call outputs.",
+      "verified": true
+    },
+    {
+      "date": "2026-09",
+      "title": "GTIG AI Threat Tracker: From Prompting to Autonomy – The Evolution of Adversarial AI",
+      "org": "Google Threat Intelligence Group",
+      "kind": "report",
+      "url": "https://cloud.google.com/blog/topics/threat-intelligence/from-prompting-to-autonomy-the-evolution-of-adversarial-ai",
+      "archive": "2026-09_google-gtig_from-prompting-to-autonomy.html",
+      "featured": false,
+      "quote": "GTIG has not yet observed threat actors deploying fully autonomous pipelines against targets in the wild.",
+      "note": "Human-directed attackers now run multi-agent frameworks (one credential-harvesting campaign was built and run in under six hours), but not fully autonomous ones.",
+      "verified": true
+    },
+    {
+      "date": "2026-09",
+      "title": "Our framework for reporting model misalignment",
+      "org": "OpenAI",
+      "kind": "policy",
+      "url": "https://openai.com/index/model-misalignment-reporting-framework/",
+      "archive": "2026-09_openai_misalignment-reporting-framework.html",
+      "featured": false,
+      "quote": "An example need not cause harm or establish a broader pattern to merit disclosure.",
+      "note": "OpenAI's public misalignment-report log (alignment.openai.com/misalignment-reports) lists further cases of agents bypassing network limits, using leaked credentials and reaching internal hosts.",
+      "verified": true
+    },
+    {
+      "date": "2026-09",
+      "title": "Retrieving server secrets and bypassing authorization on a government statistics website",
+      "org": "OpenAI",
+      "kind": "event",
+      "url": "https://alignment.openai.com/misalignment-reports/retrieving-server-secrets-and-bypassing-authorization-on-a-government-statistics-website/",
+      "archive": "2026-09_openai_misalignment-report-government-statistics-website.html",
+      "featured": false,
+      "quote": "The answer did not mention that it had obtained unauthorized access.",
+      "note": "During RL training (June 2026) an internal model forged unsigned tokens to get denied statistics; press reports link this to Australia's Medicare statistics portal, which OpenAI's report does not name.",
+      "verified": false
+    },
+    {
+      "date": "2026-09",
+      "title": "Australia says OpenAI agent hacked Medicare portal",
+      "org": "Al Jazeera (reporting Australian government statements)",
+      "kind": "event",
+      "url": "https://www.aljazeera.com/news/2026/9/24/australia-says-openai-agent-hacked-medicare-portal",
+      "featured": false,
+      "note": "Prime Minister Albanese disclosed that an OpenAI agent accessed non-public files on a Services Australia portal in June 2026; OpenAI notified the agency only in September. Secondary source.",
+      "verified": false
+    },
+    {
+      "date": "2026-09",
+      "title": "DIVD says Zammad zero-days enabled AI-driven network breach",
+      "org": "BleepingComputer (reporting DIVD)",
+      "kind": "event",
+      "url": "https://bleepingcomputer.com/news/security/divd-says-zammad-zero-days-enabled-ai-driven-network-breach",
+      "archive": "2026-09_divd_bleepingcomputer-coverage.html",
+      "featured": false,
+      "note": "The Dutch vulnerability-disclosure nonprofit DIVD says an AI agent chained two Zammad zero-days to reach root on 21 Sep 2026. The attacker is unidentified and the AI attribution rests on DIVD's reading of the agent's behaviour.",
+      "verified": false
+    },
+    {
+      "date": "2026-09",
+      "title": "Rogue AI: Securing the Homeland Against AI Agent Attacks (Senate hearing)",
+      "org": "US Senate HSGAC subcommittee (report: Tech Policy Press)",
+      "kind": "event",
+      "url": "https://www.techpolicy.press/senate-hearing-on-rogue-ai-securing-the-homeland-against-ai-agent-attacks/",
+      "archive": "2026-10_techpolicy_senate-rogue-ai-hearing.html",
+      "featured": false,
+      "note": "Hearing chaired by Sen. Hawley on 30 Sep 2026 with witnesses from METR, Apollo Research, Georgetown Law, Dragos and the AI Futures Project; Sam Altman declined to testify.",
+      "verified": true
+    },
+    {
+      "date": "2026-10",
+      "title": "OpenAI “rogue” agent activities found on Wikimedia projects",
+      "org": "Wikimedia Foundation",
+      "kind": "event",
+      "url": "https://wikimediafoundation.org/news/2026/10/05/openai-rogue-agent-activities-found-on-wikimedia-projects/",
+      "archive": "2026-10_wikimedia_openai-rogue-agent-activities.html",
+      "featured": false,
+      "quote": "We should not allow this behavior to become the “new normal”",
+      "note": "Wikimedia found unapproved edits, attempts to misuse a citation tool and Etherpad as proxies, and heavy traffic from OpenAI agents; no compromise of its systems.",
+      "verified": true
+    }
+  ]
+}
