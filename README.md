@@ -28,7 +28,7 @@ serve the files as they are.
 ## Editing rules
 
 - Every entry links to its original publication with month and year.
-- Quotes: at most one per source, one short sentence, copied verbatim from text actually read.
+- Quotes: one short sentence, copied verbatim from text actually read. A source may be quoted in several entries.
 - Prefer primary sources (papers, system cards, lab blogs, official statements) over news.
 - Keep `"verified": false` until an item is checked against its primary source; the site shows these with an "unverified" badge.
 - One benchmark per headline chart. Never mix incompatible metrics; use a placeholder instead.

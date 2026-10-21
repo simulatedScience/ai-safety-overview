@@ -8,7 +8,7 @@ Today's date when this note was written: 21 Oct 2026. Much of the 2026 material 
 - **Ask before important decisions or uncertainties** unless explicitly told to work autonomously. Wrong assumptions cost more to fix later than asking early.
 - **Be explicit and concise.**
   - Every item needs a link to the original publication and its date (month + year).
-  - Quotes must be ≤ 1 sentence, ideally under one line (~15 words), with at most one quote per source.
+  - Quotes must be ≤ 1 sentence, ideally under one line (~15 words). (A source may be quoted several times; the earlier "one quote per source" rule was dropped by the user, 21 Oct 2026.)
   - Only quote text you have actually read in the source. Paraphrase otherwise.
 - Prefer primary sources (papers, system cards, lab blogs, official statements) over news coverage.
 
