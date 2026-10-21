@@ -133,6 +133,7 @@ function barConfig(spec, colours) {
       indexAxis: spec.horizontal ? "y" : "x",
       parsing: { xAxisKey: spec.horizontal ? "y" : "x", yAxisKey: spec.horizontal ? "x" : "y" },
       scales: {
+        [spec.horizontal ? "y" : "x"]: { ticks: { autoSkip: false, font: { size: 11 } } },
         [spec.horizontal ? "x" : "y"]: {
           min: spec.yMin ?? 0,
           max: spec.yMax,

@@ -28,6 +28,8 @@ async function main() {
         el("td", { class: "chart" }, chartBox, meta)));
       renderChart(chartBox, row.chart);
     }
+    // Rows render after load, so the browser's own jump to #<row-id> finds nothing.
+    if (location.hash) document.getElementById(location.hash.slice(1))?.scrollIntoView();
   } catch (err) {
     showError(body.closest("main"), err);
   }
