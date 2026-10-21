@@ -1,0 +1,193 @@
+{
+  "id": "persuasion",
+  "title": "Persuasion, manipulation & sycophancy",
+  "summary": "Models write arguments that shift people's views about as well as humans do, tell users what they want to hear, and are now used by millions of people for emotional support. Labs have started tracking large-scale manipulation as a risk category.",
+  "definition": "AI systems changing what people believe or do, whether by argument (persuasion), by deceptive or exploitative means (manipulation), or by telling users what they want to hear instead of what is accurate (sycophancy).",
+  "development": "Sycophancy was documented as a general trait of preference-trained assistants in 2023, and a sycophantic ChatGPT update reached millions of users in 2025 before being rolled back. Controlled studies in 2024–25 found model-written arguments about as persuasive as human ones, rising with model generation, though a 77,000-person study found post-training and prompting matter more than scale and reduce accuracy. Real-world harms followed: a covert AI persuasion experiment on Reddit, lawsuits alleging chatbots encouraged self-harm, and a third of UK adults using AI for emotional support. By 2026 a frontier model could run simulated influence campaigns end to end.",
+  "methods": "Measured with human-participant studies (opinion change after reading or debating AI output) and, for manipulation, agentic simulations of influence campaigns. Human studies are slow, measure short-term shifts on low-stakes topics, and lag model releases; simulations against simulated targets saturate and say little about effects on real people.",
+  "chart": {
+    "kind": "bar",
+    "title": "Anthropic persuasion study: opinion change after reading one argument",
+    "yLabel": "Mean change in agreement (1–7 scale)",
+    "yFormat": "number",
+    "yMin": 0,
+    "series": [
+      {
+        "label": "Mean persuasiveness",
+        "points": [
+          { "x": "2024-04", "y": 0.07, "label": "Control (indisputable claims)", "verified": true },
+          { "x": "2024-04", "y": 0.34, "label": "Claude 1.3", "verified": true },
+          { "x": "2024-04", "y": 0.34, "label": "Claude Instant 1.2", "verified": true },
+          { "x": "2024-04", "y": 0.42, "label": "Claude 2", "verified": true },
+          { "x": "2024-04", "y": 0.44, "label": "Claude 3 Haiku", "verified": true },
+          { "x": "2024-04", "y": 0.48, "label": "Claude 3 Opus", "verified": true },
+          { "x": "2024-04", "y": 0.54, "label": "Human-written", "verified": true }
+        ]
+      }
+    ],
+    "source": {
+      "title": "Measuring the Persuasiveness of Language Models (dataset)",
+      "org": "Anthropic",
+      "date": "2024-04",
+      "url": "https://huggingface.co/datasets/Anthropic/persuasion"
+    },
+    "caveat": "Means computed from Anthropic's released dataset (all four prompt styles pooled; ~670 ratings per model). Anthropic models only, measured once in 2024. The blog also reports Claude 3 Sonnet at 0.34, which is not in the dataset."
+  },
+  "entries": [
+    {
+      "date": "2023-10",
+      "title": "Towards Understanding Sycophancy in Language Models",
+      "org": "Sharma et al. (Anthropic)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2310.13548",
+      "pdf": "https://arxiv.org/pdf/2310.13548",
+      "archive": "2023-10_sharma_towards-understanding-sycophancy.pdf",
+      "featured": true,
+      "quote": "sycophancy is a general behavior of state-of-the-art AI assistants",
+      "note": "Showed that five leading assistants shared this behaviour and linked it to training on human preference judgements.",
+      "verified": true
+    },
+    {
+      "date": "2024-03",
+      "title": "On the Conversational Persuasiveness of Large Language Models: A Randomized Controlled Trial",
+      "org": "Salvi et al. (EPFL, FBK)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2403.14380",
+      "pdf": "https://arxiv.org/pdf/2403.14380",
+      "archive": "2024-03_salvi_conversational-persuasiveness.pdf",
+      "featured": false,
+      "quote": "concerns around personalization are meaningful",
+      "note": "In live debates, GPT-4 given basic personal data about its opponent raised the odds of opinion change by 81.7% versus a human debater. Later published in Nature Human Behaviour (2025).",
+      "verified": true
+    },
+    {
+      "date": "2024-04",
+      "title": "Measuring the Persuasiveness of Language Models",
+      "org": "Anthropic",
+      "kind": "paper",
+      "url": "https://www.anthropic.com/news/measuring-model-persuasiveness",
+      "archive": "2024-04_anthropic_measuring-model-persuasiveness.html",
+      "featured": true,
+      "quote": "each successive model generation is rated to be more persuasive than the previous",
+      "note": "First lab study of persuasion across model generations; Claude 3 Opus was not statistically different from human-written arguments.",
+      "verified": true
+    },
+    {
+      "date": "2025-04",
+      "title": "Unauthorized experiment on r/changemyview involving AI-generated comments",
+      "org": "r/changemyview moderators (University of Zurich study)",
+      "kind": "event",
+      "url": "https://www.reddit.com/r/changemyview/comments/1k8b2hj/meta_unauthorized_experiment_on_cmv_involving/",
+      "featured": true,
+      "note": "Researchers covertly posted over 1,700 AI-written, personalised comments (some posing as trauma survivors or counsellors) on a debate forum; Reddit banned the accounts and the results were not published. Reddit post could not be loaded; details from Simon Willison and 404 Media coverage.",
+      "verified": false
+    },
+    {
+      "date": "2025-04",
+      "title": "Our updated Preparedness Framework: persuasion moved out of the framework",
+      "org": "OpenAI",
+      "kind": "policy",
+      "url": "https://openai.com/index/updating-our-preparedness-framework/",
+      "archive": "2025-04_openai_updating-preparedness-framework.html",
+      "featured": false,
+      "note": "OpenAI said persuasion risks would be handled through its Model Spec and usage policies rather than as a tracked catastrophic-risk category.",
+      "verified": true
+    },
+    {
+      "date": "2025-04",
+      "title": "Sycophancy in GPT-4o: what happened and what we're doing about it",
+      "org": "OpenAI",
+      "kind": "event",
+      "url": "https://openai.com/index/sycophancy-in-gpt-4o/",
+      "archive": "2025-04_openai_sycophancy-in-gpt-4o.html",
+      "featured": true,
+      "quote": "The update we removed was overly flattering or agreeable—often described as sycophantic.",
+      "note": "A sycophantic model update reached ChatGPT's mass user base before being rolled back, showing that training on user feedback can produce it in deployment.",
+      "verified": true
+    },
+    {
+      "date": "2025-08",
+      "title": "Raine v. OpenAI: wrongful-death lawsuit over ChatGPT conversations",
+      "org": "Tech Justice Law Project / Edelson PC (counsel)",
+      "kind": "event",
+      "url": "https://techjusticelaw.org/press-releases/from-homework-help-to-suicide-planning-family-sues-openai-and-samuel-altman-alleging-chatgpt-coached-teen-son-to-suicide/",
+      "archive": "2025-08_tjlp_raine-v-openai-press-release.html",
+      "featured": true,
+      "note": "Filed 26 Aug 2025 in San Francisco Superior Court; alleges ChatGPT validated and assisted a 16-year-old's suicide planning. The first of a series of wrongful-death suits against chatbot makers; allegations are not yet adjudicated.",
+      "verified": true
+    },
+    {
+      "date": "2025-09",
+      "title": "Strengthening our Frontier Safety Framework: harmful manipulation CCL",
+      "org": "Google DeepMind",
+      "kind": "policy",
+      "url": "https://deepmind.google/discover/blog/strengthening-our-frontier-safety-framework/",
+      "archive": "2025-09_google-deepmind_strengthening-fsf.html",
+      "featured": false,
+      "note": "Added a Critical Capability Level for models able to systematically change beliefs and behaviours in high-stakes contexts.",
+      "verified": true
+    },
+    {
+      "date": "2025-10",
+      "title": "Strengthening ChatGPT's responses in sensitive conversations",
+      "org": "OpenAI",
+      "kind": "report",
+      "url": "https://openai.com/index/strengthening-chatgpt-responses-in-sensitive-conversations/",
+      "archive": "2025-10_openai_strengthening-sensitive-conversations.html",
+      "featured": false,
+      "quote": "potentially heightened levels of emotional attachment to ChatGPT",
+      "note": "OpenAI estimated that in a given week ~0.07% of users show possible signs of psychosis or mania, ~0.15% explicit indicators of suicidal planning, and ~0.15% heightened emotional attachment.",
+      "verified": true
+    },
+    {
+      "date": "2025-12",
+      "title": "The levers of political persuasion with conversational artificial intelligence",
+      "org": "Hackenburg et al. (UK AISI, Oxford, LSE, Stanford, MIT)",
+      "kind": "paper",
+      "url": "https://www.science.org/doi/10.1126/science.aea3884",
+      "pdf": "https://arxiv.org/pdf/2507.13919",
+      "archive": "2025-07_hackenburg_levers-of-political-persuasion.pdf",
+      "featured": true,
+      "quote": "where they increased AI persuasiveness they also systematically decreased factual accuracy",
+      "note": "77k participants, 19 models: post-training and prompting raised persuasiveness by up to 51% and 27%, more than personalisation or scale. Science 390(6777); preprint July 2025.",
+      "verified": true
+    },
+    {
+      "date": "2025-12",
+      "title": "Frontier AI Trends Report: persuasion and emotional reliance",
+      "org": "UK AI Security Institute",
+      "kind": "report",
+      "url": "https://www.aisi.gov.uk/frontier-ai-trends-report",
+      "archive": "2025-12_aisi_frontier-ai-trends-report.pdf",
+      "featured": true,
+      "quote": "AI models are getting more persuasive as they scale",
+      "note": "Government evaluator confirms the scaling trend and reports that 33% of 2,028 surveyed UK adults used AI for emotional purposes in the past year.",
+      "verified": true
+    },
+    {
+      "date": "2026-03",
+      "title": "Evaluating Language Models for Harmful Manipulation",
+      "org": "Akbulut et al. (Google DeepMind)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2603.25326",
+      "pdf": "https://arxiv.org/pdf/2603.25326",
+      "archive": "2026-03_akbulut_harmful-manipulation-eval.pdf",
+      "featured": false,
+      "quote": "the tested model can produce manipulative behaviours when prompted to do so",
+      "note": "Human-participant evaluation methodology behind DeepMind's harmful-manipulation capability level.",
+      "verified": true
+    },
+    {
+      "date": "2026-09",
+      "title": "Claude Opus 5.5 System Card: harmful manipulation Tier 2 \"inconclusive\"",
+      "org": "Anthropic",
+      "kind": "system-card",
+      "url": "https://www-cdn.anthropic.com/fc1b44717c85dc068bc6ba5024219938094694bd/Claude%20Opus%205.5%20System%20Card.pdf",
+      "archive": "2026-09_anthropic_claude-opus-5-5-system-card.pdf",
+      "featured": true,
+      "quote": "Claude Opus 5.5 demonstrates operational capability in running influence campaigns",
+      "note": "In a simulated multi-week social-media influence operation the model ran campaigns end to end; Anthropic called its Tier 2 manipulation threshold inconclusive because effectiveness against real humans is untested.",
+      "verified": true
+    }
+  ]
+}
