@@ -60,7 +60,7 @@ const pointLabels = {
   },
 };
 
-// Dashed horizontal reference lines, e.g. a human baseline: spec.references = [{label, y}].
+// Dashed horizontal reference lines, e.g. a human baseline: spec.references = [{label, y, align?}] (label on the right unless align is "left").
 const referenceLines = {
   id: "referenceLines",
   afterDatasetsDraw(chart, args, opts) {
@@ -77,8 +77,9 @@ const referenceLines = {
       ctx.lineTo(area.right, py);
       ctx.stroke();
       ctx.font = `${opts.size}px ${opts.font}`;
-      ctx.textAlign = "right";
-      ctx.fillText(ref.label, area.right - 4, py - 4);
+      const left = ref.align === "left";
+      ctx.textAlign = left ? "left" : "right";
+      ctx.fillText(ref.label, left ? area.left + 4 : area.right - 4, py - 4);
       ctx.restore();
     }
   },

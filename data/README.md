@@ -37,7 +37,7 @@ once), so y labels carry no "lower is better" hints. Tiered charts put the riski
   "xLabel": "Model release date",      // optional; default "Model release date"
   "style": "sketch",                   // optional: hand-drawn look for indicative, hand-curated data
   "pointLabels": false,                // optional: hide point labels (e.g. anonymised models)
-  "references": [{ "label": "PhD expert baseline", "y": 1 }],  // optional dashed reference lines
+  "references": [{ "label": "PhD expert baseline", "y": 1 }],  // optional dashed reference lines; add "align": "left" to move the label off crowded points
   "links": [{ "from": "GPT-4o (Aug 2024)", "to": "GPT-4o (Mar 2025)", "label": "same model, new post-training" }],  // optional arrows between points
   "yMin": 0, "yMax": 100,              // optional
   "connect": true,                     // line only: draw lines between points (default true)

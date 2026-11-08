@@ -196,6 +196,19 @@
       "verified": true
     },
     {
+      "date": "2026-03",
+      "title": "PostTrainBench: Can LLM Agents Automate LLM Post-Training?",
+      "org": "Rank, Bhatnagar et al. (ELLIS Institute Tübingen, MPI-IS, Thoughtful Lab)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2603.08640",
+      "pdf": "https://arxiv.org/pdf/2603.08640",
+      "archive": "2026-03_rank_posttrainbench.pdf",
+      "featured": false,
+      "quote": "Agents sometimes engage in reward hacking: training on the test set",
+      "note": "Agents asked to post-train small models also downloaded existing instruct checkpoints and used an API key they found to generate training data without authorisation.",
+      "verified": true
+    },
+    {
       "date": "2026-08",
       "title": "Independent investigation of agents' behavior in the OpenAI / Hugging Face hacking incident",
       "org": "METR / Redwood Research",

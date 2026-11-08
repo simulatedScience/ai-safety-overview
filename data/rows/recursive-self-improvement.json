@@ -1,0 +1,135 @@
+{
+  "id": "recursive-self-improvement",
+  "title": "Recursive self-improvement",
+  "summary": "AI systems increasingly do parts of AI development themselves: speeding up their own training code, rewriting their own agent scaffolding and post-training other models. On PostTrainBench, the best agent's score rose from 18% to 45% between February and September 2026, close to the developers' own instruct models (48%). Fully automated AI research has not been shown.",
+  "definition": "Recursive self-improvement is AI systems improving AI systems, including their own code, training or successors, so that each gain can speed up the next.",
+  "development": "METR's RE-Bench (2024) found that agents beat human ML experts on AI research engineering tasks given 2 hours, but fell behind given 8. In 2025 AlphaEvolve sped up a kernel used to train Gemini itself by 23%, and the Darwin Gödel Machine rewrote its own coding-agent code, raising its SWE-bench score from 20% to 50%. In 2026 open-source loops such as Karpathy's autoresearch let agents iterate on training code, and on PostTrainBench the best agent went from 18% (Gemini 3.1 Pro, February) to 45% (Claude Fable 5.1, September), sometimes by cheating. In September 2026 Anthropic said models able to fully automate AI research could be trained soon.",
+  "methods": "PostTrainBench gives an agent 10 hours on one H100 GPU to post-train four small base models, then scores them on six benchmarks, weighted so that the developers' official instruct versions set the bar. It measures one narrow slice of AI R&D at small scale; the instruct models were trained with far more compute, so matching them is not the same as automating frontier research. LLM judges flag runs that train on test data, and flagged runs get the base-model score. RE-Bench measures related research-engineering skills, but no benchmark yet measures end-to-end improvement of a frontier model by AI.",
+  "chart": {
+    "kind": "line",
+    "title": "PostTrainBench v1.2: average score of post-trained models",
+    "yLabel": "Weighted average benchmark score",
+    "yFormat": "percent",
+    "yMin": 0,
+    "yMax": 60,
+    "connect": false,
+    "references": [
+      { "label": "Official instruct models", "y": 48.4, "align": "left" },
+      { "label": "Base models, zero-shot", "y": 8.0 }
+    ],
+    "series": [
+      {
+        "label": "Agent, best configuration",
+        "points": [
+          { "x": "2026-02-19", "y": 18.1, "label": "Gemini 3.1 Pro", "note": "OpenCode; ±1.7", "verified": true },
+          { "x": "2026-03-05", "y": 17.8, "label": "GPT-5.4", "note": "Codex CLI, High; ±1.8", "verified": true },
+          { "x": "2026-04-16", "y": 24.3, "label": "Claude Opus 4.7", "note": "Claude Code, xHigh; ±1.6", "verified": true },
+          { "x": "2026-04-23", "y": 23.9, "label": "GPT-5.5", "note": "Codex CLI, xHigh; ±0.5", "verified": true },
+          { "x": "2026-05-28", "y": 31.0, "label": "Claude Opus 4.8", "note": "Claude Code, Max; ±3.0", "verified": true },
+          { "x": "2026-06-09", "y": 37.3, "label": "Claude Fable 5", "note": "Claude Code, Max; ±1.6", "verified": true },
+          { "x": "2026-06-16", "y": 30.4, "label": "GLM-5.2", "org": "other", "note": "Z.ai; Claude Code, Max; ±1.5", "verified": true },
+          { "x": "2026-06-26", "y": 31.0, "label": "GPT-5.6 Sol", "note": "Codex CLI, Max; ±0.2. Limited preview 26 Jun, public 9 Jul", "verified": true },
+          { "x": "2026-07-08", "y": 22.6, "label": "Grok 4.5", "note": "Cursor CLI, High; ±0.9", "verified": true },
+          { "x": "2026-07-16", "y": 31.5, "label": "Kimi K3", "org": "other", "note": "Moonshot AI; Claude Code; ±0.6", "verified": true },
+          { "x": "2026-07-24", "y": 35.7, "label": "Claude Opus 5", "note": "Claude Code; ±2.6", "verified": true },
+          { "x": "2026-08-18", "y": 34.5, "label": "GLM-5.3", "org": "other", "note": "Z.ai; Claude Code, Max; ±3.4", "verified": true },
+          { "x": "2026-08-26", "y": 36.8, "label": "GLM-5.3 Flash", "org": "other", "note": "Z.ai; Claude Code, Max; ±0.1", "verified": true },
+          { "x": "2026-09", "y": 44.6, "label": "Claude Fable 5.1", "note": "Claude Code, Max; ±2.7. Released September 2026", "verified": true },
+          { "x": "2026-09-03", "y": 41.9, "label": "GPT-6 Astra", "note": "Codex CLI, Max; ±0.8", "verified": true },
+          { "x": "2026-09-22", "y": 43.8, "label": "Claude Opus 5.5", "note": "Claude Code, Max; ±3.0", "verified": true },
+          { "x": "2026-09-29", "y": 38.8, "label": "GPT-6.1 Sol", "note": "Codex CLI, Max; ±0.4", "verified": true }
+        ]
+      }
+    ],
+    "source": { "title": "PostTrainBench leaderboard (v1.2)", "org": "Rank, Bhatnagar et al. (ELLIS Institute Tübingen, MPI-IS)", "date": "2026-10", "url": "https://posttrainbench.com/" },
+    "caveat": "Leaderboard as of 8 Nov 2026 (v1.2 scoring, six benchmarks); the March 2026 paper used older scoring and is not comparable. One point per model, its best scaffold and effort setting; ± is the spread across runs as reported, not a 95% CI. x = first release, including limited previews. Omits Locus, Intology's research agent built on Claude Opus 5 (41.7%). The instruct models were trained outside the 10-hour budget: a rough ceiling, not a human baseline."
+  },
+  "entries": [
+    {
+      "date": "2024-11",
+      "title": "RE-Bench: Evaluating frontier AI R&D capabilities of language model agents against human experts",
+      "org": "METR (Wijk et al.)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2411.15114",
+      "pdf": "https://arxiv.org/pdf/2411.15114",
+      "archive": "2024-11_metr_re-bench.pdf",
+      "featured": true,
+      "quote": "the best AI agents achieve a score 4× higher than human experts",
+      "note": "Direct comparison with ML experts on AI research engineering tasks: agents led at a 2-hour budget, humans at 8 hours.",
+      "verified": true
+    },
+    {
+      "date": "2025-05",
+      "title": "AlphaEvolve: A Gemini-powered coding agent for designing advanced algorithms",
+      "org": "Google DeepMind",
+      "kind": "event",
+      "url": "https://deepmind.google/discover/blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/",
+      "archive": "2025-05_deepmind_alphaevolve.html",
+      "featured": true,
+      "quote": "sped up this vital kernel in Gemini’s architecture by 23%",
+      "note": "A Gemini-powered agent improved the training of Gemini itself, cutting overall training time by 1%: a small, real step of AI improving its own development.",
+      "verified": true
+    },
+    {
+      "date": "2025-05",
+      "title": "Darwin Gödel Machine: Open-Ended Evolution of Self-Improving Agents",
+      "org": "Zhang, Hu, Lu, Lange & Clune (UBC, Vector Institute, Sakana AI)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2505.22954",
+      "pdf": "https://arxiv.org/pdf/2505.22954",
+      "archive": "2025-05_zhang_darwin-goedel-machine.pdf",
+      "featured": true,
+      "quote": "increasing performance on SWE-bench from 20.0% to 50.0%",
+      "note": "A coding agent repeatedly rewrote its own code and kept the variants that scored better. The underlying model stayed frozen, so only the scaffolding improved.",
+      "verified": true
+    },
+    {
+      "date": "2026-03",
+      "title": "autoresearch: AI agents running research on single-GPU nanochat training automatically",
+      "org": "Andrej Karpathy",
+      "kind": "event",
+      "url": "https://github.com/karpathy/autoresearch",
+      "archive": "2026-03_karpathy_autoresearch-readme.md",
+      "featured": false,
+      "quote": "It modifies the code, trains for 5 minutes, checks if the result improved",
+      "note": "Open-source loop in which a coding agent edits training code, runs short experiments and keeps what improves; widely forked.",
+      "verified": true
+    },
+    {
+      "date": "2026-03",
+      "title": "PostTrainBench: Can LLM Agents Automate LLM Post-Training?",
+      "org": "Rank, Bhatnagar et al. (ELLIS Institute Tübingen, MPI-IS, Thoughtful Lab)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2603.08640",
+      "pdf": "https://arxiv.org/pdf/2603.08640",
+      "archive": "2026-03_rank_posttrainbench.pdf",
+      "featured": true,
+      "quote": "frontier agents make substantial progress but generally lag behind instruction-tuned LLMs",
+      "note": "Agents with one GPU and 10 hours reached 23.2% against 51.1% for official instruct models. Some trained on the test set or submitted existing instruct checkpoints.",
+      "verified": true
+    },
+    {
+      "date": "2026-09",
+      "title": "PostTrainBench 1.2",
+      "org": "PostTrainBench team",
+      "kind": "report",
+      "url": "https://posttrainbench.com/blog/posttrainbench-1-2/",
+      "featured": true,
+      "quote": "Fable 5.1 is now #1 at 44.6%, followed by Opus 5.5 at 43.8%",
+      "note": "Under revised scoring (BFCL dropped, multiple seeds), the best agents came within about 4 points of the instruct models' 48.4%, up from 18% for the best model released in February.",
+      "verified": true
+    },
+    {
+      "date": "2026-09",
+      "title": "Introducing Claude Opus 5.5 (Safety: preparing for future models)",
+      "org": "Anthropic",
+      "kind": "event",
+      "url": "https://www.anthropic.com/claude-opus-5-5",
+      "archive": "2026-09_anthropic_claude-opus-5-5.html",
+      "featured": true,
+      "quote": "those that can fully automate the work of AI research itself",
+      "note": "Anthropic says such models need a higher safety standard than its current measures provide, and that it expects they could be trained soon.",
+      "verified": true
+    }
+  ]
+}
