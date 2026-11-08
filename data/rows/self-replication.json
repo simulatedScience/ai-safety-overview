@@ -201,6 +201,19 @@
       "verified": true
     },
     {
+      "date": "2026-03",
+      "title": "Quantifying Frontier LLM Capabilities for Container Sandbox Escape (SandboxEscapeBench)",
+      "org": "UK AI Security Institute, University of Oxford (Marchand et al.)",
+      "kind": "paper",
+      "url": "https://arxiv.org/abs/2603.02277",
+      "pdf": "https://arxiv.org/pdf/2603.02277",
+      "archive": "2026-03_aisi_sandboxescapebench.pdf",
+      "featured": false,
+      "quote": "Mythos Preview, announced 7 April 2026, succeeded at least once on 100% of samples.",
+      "note": "18 Docker container-escape tasks. In March, Claude Opus 4.5 escaped in 56% of samples and no model solved the hardest tasks; the August update found Mythos Preview saturates the benchmark.",
+      "verified": true
+    },
+    {
       "date": "2026-10",
       "title": "AI models may be capable of self-replicating without access to a datacenter",
       "org": "Anthropic Frontier Red Team",
